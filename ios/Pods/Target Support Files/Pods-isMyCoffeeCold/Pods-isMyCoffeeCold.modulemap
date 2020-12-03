@@ -1,6 +1,0 @@
-module Pods_isMyCoffeeCold {
-  umbrella header "Pods-isMyCoffeeCold-umbrella.h"
-
-  export *
-  module * { export * }
-}
