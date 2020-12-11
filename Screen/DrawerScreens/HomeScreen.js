@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import Countries from '../utils/countryCodes.json';
 
 // TODO:
 //      ~ Implement code to parse the country name & code list for use in a 'picker'
@@ -11,6 +12,10 @@ import { Picker } from '@react-native-picker/picker';
 //      ~ Have the application run the calculation using modified Euler to calculate how long
 //        the user has until the coffee changes flavour
 //      ~ Display time until the coffee changes flavour as a count-down timer on screen
+
+let Locations = Object.keys(Countries).map(function (key) {
+  return <Picker.Item key = {key} value = {key} label = {key} />
+});
 
 const HomeScreen = () => {
   const [userCountry, setCountry] = useState('Australia');
@@ -33,7 +38,8 @@ const HomeScreen = () => {
             }}>
             Please select the country.
           </Text>
-          <Picker>
+          <Picker selectedValue = {userCountry} onValueChange = {setCountry}>
+            <Picker.Item label = "Australia" value = "AU"/>
 
           </Picker>
         </View>
