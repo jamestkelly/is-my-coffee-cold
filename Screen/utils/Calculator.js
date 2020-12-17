@@ -25,6 +25,7 @@ async function getWeather(args) {
     return data;
 }
 
+// Function to check the user supplied country against known country codes
 function countryCheck(countryName) {
     var countryData = require('./countryCodes.json');
     var countryCode = "";
@@ -42,6 +43,7 @@ function countryCheck(countryName) {
     return countryCode;
 }
 
+// Function to verify user supplied city against known city ids
 function cityCheck(cityName, countryCode) {
     var cityData = require('./city.list.json');
     var cityCode = 0;
@@ -64,6 +66,7 @@ function cityCheck(cityName, countryCode) {
     return cityCode;
 }
 
+// Function to verify user preferred coffee type
 function coffeeCheck(coffeeType) {
     var coffeeData = [
         {"name": 'long black', "temperature": '80'},
