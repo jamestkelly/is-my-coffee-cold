@@ -16,6 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 //        the user has until the coffee changes flavour
 //      ~ Display time until the coffee changes flavour as a count-down timer on screen
 
+// Import the contries and their respective codes
 const countries = require('../utils/countryCodes.json');
 
 // Function to convert country ISO code to flag
@@ -39,6 +40,7 @@ const useStyles = makeStyles({
   }
 })
 
+// Function to display the user selection of the country
 function CountrySelect() {
   const classes = useStyles();
 
