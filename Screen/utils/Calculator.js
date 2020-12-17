@@ -1,9 +1,15 @@
+/*
+* This document contains the functions used within the application to perform
+* the mathematic calculations and operations for determining how long the user
+* has until their coffee does change in flavour palette.
+*/
 export async function startCalculate(args) {
     let data = await getWeather(args);
     displayWeather(data[1]);
     timeMessage(parseFloat(data[0]));
 }
 
+// Function to retrieve weather information from API
 async function getWeather(args) {
     const fetch = require('node-fetch');
     let countryCode = countryCheck(args[0]);
