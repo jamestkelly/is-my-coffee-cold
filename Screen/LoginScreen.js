@@ -1,4 +1,4 @@
-// Import React and Component
+// Import React and components
 import React, {useState, createRef} from 'react';
 import {
   StyleSheet,
@@ -70,12 +70,12 @@ const LoginScreen = ({navigation}) => {
           console.log(responseJson.data[0].user_id);
           navigation.replace('DrawerNavigationRoutes');
         } else {
-          setErrortext('Please check your email id or password');
-          console.log('Please check your email id or password');
+          setErrortext('Please check your email address or password.');
+          console.log('Please check your email address or password.');
         }
       })
       .catch((error) => {
-        //Hide Loader
+        // Hide Loader
         setLoading(false);
         console.error(error);
       });
@@ -108,7 +108,7 @@ const LoginScreen = ({navigation}) => {
               <TextInput
                 style={styles.inputStyle}
                 onChangeText={(UserEmail) => setUserEmail(UserEmail)}
-                placeholder="Email" //dummy@abc.com
+                placeholder="Email" // Default: dummy@abc.com
                 placeholderTextColor="#FFFFFF"
                 autoCapitalize="none"
                 keyboardType="email-address"
@@ -127,7 +127,7 @@ const LoginScreen = ({navigation}) => {
                 onChangeText={
                   (UserPassword) => setUserPassword(UserPassword)
                 }
-                placeholder="Password" //12345
+                placeholder="Password" // Default: 12345
                 placeholderTextColor="#FFFFFF"
                 keyboardType="default"
                 ref={passwordInputRef}
