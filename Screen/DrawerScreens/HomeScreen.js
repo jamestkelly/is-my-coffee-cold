@@ -16,8 +16,9 @@ import { makeStyles } from '@material-ui/core/styles';
 //        the user has until the coffee changes flavour
 //      ~ Display time until the coffee changes flavour as a count-down timer on screen
 
-// Import the contries and their respective codes
+// Import the countries & cities list files
 const countries = require('../utils/countryCodes.json');
+const cities = require('../utils/city.list.json');
 
 // Function to convert country ISO code to flag
 // ISO 3166-1 alpha-2
@@ -73,6 +74,28 @@ function CountrySelect() {
       )}
     />
   );
+}
+
+function CitySelect() {
+  const classes = useStyles();
+
+  return (
+    <Autocomplete
+      id = "city-select"
+      style = {{ width: 300}}
+      options = {cities}
+      classes = {{
+        option: classes.option,
+      }}
+      autoHighLight
+      getOptionLabel = {(option) => option.label}
+      renderOption = {(option) => (
+        <React.Fragment>
+          <span>{option.name}</span>
+        </React.Fragment>
+      )}
+    />
+  )
 }
 
 // Function to display home-screen page
