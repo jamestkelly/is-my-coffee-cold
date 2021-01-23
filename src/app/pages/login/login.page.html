@@ -1,40 +1,39 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<!--<ion-header>
+  <ion-toolbar color = "primary">
     <ion-title>Placeholder App</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
-
-  <form (ngSubmit)="login()" [formGroup]="credentials">
-    <div class="input-group">
+  <img src = "../../../assets/icon/icon-transparent.png">
+  <ion-text color = "dark">
+    <h1>is-my-coffee-cold</h1>
+  </ion-text>
+  <form (ngSubmit) = "login()" [formGroup] = "credentials">
+    <div class = "input-group">
       <ion-item>
-        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+        <ion-input type = "email" placeholder = "Email" formControlName = "email"></ion-input>
       </ion-item>
-      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
-        <span *ngIf="email.errors?.required">Email is required</span>
-        <span *ngIf="email.errors?.email">Email is invalid</span>
+      <div *ngIf = "(email.dirty || email.touched) && email.errors" class = "errors">
+        <span *ngIf = "email.errors?.required">Email is required</span>
+        <span *ngIf = "email.errors?.email">Invalid email address</span>
       </div>
       <ion-item>
-        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        <ion-input type = "password" placeholder = "Password" formControlName = "password"></ion-input>
       </ion-item>
-      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
-        <span *ngIf="password.errors?.required">Password is required</span>
-        <span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>
+      <div *ngIf = "(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf = "password.errors?.required">Password is required</span>
+        <span *ngIf = "password.errors?.minlength">Password needs to be at least 6 characters</span>
       </div>
     </div>
 
-    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Log in</ion-button>
-    <ion-button type="button" expand="block" color="light" fill="clear">Not yet a member? Sign up!
+    <ion-button type = "submit" expand = "block" [disabled] = "!credentials.valid" color = "primaryyellow">Login</ion-button>
+    <ion-button type="button" expand="block" color="dark" fill="clear"><p>Don't have an account?</p>
     </ion-button>
 
-    <ion-button type="button" expand="block" color="tertiary">
+    <ion-button type="button" expand="block" color="primaryyellow">
       <ion-icon name="logo-google" slot="start"></ion-icon>
       Sign in with Google
-    </ion-button>
-    <ion-button type="button" expand="block" color="tertiary">
-      <ion-icon name="logo-apple" slot="start"></ion-icon>
-      Sign in with Apple
     </ion-button>
   </form>
 </ion-content>
