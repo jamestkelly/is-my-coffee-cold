@@ -1,14 +1,12 @@
-import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { IntroGuard } from './guards/intro.guard';
-import { AutoLoginGuard } from './guards/auto-login.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
-    canLoad: [IntroGuard, AutoLoginGuard] // Check if we should show the introduction or forward to inside
+    canLoad: [IntroGuard] // Check if we should show the introduction or forward to inside
   },
   {
     path: 'intro',
@@ -16,13 +14,20 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    canLoad: [AuthGuard] // Secure all child pages
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule), // Secure all child pages
   },
   {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./pages/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   }
 ];
 @NgModule({

@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../services/authentication.service';
+import { AuthenticationService } from '../shared/authentication-service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,10 +9,11 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(
+    public authService: AuthenticationService
+  ) {}
 
-  async logout() {
-    await this.authService.logout();
-    this.router.navigateByUrl('/', { replaceUrl: true });
+  ngOnInit() {
+    
   }
 }
