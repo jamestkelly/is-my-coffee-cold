@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
     const { userEmail, password } = this;
     try {
       const result = await this.auth.signInWithEmailAndPassword(userEmail, password);
-      this.router.navigate(['./tabs']);
+      this.router.navigateByUrl("../tabs/tabs.page.html");
     }
     catch(err) {
       console.dir(err);
