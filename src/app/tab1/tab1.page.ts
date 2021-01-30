@@ -1,6 +1,4 @@
-import { AuthenticationService } from '../shared/authentication-service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -9,11 +7,6 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
 
-  constructor(
-    public authService: AuthenticationService
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    
-  }
 }

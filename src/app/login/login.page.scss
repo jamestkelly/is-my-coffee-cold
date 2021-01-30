@@ -1,0 +1,18 @@
+.display-row {
+    align-items: center;
+    justify-content: center;
+}
+
+ion-content {
+    --padding-top: 40px;
+}
+
+.item.item-input {
+	border: none;
+
+    left: 0px;
+    width:100%;
+    padding-bottom: 10px;
+}
+.item.item-input span{width:auto;}
+.item.item-input input{width:68%;}
