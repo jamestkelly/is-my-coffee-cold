@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
-import firebase from 'firebase/app';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +17,8 @@ export class RegisterPage implements OnInit {
   constructor(
     public auth: AngularFireAuth,
     public alert: AlertController,
-    public router: Router
+    public router: Router,
+    public location: Location
     ) { }
 
   ngOnInit() {
@@ -31,6 +31,11 @@ export class RegisterPage implements OnInit {
     if (password !== cPassword) {
       this.showAlert("Error!", "Passwords do not match");
       return console.error("Passwords do not match.");
+    }
+    // Verify something is entered
+    if (userEmail === "" && password === "") {
+      this.showAlert("Error!", "Invalid email address or password");
+      return console.error("Invalid email or password.");
     }
 
     try
@@ -55,5 +60,9 @@ export class RegisterPage implements OnInit {
     })
 
     await alert.present();
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

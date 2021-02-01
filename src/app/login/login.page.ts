@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TabsPage } from '../tabs/tabs.page';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +15,7 @@ export class LoginPage implements OnInit {
   password: string = ""
   constructor(
     public auth: AngularFireAuth,
+    public alert: AlertController,
     public router: Router
     ) { }
 
@@ -26,7 +26,8 @@ export class LoginPage implements OnInit {
     const { userEmail, password } = this;
     try {
       const result = await this.auth.signInWithEmailAndPassword(userEmail, password);
-      this.router.navigateByUrl("../tabs/tabs.page.html");
+      this.router.navigateByUrl('/tabs', { replaceUrl: true });
+      console.log(result);
     }
     catch(err) {
       console.dir(err);
@@ -35,5 +36,19 @@ export class LoginPage implements OnInit {
 
   register() {
     this.router.navigate(['./register']);
+  }
+
+  forgotPassword() {
+    this.router.navigate(['./reset-password']);
+  }
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alert.create({
+      header,
+      message,
+      buttons: ["Okay"]
+    })
+
+    await alert.present();
   }
 }
