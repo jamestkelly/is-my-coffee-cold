@@ -2,19 +2,19 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { OptionsPage } from './options.page';
+import { PreferencesPage } from './preferences.page';
 
-describe('OptionsPage', () => {
-  let component: OptionsPage;
-  let fixture: ComponentFixture<OptionsPage>;
+describe('PreferencesPage', () => {
+  let component: PreferencesPage;
+  let fixture: ComponentFixture<PreferencesPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OptionsPage],
+      declarations: [PreferencesPage],
       imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OptionsPage);
+    fixture = TestBed.createComponent(PreferencesPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

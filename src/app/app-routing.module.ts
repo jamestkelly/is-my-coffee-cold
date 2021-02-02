@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'reset-password',
     loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
+  {
+    path: 'make-preference',
+    loadChildren: () => import('./make-preference/make-preference.module').then( m => m.MakePreferencePageModule)
+  },
+  {
+    path: 'edit-preference',
+    loadChildren: () => import('./edit-preference/edit-preference.module').then( m => m.EditPreferencePageModule)
+  },
 ];
 @NgModule({
   imports: [

@@ -13,7 +13,7 @@ const routes: Routes = [
       },
       {
         path: 'options',
-        loadChildren: () => import('../options/options.module').then(m => m.OptionsPageModule)
+        loadChildren: () => import('../preferences/preferences.module').then(m => m.PreferencesPageModule)
       },
       {
         path: 'settings',

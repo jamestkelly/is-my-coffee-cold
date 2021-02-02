@@ -2,11 +2,11 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { OptionsPage } from './options.page';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PreferencesPage } from './preferences.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { OptionsPageRoutingModule } from './options-routing.module';
+import { PreferencesPageRoutingModule } from './preferences-routing.module';
 
 @NgModule({
   imports: [
@@ -14,8 +14,9 @@ import { OptionsPageRoutingModule } from './options-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    OptionsPageRoutingModule
+    PreferencesPageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [OptionsPage]
+  declarations: [PreferencesPage]
 })
-export class OptionsPageModule {}
+export class PreferencesPageModule {}
