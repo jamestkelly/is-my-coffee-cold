@@ -30,7 +30,15 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/calculator',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: 'make-preference',
+    loadChildren: () => import('../make-preference/make-preference.module').then( m => m.MakePreferencePageModule)
+  },
+  {
+    path: 'edit-preference',
+    loadChildren: () => import('../edit-preference/edit-preference.module').then( m => m.EditPreferencePageModule)
+  },
 ];
 
 @NgModule({

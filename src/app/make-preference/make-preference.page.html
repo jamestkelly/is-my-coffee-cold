@@ -19,21 +19,25 @@
   <div class = "input-group">
     <form [formGroup] = "preferenceForm" (ngSubmit) = "formSubmit()">
       <ion-item color = "cream">
-        <ion-input type = "email" placeholder = "Email" [(ngModel)] = "userEmail">
+        <ion-input formControlName = "preferenceName" type = "text" placeholder = "Preference Name" required>
+        </ion-input>
+        </ion-item>
+      <ion-item color = "cream">
+        <ion-input formControlName = "countryName" type = "text" placeholder = "Country" required>
         </ion-input>
       </ion-item>
       <ion-item color = "cream">
-        <ion-input type = "password" placeholder = "Password" [(ngModel)] = "password">
+        <ion-input formControlName = "cityName" type = "text" placeholder = "City" required>
         </ion-input>
       </ion-item>
       <ion-item color = "cream">
-        <ion-input type = "password" placeholder = "Confirm Password" [(ngModel)] = "cPassword">
+        <ion-input formControlName = "coffeeType" type = "text" placeholder = "Coffee Type" required>
         </ion-input>
       </ion-item>
     </form>
   </div>
 
   <ion-button fill = "solid" expand = "block" color = "cream" (click) = "signUp()">
-    Register Account
+    Create Preference
   </ion-button>
 </ion-content>

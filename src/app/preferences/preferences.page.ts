@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { CoffeePreferenceService } from '../services/coffee-preference.service';
+import { NavController, NavParams } from '@ionic/angular';
+import { coffeePreference } from '../shared/coffeePreference';
 
 @Component({
   selector: 'app-preferences',
@@ -15,30 +17,29 @@ export class PreferencesPage implements OnInit {
   (
     private coffeeService: CoffeePreferenceService,
     private router: Router,
+    public navCtrl: NavController,
     public fb: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.preferenceForm = this.fb.group({
-      preferenceName: [''],
-      countryName: [''],
-      cityName: [''],
-      coffeeType: ['']
+    this.fetchPreferences();
+  }
+
+  fetchPreferences() {
+    this.coffeeService.getPreferenceList().valueChanges().subscribe(result => {
+      console.log(result);
     })
   }
 
-  formSubmit() {
-    if (!this.preferenceForm.valid)
+  deletePreference(id) {
+    console.log(id);
+    if (window.confirm('Are you sure you would like to delete this preference?'))
     {
-      return false;
+      this.coffeeService.deletePreference(id);
     }
-    else
-    {
-      this.coffeeService.createPreference(this.preferenceForm.value).then(result => {
-        console.log(result);
-        this.preferenceForm.reset();
-        this.router.navigate(['/'])
-      })
-    }
+  }
+
+  goEdit() {
+    this.router.navigateByUrl('./make-preference');
   }
 }

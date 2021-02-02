@@ -12,6 +12,40 @@
       <ion-title size="large">Preferences</ion-title>
     </ion-toolbar>
   </ion-header>
+  Bottom Text
+  <ion-item *ngFor = "let preference of Preferences" class = "user-list">
+    <ion-label>
+      <h5>
+        <ion-icon name = "pricetag-outline"></ion-icon>
+        {{ preference.preferenceName }}
+      </h5>
+      <p>
+        <ion-icon name = "flag-outline"></ion-icon>
+        {{ preference.countryName }}
+      </p>
+      <p>
+        <ion-icon name = "business-outline"></ion-icon>
+        {{ preference.cityName }}
+      </p>
+      <p>
+        <ion-icon name = "cafe-outline"></ion-icon>
+        {{ preference.coffeeType }}
+      </p>
+    </ion-label>
 
-  <app-explore-container name="Preferences page"></app-explore-container>
+    <div class = "item-note" item-end>
+      <ion-button fill = "clear" [routerLink] = "['/edit-preference/', preference.$key]">
+        <ion-icon name = "pencil-outline" style = zoom:0.2></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name = "close-circle-outline" style = zoom:0.2></ion-icon>
+      </ion-button>
+    </div>
+  </ion-item>
+
+  <ion-button (click) = "goEdit()">
+    Make
+  </ion-button>
+
+  <!--<app-explore-container name="Preferences page"></app-explore-container>-->
 </ion-content>
