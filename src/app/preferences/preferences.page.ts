@@ -1,45 +1,92 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CoffeePreferenceService } from '../services/coffee-preference.service';
 import { NavController, NavParams } from '@ionic/angular';
 import { coffeePreference } from '../shared/coffeePreference';
+
+interface PreferenceData {
+  preferenceName: string;
+  coffeeType: string;
+  cityName: string;
+  countryName: string;
+}
 
 @Component({
   selector: 'app-preferences',
   templateUrl: 'preferences.page.html',
   styleUrls: ['preferences.page.scss']
 })
-export class PreferencesPage implements OnInit {
+export class PreferencesPage {
+//export class PreferencesPage implements OnInit {
+  preferenceList = [];
+  preferenceData: PreferenceData;
   preferenceForm: FormGroup;
 
   constructor
   (
     private coffeeService: CoffeePreferenceService,
-    private router: Router,
+    private route: Router,
     public navCtrl: NavController,
     public fb: FormBuilder
-  ) {}
+  )
+  {
+    this.preferenceData = {} as PreferenceData;
+  }
 
   ngOnInit() {
-    this.fetchPreferences();
-  }
-
-  fetchPreferences() {
-    this.coffeeService.getPreferenceList().valueChanges().subscribe(result => {
-      console.log(result);
+    this.preferenceForm = this.fb.group({
+      preferenceName: ['', [Validators.required]],
+      coffeeType: ['', [Validators.required]],
+      cityName: ['', [Validators.required]],
+      countryName: ['', [Validators.required]]
     })
+
+    this.coffeeService.readPreferences().subscribe(data => {
+      this.preferenceList = data.map(output => {
+        return {
+          id: output.payload.doc.id,
+          isEdit: false,
+          preferenceName: output.payload.doc.data()['preferenceName'],
+          coffeeType: output.payload.doc.data()['coffeeType'],
+          cityName: output.payload.doc.data()['cityName'],
+          countryName: output.payload.doc.data()['countryName']
+        };
+      })
+      console.log(this.preferenceList);
+    });
   }
 
-  deletePreference(id) {
-    console.log(id);
-    if (window.confirm('Are you sure you would like to delete this preference?'))
-    {
-      this.coffeeService.deletePreference(id);
-    }
+  createPreference() {
+    console.log(this.preferenceForm.value);
+    this.coffeeService.createPreference(this.preferenceForm.value).then(response => {
+      this.preferenceForm.reset();
+      console.log(response);
+    })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
-  goEdit() {
-    this.router.navigateByUrl('./make-preference');
+  removePreference(id) {
+    this.coffeeService.deletePreference(id);
+  }
+
+  editPreference(preference) {
+    preference.isEdit = true;
+    preference.EditPreferenceName = preference.preferenceName;
+    preference.EditCoffee = preference.coffeeType;
+    preference.EditCity = preference.cityName;
+    preference.EditCountry = preference.countryName;
+  }
+
+  updatePreference(preferenceRow) {
+    let preference = {};
+    preference['preferenceName'] = preferenceRow.EditPreferenceName;
+    preference['coffeeType'] = preferenceRow.EditCoffee;
+    preference['cityName'] = preferenceRow.EditCity;
+    preference['countryName'] = preferenceRow.EditCountry;
+    this.coffeeService.updatePreferences(preferenceRow.id, preference);
+    preferenceRow.isEdit = false;
   }
 }

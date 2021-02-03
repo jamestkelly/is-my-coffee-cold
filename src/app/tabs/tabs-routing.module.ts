@@ -12,9 +12,15 @@ const routes: Routes = [
         loadChildren: () => import('../calculator/calculator.module').then(m => m.CalculatorPageModule)
       },
       {
-        path: 'options',
-        loadChildren: () => import('../preferences/preferences.module').then(m => m.PreferencesPageModule)
+        path: 'preferences',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../preferences/preferences.module').then(m => m.PreferencesPageModule)
+          }
+        ]
       },
+      { path: 'preferences/make-preference', loadChildren: '../preferences/make-preference/make-preference.module#MakePreferencePageModule' },
       {
         path: 'settings',
         loadChildren: () => import('../settings/settings.module').then(m => m.SettingsPageModule)
@@ -30,14 +36,6 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/calculator',
     pathMatch: 'full'
-  },
-  {
-    path: 'make-preference',
-    loadChildren: () => import('../make-preference/make-preference.module').then( m => m.MakePreferencePageModule)
-  },
-  {
-    path: 'edit-preference',
-    loadChildren: () => import('../edit-preference/edit-preference.module').then( m => m.EditPreferencePageModule)
   },
 ];
 

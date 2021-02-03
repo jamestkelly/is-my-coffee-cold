@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: PreferencesPage,
+  },
+  {
+    path: 'make-preference',
+    loadChildren: () => import('./make-preference/make-preference.module').then( m => m.MakePreferencePageModule)
   }
 ];
 

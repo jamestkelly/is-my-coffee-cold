@@ -13,39 +13,65 @@
     </ion-toolbar>
   </ion-header>
   Bottom Text
-  <ion-item *ngFor = "let preference of Preferences" class = "user-list">
-    <ion-label>
-      <h5>
-        <ion-icon name = "pricetag-outline"></ion-icon>
-        {{ preference.preferenceName }}
-      </h5>
-      <p>
-        <ion-icon name = "flag-outline"></ion-icon>
-        {{ preference.countryName }}
-      </p>
-      <p>
-        <ion-icon name = "business-outline"></ion-icon>
-        {{ preference.cityName }}
-      </p>
-      <p>
-        <ion-icon name = "cafe-outline"></ion-icon>
-        {{ preference.coffeeType }}
-      </p>
-    </ion-label>
 
-    <div class = "item-note" item-end>
-      <ion-button fill = "clear" [routerLink] = "['/edit-preference/', preference.$key]">
-        <ion-icon name = "pencil-outline" style = zoom:0.2></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon name = "close-circle-outline" style = zoom:0.2></ion-icon>
-      </ion-button>
-    </div>
-  </ion-item>
+  <ion-card *ngFor = "let item of preferenceList" color = "primary">
+    <span *ngIf = "!item.isEdit; else elseBlock">
+      <ion-card-header>
+        <ion-card-title>{{ item.preferenceName }}</ion-card-title>
+        <ion-card-subtitle>Coffee Type: {{ item.coffeeType }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        {{ item.cityName }}, {{ item.countryName }}
+        <ion-button shape = "round" color = "secondary" size = "small" (click) = "editPreference(item)">
+          <ion-icon size = "small" slot = "icon-only" name = "create"></ion-icon>
+        </ion-button>
+        <ion-button shape = "round" color = "secondary" size = "small" (click) = "removePreference(item.id)">
+          <ion-icon size = "small" slot = "icon-only" name = "trash"></ion-icon>
+        </ion-button>
+      </ion-card-content>
+    </span>
+    <ng-template #elseBlock>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Edit
+              </ion-col>
+              <ion-col>
+                <ion-button fill = "solid" color = "medium" size = "small" (click) = "item.isEdit = false">
+                  Cancel
+                </ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button fill = "solid" color = "tertiary" size = "small" (click) = "updatePreference(item)">
+                  Update
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label><strong>Preference Name</strong></ion-label>
+          <ion-input type = "text" [(ngModel)] = "item.EditPreferenceName"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Coffee Type</strong></ion-label>
+          <ion-input type = "text" [(ngModel)] = "item.EditCoffee"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>City</strong></ion-label>
+          <ion-input type = "text" [(ngModel)] = "item.EditCity"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label><strong>Country</strong></ion-label>
+          <ion-input type = "text" [(ngModel)] = "item.EditCountry"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ng-template>
+  </ion-card>
 
-  <ion-button (click) = "goEdit()">
-    Make
-  </ion-button>
-
-  <!--<app-explore-container name="Preferences page"></app-explore-container>-->
+  <ion-button color="primary" routerLink="/tabs/preferences/make-preference" routerDirection="forward">Create Preference</ion-button>
 </ion-content>

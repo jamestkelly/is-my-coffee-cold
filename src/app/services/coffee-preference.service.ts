@@ -1,54 +1,36 @@
 import { Injectable } from '@angular/core';
 import { coffeePreference } from '../shared/coffeePreference';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoffeePreferenceService {
-  preferenceListRef: AngularFireList<any>;
-  preferenceRef: AngularFireObject<any>;
+  collectionName = 'Preferences';
 
   constructor
   (
-    private db: AngularFireDatabase
+    private firestore: AngularFirestore
   ) { }
 
-  // Method to create user coffee calculation preference
-  createPreference(coffeePref: coffeePreference) {
-    return this.preferenceListRef.push({
-      preferenceName: coffeePref.preferenceName,
-      countryName: coffeePref.countryName,
-      cityName: coffeePref.cityName,
-      coffeeType: coffeePref.coffeeType
-    })
+  // Create a new calculation preference in the specified collection
+  createPreference(preference) {
+    return this.firestore.collection(this.collectionName).add(preference);
   }
 
-  // Method to get a single coffee preference object as saved by user
-  getPreference(id: string) {
-    this.preferenceRef = this.db.object('/preference/' + id);
-    return this.preferenceRef;
+  // Call `snapshotChanges()` method to read records and subscribe for updates
+  readPreferences() {
+    return this.firestore.collection(this.collectionName).snapshotChanges();
   }
 
-  // Method to get the entire list of user created preferences
-  getPreferenceList() {
-    this.preferenceListRef = this.db.list('/preference');
-    return this.preferenceListRef;
+  // Method utilising `doc()` to take collection name and document ID to update preference
+  updatePreferences(preferenceID, preference) {
+    this.firestore.doc(this.collectionName + '/' + preferenceID).update(preference);
   }
 
-  // Method to update the list of user preferences
-  updatePreference(id, coffeePref: coffeePreference) {
-    return this.preferenceRef.update({
-      preferenceName: coffeePref.preferenceName,
-      countryName: coffeePref.countryName,
-      cityName: coffeePref.cityName,
-      coffeeType: coffeePref.coffeeType
-    })
-  }
-
-  // Method to delete preference from user preferences
-  deletePreference(id: string) {
-    this.preferenceRef = this.db.object('/preference/' + id);
-    this.preferenceRef.remove();
+  // Method to delete a preference
+  deletePreference(preferenceID) {
+    this.firestore.doc(this.collectionName + '/' + preferenceID).delete();
   }
 }

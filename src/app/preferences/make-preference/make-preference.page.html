@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>MakePreference</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button size = "small" fill = "clear" color = "cream" (click) = "goBack()">
+    Back
+    <ion-icon name = "chevron-back-outline" slot = "start"></ion-icon>
+  </ion-button>
+    <form [formGroup] = "preferenceForm" (ngSubmit) = "formSubmit()">
+      <ion-item>
+        <ion-label position = "floating">Preference Name</ion-label>
+        <ion-input formControlName = "preferenceName" type = "text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position = "floating">Country</ion-label>
+        <ion-input formControlName = "countryName" type = "text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position = "floating">City</ion-label>
+        <ion-input formControlName = "countryName" type = "text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position = "floating">Coffee Type</ion-label>
+        <ion-input formControlName = "countryName" type = "text" required></ion-input>
+      </ion-item>
+
+      <ion-button fill = "solid" expand = "block" color = "cream" type = "submit">
+        Create Preference
+      </ion-button>
+    </form>
+
+</ion-content>

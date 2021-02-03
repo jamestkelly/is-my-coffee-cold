@@ -7,16 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MakePreferencePageRoutingModule } from './make-preference-routing.module';
 
 import { MakePreferencePage } from './make-preference.page';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     IonicModule,
-    MakePreferencePageRoutingModule,
-    ReactiveFormsModule,
-    RouterModule
+    MakePreferencePageRoutingModule
   ],
   declarations: [MakePreferencePage]
 })

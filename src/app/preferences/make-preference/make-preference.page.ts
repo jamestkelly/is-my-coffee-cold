@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from "@angular/forms";
 import { Location } from '@angular/common';
-import { CoffeePreferenceService } from '../services/coffee-preference.service';
+import { FormGroup, FormBuilder } from "@angular/forms";
+import { Router } from '@angular/router';
+import { CoffeePreferenceService } from 'src/app/services/coffee-preference.service';
 
 @Component({
   selector: 'app-make-preference',
@@ -11,14 +11,15 @@ import { CoffeePreferenceService } from '../services/coffee-preference.service';
 })
 export class MakePreferencePage implements OnInit {
   preferenceForm: FormGroup;
+  preferenceList = [];
 
   constructor
   (
-    private coffeeService: CoffeePreferenceService,
-    private router: Router,
-    public fb: FormBuilder,
-    public location: Location
-  ) {}
+    private coffeePref: CoffeePreferenceService,
+    private route: Router,
+    public location: Location,
+    public fb: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.preferenceForm = this.fb.group({
@@ -29,6 +30,10 @@ export class MakePreferencePage implements OnInit {
     })
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   formSubmit() {
     if (!this.preferenceForm.valid)
     {
@@ -36,16 +41,12 @@ export class MakePreferencePage implements OnInit {
     }
     else
     {
-      this.coffeeService.createPreference(this.preferenceForm.value).then(result => {
+      this.coffeePref.createPreference(this.preferenceForm.value).then(result =>{
         console.log(result);
         this.preferenceForm.reset();
-        this.router.navigate(['/preferences']);
+        this.route.navigate(['/preferences']);
       })
-      .catch(error => console.dir(error));
+        .catch(error => console.log(error));
     }
-  }
-
-  goBack() {
-    this.location.back();
   }
 }
