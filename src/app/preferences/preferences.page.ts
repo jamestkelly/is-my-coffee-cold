@@ -57,6 +57,7 @@ export class PreferencesPage {
     });
   }
 
+  // Implements createPreference() from coffeeService to create a user preference.
   createPreference() {
     console.log(this.preferenceForm.value);
     this.coffeeService.createPreference(this.preferenceForm.value).then(response => {
@@ -68,10 +69,12 @@ export class PreferencesPage {
       });
   }
 
+  // Method to delete a preference object
   removePreference(id) {
     this.coffeeService.deletePreference(id);
   }
 
+  // Method to edit a preference object
   editPreference(preference) {
     preference.isEdit = true;
     preference.EditPreferenceName = preference.preferenceName;
@@ -80,6 +83,7 @@ export class PreferencesPage {
     preference.EditCountry = preference.countryName;
   }
 
+  // Method to update a preference object
   updatePreference(preferenceRow) {
     let preference = {};
     preference['preferenceName'] = preferenceRow.EditPreferenceName;

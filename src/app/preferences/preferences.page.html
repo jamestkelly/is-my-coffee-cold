@@ -1,33 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent] = "true">
+  <ion-toolbar color = "cream">
     <ion-title>
       Preferences
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Preferences</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  Bottom Text
+<ion-content [fullscreen] = "true">
 
-  <ion-card *ngFor = "let item of preferenceList" color = "primary">
+  <ion-card *ngFor = "let item of preferenceList" color = "primaryred">
     <span *ngIf = "!item.isEdit; else elseBlock">
       <ion-card-header>
         <ion-card-title>{{ item.preferenceName }}</ion-card-title>
-        <ion-card-subtitle>Coffee Type: {{ item.coffeeType }}</ion-card-subtitle>
       </ion-card-header>
+
       <ion-card-content>
-        {{ item.cityName }}, {{ item.countryName }}
-        <ion-button shape = "round" color = "secondary" size = "small" (click) = "editPreference(item)">
-          <ion-icon size = "small" slot = "icon-only" name = "create"></ion-icon>
-        </ion-button>
-        <ion-button shape = "round" color = "secondary" size = "small" (click) = "removePreference(item.id)">
-          <ion-icon size = "small" slot = "icon-only" name = "trash"></ion-icon>
-        </ion-button>
+        <ion-row>
+          {{ item.coffeeType }}
+        </ion-row>
+        <ion-row>
+          {{ item.cityName }}, {{ item.countryName }}
+        </ion-row>
+
+        <ion-row>
+          <ion-button shape = "round" color = "cream" size = "small" (click) = "editPreference(item)">
+            <ion-icon size = "small" slot = "icon-only" name = "create"></ion-icon>
+          </ion-button>
+          <ion-button shape = "round" color = "cream" size = "small" (click) = "removePreference(item.id)">
+            <ion-icon size = "small" slot = "icon-only" name = "trash"></ion-icon>
+          </ion-button>
+        </ion-row>
       </ion-card-content>
     </span>
     <ng-template #elseBlock>
@@ -35,19 +37,12 @@
         <ion-card-title>
           <ion-grid>
             <ion-row>
-              <ion-col>
-                Edit
-              </ion-col>
-              <ion-col>
-                <ion-button fill = "solid" color = "medium" size = "small" (click) = "item.isEdit = false">
-                  Cancel
-                </ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-button fill = "solid" color = "tertiary" size = "small" (click) = "updatePreference(item)">
-                  Update
-                </ion-button>
-              </ion-col>
+              <ion-button fill = "solid" color = "cream" size = "small" (click) = "item.isEdit = false">
+                Cancel
+              </ion-button>
+              <ion-button fill = "solid" color = "cream" size = "small" (click) = "updatePreference(item)">
+                Update
+              </ion-button>
             </ion-row>
           </ion-grid>
         </ion-card-title>

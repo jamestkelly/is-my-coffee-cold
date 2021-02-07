@@ -30,7 +30,20 @@ export class LoginPage implements OnInit {
       console.log(result);
     }
     catch(err) {
-      console.dir(err);
+      let errorCode = err.code;
+      let errorMsg = err.message;
+      if (errorCode === 'auth/wrong-password')
+      {
+        await this.showAlert("Invalid Password", "Please ensure you've entered your password correctly.");
+      }
+      else if (errorCode === 'auth/user-not-found')
+      {
+        await this.showAlert("Invalid Email", "Please ensure you've entered your email correctly.");
+      }
+      else
+      {
+        await this.showAlert("Invalid Details", errorMsg);
+      }
     }
   }
 
