@@ -73,5 +73,9 @@
     </ng-template>
   </ion-card>
 
-  <ion-button color="primary" routerLink="/tabs/preferences/make-preference" routerDirection="forward">Create Preference</ion-button>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tabs/preferences/make-preference" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

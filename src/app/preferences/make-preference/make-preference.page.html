@@ -11,19 +11,46 @@
   </ion-button>
     <form [formGroup] = "preferenceForm" (ngSubmit) = "createPreference()">
       <ion-item>
+        <ion-label>Name: </ion-label>
         <ion-input formControlName = "preferenceName" type = "text" placeholder = "Preference Name" required></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName = "countryName" type = "text" placeholder = "Country" required></ion-input>
+        <ion-label>Country: </ion-label>
+        <ion-select placeholder = "Australia" formControlName = "countryName">
+          <ion-select-option value = "Australia">Australia</ion-select-option>
+          <ion-select-option value = "Canada">Canada</ion-select-option>
+          <ion-select-option value = "United Kingdom">United Kingdom</ion-select-option>
+          <ion-select-option value = "United States">United States</ion-select-option>
+          <ion-select-option value = "France">France</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName = "cityName" type = "text" placeholder = "City" required></ion-input>
+        <ion-label>City: </ion-label>
+        <ion-select placeholder = "Sydney" formControlName = "cityName">
+          <ion-select-option value = "Adelaide">Adelaide</ion-select-option>
+          <ion-select-option value = "Brisbane">Brisbane</ion-select-option>
+          <ion-select-option value = "Cairns">Cairns</ion-select-option>
+          <ion-select-option value = "Canberra">Canberra</ion-select-option>
+          <ion-select-option value = "Darwin">Darwin</ion-select-option>
+          <ion-select-option value = "Hobart">Hobart</ion-select-option>
+          <ion-select-option value = "Melbourne">Melbourne</ion-select-option>
+          <ion-select-option value = "Perth">Perth</ion-select-option>
+          <ion-select-option value = "Sydney">Sydney</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-input formControlName = "coffeeType" type = "text" placeholder = "Coffee Type" required></ion-input>
+        <ion-label>Coffee Type: </ion-label>
+        <ion-select placeholder = "Flat White" formControlName = "coffeeType">
+          <ion-select-option value = "Flat White">Flat White</ion-select-option>
+          <ion-select-option value = "Long Black">Long Black</ion-select-option>
+          <ion-select-option value = "Latte">Latte</ion-select-option>
+          <ion-select-option value = "Cappuccino">Cappuccino</ion-select-option>
+          <ion-select-option value = "Mocha">Mocha</ion-select-option>
+          <ion-select-option value = "Iced Coffee">Iced Coffee</ion-select-option>
+        </ion-select>
       </ion-item>
 
       <ion-button fill = "solid" expand = "block" color = "cream" type = "submit">
