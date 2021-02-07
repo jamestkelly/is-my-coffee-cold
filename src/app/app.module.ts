@@ -37,4 +37,5 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

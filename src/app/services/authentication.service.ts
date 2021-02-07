@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Location } from '@angular/common';
@@ -23,7 +21,8 @@ export class AuthenticationService {
   ) { }
 
   // Function to logout the user via Firebase
-  logoutUser() {
+  async logoutUser() {
+    await this.warnUser("Are You Sure?", "Please press confirm to logout.");
     return new Promise((resolve, reject) => {
       if (this.auth.currentUser) {
         this.auth.signOut().then(() => {
@@ -36,6 +35,7 @@ export class AuthenticationService {
     })
   }
 
+  // Function to register users via email authentication through Firebase
   async signUp() {
     const { userEmail, password, cPassword } = this;
 
@@ -64,6 +64,7 @@ export class AuthenticationService {
     }
   }
 
+  // Simple alert function to display a notification to the user.
   async showAlert(header: string, message: string) {
     const alert = await this.alert.create({
       header,
@@ -72,6 +73,32 @@ export class AuthenticationService {
     })
 
     await alert.present();
+  }
+
+  async warnUser(header: string, message: string) {
+    return new Promise(async (resolve) => {
+      // Create the warning alert for the user with supplied parameters
+      const confirm = await this.alert.create({
+        header: header,
+        message: message,
+        buttons:
+        [
+          {
+            text: 'Cancel',
+            role: 'cancel'
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              return resolve(true);
+            },
+          },
+        ],
+      });
+
+      // Wait for user to make selection
+      await confirm.present();
+    });
   }
 
   goBack() {
