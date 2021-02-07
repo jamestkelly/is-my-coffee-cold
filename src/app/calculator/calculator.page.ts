@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoffeePreferenceService } from '../services/coffee-preference.service';
 
 @Component({
   selector: 'app-calculator',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class CalculatorPage {
 
-  constructor() {}
-
+  constructor
+  (
+    private coffeeService: CoffeePreferenceService
+  ) {}
 }

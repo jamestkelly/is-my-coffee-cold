@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -27,7 +28,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule, // Import firebase/auth for authentication features
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule
   ],
   providers:
   [

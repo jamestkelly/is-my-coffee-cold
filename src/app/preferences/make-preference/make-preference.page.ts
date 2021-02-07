@@ -49,7 +49,6 @@ export class MakePreferencePage {
           countryName: output.payload.doc.data()['countryName']
         };
       })
-      console.log(this.preferenceList);
     });
   }
 

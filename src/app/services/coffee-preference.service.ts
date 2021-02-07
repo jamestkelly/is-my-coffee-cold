@@ -3,19 +3,21 @@ import firebase from 'firebase';
 import { coffeePreference } from '../shared/coffeePreference';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoffeePreferenceService {
   collectionName = 'userPreferences';
-  userCollectionName = 'Preferences'
+  userCollectionName = 'Preferences';
 
   constructor
   (
     private fire: AngularFirestore,
     private auth: AngularFireAuth,
-  ) { }
+    public http: HttpClient
+  ) {}
 
   // Create a new calculation preference in the specified collection
   createPreference(preference) {
@@ -27,14 +29,6 @@ export class CoffeePreferenceService {
   // Call `snapshotChanges()` method to read records and subscribe for updates
   readPreferences() {
     let currentUser = firebase.auth().currentUser;
-    /*return new Promise<any>((resolve, reject) => {
-      this.auth.user.subscribe(currentUser =>{
-        if (currentUser) {
-          const snapshotChangesSubscription = this.fire.collection(this.collectionName).doc(currentUser.uid).collection(this.userCollectionName).snapshotChanges();
-          resolve(snapshotChangesSubscription);
-        }
-      })
-    })*/
     return this.fire.collection(this.collectionName).doc(currentUser.uid).collection(this.userCollectionName).snapshotChanges();
   }
 
@@ -48,5 +42,12 @@ export class CoffeePreferenceService {
   deletePreference(preferenceID) {
     let currentUser = firebase.auth().currentUser;
     this.fire.doc(this.collectionName + '/' + currentUser.uid + '/' + this.userCollectionName + '/' + preferenceID).delete();
+  }
+
+  // Method to request local data stored in application
+  getLocalData(file: string) {
+    this.http.get(`../../assets/data/${file}`).subscribe(data => {
+      console.log(data);
+    });
   }
 }
