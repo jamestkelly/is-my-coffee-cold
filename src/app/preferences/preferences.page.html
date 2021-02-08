@@ -54,7 +54,15 @@
         </ion-item>
         <ion-item>
           <ion-label><strong>Coffee Type</strong></ion-label>
-          <ion-input type = "text" [(ngModel)] = "item.EditCoffee"></ion-input>
+          <ion-select placeholder = "Flat White" type = "text" [(ngModel)] = "item.EditCoffee">
+            <ion-select-option value = "Flat White">Flat White</ion-select-option>
+            <ion-select-option value = "Long Black">Long Black</ion-select-option>
+            <ion-select-option value = "Latte">Latte</ion-select-option>
+            <ion-select-option value = "Cappuccino">Cappuccino</ion-select-option>
+            <ion-select-option value = "Mocha">Mocha</ion-select-option>
+            <ion-select-option value = "Iced Coffee">Iced Coffee</ion-select-option>
+          </ion-select>
+          <!--<ion-input type = "text" [(ngModel)] = "item.EditCoffee"></ion-input>-->
         </ion-item>
         <ion-item>
           <ion-label><strong>City</strong></ion-label>
