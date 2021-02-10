@@ -4,6 +4,9 @@ import { coffeePreference } from '../shared/coffeePreference';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
+import * as CountryData from '../../assets/data/countryCodes.json';
+import * as CityData from '../../assets/data/city.list.json';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +49,17 @@ export class CoffeePreferenceService {
 
   // Method to request local data stored in application
   getLocalData(file: string) {
-    return require(`../../assets/data/${file}`);
+    if (file === 'countryCodes.json') {
+      return CountryData;
+    }
+    else {
+      return CityData;
+    }
   }
+  /*getLocalData(file: string) {
+    this.http.get(`../../assets/data/${file}`).subscribe(data => {
+      return data});
+  }*/
 
   // Method to get country code
   getCountryCode(countryName: string) {
@@ -57,7 +69,7 @@ export class CoffeePreferenceService {
 
     // Search the data until 'countryCode' is filled
     while (countryCode === "") {
-      for (let i = 0; i < data.length; i++) {
+      for (let i = 0; i < Object.keys(data).length; i++) {
         if (data[i].Name === countryName) {
           countryCode = data[i].Code;
           break; // End the search
@@ -71,11 +83,11 @@ export class CoffeePreferenceService {
   // Method to create an array containing city names corresponding to selected country
   getCities(countryCode: string) {
     // Fetch city data array
-    const data = this.getLocalData('city.list.json');
+    const data = this.getLocalData('cities');
     let cities = "";
 
     // Search data until all cities corresponding to 'countryCode' have been found
-    for (let j = 0; j < data.length; j++) {
+    for (let j = 0; j < Object.keys(data).length; j++) {
       if (countryCode === data[j].country) {
         cities += data[j].name + ' ';
       }
@@ -89,10 +101,10 @@ export class CoffeePreferenceService {
 
   // Method to get city ID from local data
   getCityId(cityName: string, countryCode: string) {
-    const data = this.getLocalData('city.list.json');
+    const data = this.getLocalData('cities');
 
     // Search data until relevant city ID is found
-    for (let k = 0; k < data.length; k++) {
+    for (let k = 0; k < Object.keys(data).length; k++) {
       if (cityName === data[k].name && countryCode === data[k].country) {
         console.log(data[k].id); // Temporary for debugging
         return data[k].id;

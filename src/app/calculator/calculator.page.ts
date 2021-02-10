@@ -12,4 +12,8 @@ export class CalculatorPage {
   (
     private coffeeService: CoffeePreferenceService
   ) {}
+
+  pleaseWork() {
+    this.coffeeService.getLocalData('countryCodes.js');
+  }
 }
