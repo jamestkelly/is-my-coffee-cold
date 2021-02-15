@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
-import { coffeePreference } from '../shared/coffeePreference';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { HttpClient } from '@angular/common/http';
-import * as CountryData from '../../assets/data/countryCodes.json';
-import * as CityData from '../../assets/data/city.list.json';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -47,71 +44,6 @@ export class CoffeePreferenceService {
     this.fire.doc(this.collectionName + '/' + currentUser.uid + '/' + this.userCollectionName + '/' + preferenceID).delete();
   }
 
-  // Method to request local data stored in application
-  getLocalData(file: string) {
-    if (file === 'countryCodes.json') {
-      return CountryData;
-    }
-    else {
-      return CityData;
-    }
-  }
-  /*getLocalData(file: string) {
-    this.http.get(`../../assets/data/${file}`).subscribe(data => {
-      return data});
-  }*/
-
-  // Method to get country code
-  getCountryCode(countryName: string) {
-    // Fetch country data array
-    const data = this.getLocalData('countryCodes.json');
-    let countryCode = "";
-
-    // Search the data until 'countryCode' is filled
-    while (countryCode === "") {
-      for (let i = 0; i < Object.keys(data).length; i++) {
-        if (data[i].Name === countryName) {
-          countryCode = data[i].Code;
-          break; // End the search
-        }
-      }
-    }
-    console.log(countryCode); // Temporary for debugging
-    return countryCode;
-  }
-
-  // Method to create an array containing city names corresponding to selected country
-  getCities(countryCode: string) {
-    // Fetch city data array
-    const data = this.getLocalData('cities');
-    let cities = "";
-
-    // Search data until all cities corresponding to 'countryCode' have been found
-    for (let j = 0; j < Object.keys(data).length; j++) {
-      if (countryCode === data[j].country) {
-        cities += data[j].name + ' ';
-      }
-    }
-
-    // The following two lines are temporary for debugging
-    let cityList = cities.split(' ');
-    console.log(cityList);
-    return cityList; // TODO: replace with `return cities.split(' ');`
-  }
-
-  // Method to get city ID from local data
-  getCityId(cityName: string, countryCode: string) {
-    const data = this.getLocalData('cities');
-
-    // Search data until relevant city ID is found
-    for (let k = 0; k < Object.keys(data).length; k++) {
-      if (cityName === data[k].name && countryCode === data[k].country) {
-        console.log(data[k].id); // Temporary for debugging
-        return data[k].id;
-      }
-    }
-  }
-
   // Method to get temperature of coffee type
   getCoffeeTemp(coffeeType: string) {
     // Define coffee types and corresponding temperatures
@@ -121,8 +53,6 @@ export class CoffeePreferenceService {
       {"name": 'Flat White', "temperature": '65'},
       {"name": 'Latte', "temperature": '60'},
       {"name": 'Cappuccino', "temperature": '70'},
-      {"name": 'Mocha', "temperature": '75'},
-      {"name": 'Iced Coffee', "temperature": '20'},
     ];
     const defaultTemp = 80; // Degrees Celsius
 
@@ -140,11 +70,8 @@ export class CoffeePreferenceService {
       case coffeeData[3].name: // Cappuccino
         return coffeeData[3].temperature;
 
-      case coffeeData[4].name: // Mocha
-        return coffeeData[4].temperature;
-
-      case coffeeData[5].name: // Iced Coffee
-        return coffeeData[5].temperature;
+      default:
+        return defaultTemp;
     }
   }
 
@@ -196,4 +123,77 @@ export class CoffeePreferenceService {
     var seconds = second - minutes * 60;
     return [minutes, seconds];
   }
+
+  /*
+  async getLocalData(fileName: string) {
+    var data;
+    await fetch(`../../assets/data/${fileName}`).then(res => res.json())
+    .then(json => {
+      data = json;
+    });
+    return data;
+  }
+
+  async getCountryCode(countryName: string) {
+    const data = await this.getLocalData('countryCodes.json'); // Fetch country data
+    let countryCode = "";
+
+    // Search data until a match for country name to country code is found
+    while (countryCode === "") {
+      for (let i = 0; i < Object.keys(data).length; i++) {
+        if (data[i].Name === countryName) {
+          countryCode = data[i].Code;
+          break; // End the search
+        }
+      }
+    }
+
+    console.log(countryCode); // Temporary for debugging
+    return countryCode;
+  }
+
+  async getCities(countryCode: string) {
+    const data = await this.getLocalData('city.list.json'); // Fetch city data
+    let cities = "";
+
+    for (let j = 0; j < data.length; j++) {
+      if (countryCode === data[j].country) {
+        cities += data[j].name + ' ';
+      }
+    }
+    let cityList = cities.split(' ');
+    return cityList;
+  }
+
+  // Method to create an array containing city names corresponding to selected country
+  getCities(countryCode: string) {
+    // Fetch city data array
+    const data = this.getLocalData('cities');
+    let cities = "";
+
+    // Search data until all cities corresponding to 'countryCode' have been found
+    for (let j = 0; j < Object.keys(data).length; j++) {
+      if (countryCode === data[j].country) {
+        cities += data[j].name + ' ';
+      }
+    }
+
+    // The following two lines are temporary for debugging
+    let cityList = cities.split(' ');
+    console.log(cityList);
+    return cityList; // TODO: replace with `return cities.split(' ');`
+  }
+
+  // Method to get city ID from local data
+  getCityId(cityName: string, countryCode: string) {
+    const data = this.getLocalData('cities');
+
+    // Search data until relevant city ID is found
+    for (let k = 0; k < Object.keys(data).length; k++) {
+      if (cityName === data[k].name && countryCode === data[k].country) {
+        console.log(data[k].id); // Temporary for debugging
+        return data[k].id;
+      }
+    }
+  }*/
 }

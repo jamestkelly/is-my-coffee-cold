@@ -1,33 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>New Preference</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-button size = "small" fill = "clear" color = "cream" (click) = "goBack()">
+<ion-content color = "cream">
+  <ion-button size = "small" fill = "clear" color = "primaryred" (click) = "goBack()">
     Back
     <ion-icon name = "chevron-back-outline" slot = "start"></ion-icon>
   </ion-button>
-    <form [formGroup] = "preferenceForm" (ngSubmit) = "createPreference()">
-      <ion-item>
-        <ion-label>Name: </ion-label>
-        <ion-input formControlName = "preferenceName" type = "text" placeholder = "Preference Name" required></ion-input>
+
+  <ion-row class = "display-row">
+    <ion-text class = "display-row" color = "black">
+      <h1>Add New Preference</h1>
+    </ion-text>
+    <ion-item class = "display-row" no-lines color = "none" lines = "none">
+      <img height = "150px" width = "150px" src = "../../assets/icon/add-preference-transparent.png">
+    </ion-item>
+    <ion-text class = "display-row" color = "black">
+      <p>Another coffee, another equation! Just fill in the details and we can save a preference for user later.</p>
+    </ion-text>
+  </ion-row>
+
+    <form [formGroup] = "preferenceForm" (ngSubmit) = "createPreference()" color = "cream">
+      <ion-item color = "cream">
+        <ion-label position = "floating">Preference Name</ion-label>
+        <ion-input formControlName = "preferenceName" type = "text" placeholder = "Name" required></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label>Country: </ion-label>
+      <ion-item color = "cream">
+        <ion-label position = "floating">Country</ion-label>
         <ion-select placeholder = "Australia" formControlName = "countryName">
           <ion-select-option value = "Australia">Australia</ion-select-option>
-          <ion-select-option value = "Canada">Canada</ion-select-option>
-          <ion-select-option value = "United Kingdom">United Kingdom</ion-select-option>
-          <ion-select-option value = "United States">United States</ion-select-option>
-          <ion-select-option value = "France">France</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item>
-        <ion-label>City: </ion-label>
+      <ion-item color = "cream">
+        <ion-label position = "floating">City</ion-label>
         <ion-select placeholder = "Sydney" formControlName = "cityName">
           <ion-select-option value = "Adelaide">Adelaide</ion-select-option>
           <ion-select-option value = "Brisbane">Brisbane</ion-select-option>
@@ -41,19 +44,17 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
-        <ion-label>Coffee Type: </ion-label>
+      <ion-item color = "cream">
+        <ion-label position = "floating">Coffee Type</ion-label>
         <ion-select placeholder = "Flat White" formControlName = "coffeeType">
-          <ion-select-option value = "Flat White">Flat White</ion-select-option>
-          <ion-select-option value = "Long Black">Long Black</ion-select-option>
-          <ion-select-option value = "Latte">Latte</ion-select-option>
           <ion-select-option value = "Cappuccino">Cappuccino</ion-select-option>
-          <ion-select-option value = "Mocha">Mocha</ion-select-option>
-          <ion-select-option value = "Iced Coffee">Iced Coffee</ion-select-option>
+          <ion-select-option value = "Flat White">Flat White</ion-select-option>
+          <ion-select-option value = "Latte">Latte</ion-select-option>
+          <ion-select-option value = "Long Black">Long Black</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-button fill = "solid" expand = "block" color = "cream" type = "submit">
+      <ion-button fill = "solid" expand = "block" color = "primarygreen" type = "submit">
         Create Preference
       </ion-button>
     </form>
