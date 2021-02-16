@@ -124,7 +124,19 @@ export class CoffeePreferenceService {
     return [minutes, seconds];
   }
 
-  /*
+  // Method to get city ID from local data
+  async getCityId(cityName: string, countryCode: string) {
+    const data = await this.getLocalData('city.list.json');
+
+    // Search data until relevant city ID is found
+    for (let k = 0; k < Object.keys(data).length; k++) {
+      if (cityName === data[k].name && countryCode === data[k].country) {
+        console.log(data[k].id); // Temporary for debugging
+        return data[k].id;
+      }
+    }
+  }
+
   async getLocalData(fileName: string) {
     var data;
     await fetch(`../../assets/data/${fileName}`).then(res => res.json())
@@ -133,6 +145,32 @@ export class CoffeePreferenceService {
     });
     return data;
   }
+
+  async getCountryCode(countryName: string) {
+    const data = await this.getLocalData('countryCodes.json'); // Fetch country data
+    let countryCode = "";
+
+    // Temporary for v1 of is-my-coffee-cold (Add support for other countries later)
+    if (countryName === "Australia") {
+      countryCode = "AU";
+      return countryCode
+    }
+    else {
+      // Search data until a match for country name to country code is found
+      while (countryCode === "") {
+        for (let i = 0; i < Object.keys(data).length; i++) {
+          if (data[i].Name === countryName) {
+            countryCode = data[i].Code;
+            break; // End the search
+          }
+        }
+      }
+
+      return countryCode;
+    }
+  }
+
+  /*
 
   async getCountryCode(countryName: string) {
     const data = await this.getLocalData('countryCodes.json'); // Fetch country data
