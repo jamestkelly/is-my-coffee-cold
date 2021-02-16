@@ -1,6 +1,19 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/button-active-a6787d69.js":
+/***/ "/jrh":
+/*!*************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/preferences/make-preference/make-preference.page.html ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content color = \"cream\">\n  <ion-button size = \"small\" fill = \"clear\" color = \"primaryred\" (click) = \"goBack()\">\n    Back\n    <ion-icon name = \"chevron-back-outline\" slot = \"start\"></ion-icon>\n  </ion-button>\n\n  <ion-row class = \"display-row\">\n    <ion-text class = \"display-row\" color = \"black\">\n      <h1>Add New Preference</h1>\n    </ion-text>\n    <ion-item class = \"display-row\" no-lines color = \"none\" lines = \"none\">\n      <img height = \"150px\" width = \"150px\" src = \"../../assets/icon/add-preference-transparent.png\">\n    </ion-item>\n    <ion-text class = \"display-row\" color = \"black\">\n      <p>Another coffee, another equation! Just fill in the details and we can save a preference for user later.</p>\n    </ion-text>\n  </ion-row>\n\n    <form [formGroup] = \"preferenceForm\" (ngSubmit) = \"createPreference()\" color = \"cream\">\n      <ion-item color = \"cream\">\n        <ion-label position = \"floating\">Preference Name</ion-label>\n        <ion-input formControlName = \"preferenceName\" type = \"text\" placeholder = \"Name\" required></ion-input>\n      </ion-item>\n\n      <ion-item color = \"cream\">\n        <ion-label position = \"floating\">Country</ion-label>\n        <ion-select placeholder = \"Australia\" formControlName = \"countryName\">\n          <ion-select-option value = \"Australia\">Australia</ion-select-option>\n        </ion-select>\n      </ion-item>\n\n      <ion-item color = \"cream\">\n        <ion-label position = \"floating\">City</ion-label>\n        <ion-select placeholder = \"Sydney\" formControlName = \"cityName\">\n          <ion-select-option value = \"Adelaide\">Adelaide</ion-select-option>\n          <ion-select-option value = \"Brisbane\">Brisbane</ion-select-option>\n          <ion-select-option value = \"Cairns\">Cairns</ion-select-option>\n          <ion-select-option value = \"Canberra\">Canberra</ion-select-option>\n          <ion-select-option value = \"Darwin\">Darwin</ion-select-option>\n          <ion-select-option value = \"Hobart\">Hobart</ion-select-option>\n          <ion-select-option value = \"Melbourne\">Melbourne</ion-select-option>\n          <ion-select-option value = \"Perth\">Perth</ion-select-option>\n          <ion-select-option value = \"Sydney\">Sydney</ion-select-option>\n        </ion-select>\n      </ion-item>\n\n      <ion-item color = \"cream\">\n        <ion-label position = \"floating\">Coffee Type</ion-label>\n        <ion-select placeholder = \"Flat White\" formControlName = \"coffeeType\">\n          <ion-select-option value = \"Cappuccino\">Cappuccino</ion-select-option>\n          <ion-select-option value = \"Flat White\">Flat White</ion-select-option>\n          <ion-select-option value = \"Latte\">Latte</ion-select-option>\n          <ion-select-option value = \"Long Black\">Long Black</ion-select-option>\n        </ion-select>\n      </ion-item>\n\n      <ion-button fill = \"solid\" expand = \"block\" color = \"primarygreen\" type = \"submit\">\n        Create Preference\n      </ion-button>\n    </form>\n\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "0/6H":
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/button-active-a6787d69.js ***!
   \*********************************************************************/
@@ -10,9 +23,9 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return createButtonActiveGesture; });
-/* harmony import */ var _index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-e806d1f6.js */ "./node_modules/@ionic/core/dist/esm/index-e806d1f6.js");
-/* harmony import */ var _index_f49d994d_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-f49d994d.js */ "./node_modules/@ionic/core/dist/esm/index-f49d994d.js");
-/* harmony import */ var _haptic_27b3f981_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./haptic-27b3f981.js */ "./node_modules/@ionic/core/dist/esm/haptic-27b3f981.js");
+/* harmony import */ var _index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-e806d1f6.js */ "A36C");
+/* harmony import */ var _index_f49d994d_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-f49d994d.js */ "iWo5");
+/* harmony import */ var _haptic_27b3f981_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./haptic-27b3f981.js */ "qULd");
 
 
 
@@ -81,7 +94,278 @@ const createButtonActiveGesture = (el, isButton) => {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/framework-delegate-4584ab5a.js":
+/***/ "3BsU":
+/*!***********************************************************************!*\
+  !*** ./src/app/preferences/make-preference/make-preference.page.scss ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --padding-start: 5%;\n  --padding-end: 5%;\n  --padding-top: 10%;\n}\n\n.input-group {\n  border-radius: 10px;\n  overflow: hidden;\n  margin-bottom: 10px;\n  --background-color: transparent;\n}\n\n.display-row {\n  --ion-background-color: #fa4659;\n  align-items: center;\n  justify-content: center;\n}\n\n.errors {\n  font-size: small;\n  color: #fff;\n  background: var(--ion-color-danger);\n  padding-left: 15px;\n  padding-top: 5px;\n  padding-bottom: 5px;\n}\n\n.icon-position {\n  position: absolute;\n  left: 0%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL21ha2UtcHJlZmVyZW5jZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUFDSjs7QUFFQTtFQUNJLG1CQUFBO0VBQ0EsZ0JBQUE7RUFDQSxtQkFBQTtFQUNBLCtCQUFBO0FBQ0o7O0FBRUE7RUFDSSwrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsdUJBQUE7QUFDSjs7QUFFQTtFQUNJLGdCQUFBO0VBQ0EsV0FBQTtFQUNBLG1DQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0FBQ0o7O0FBRUE7RUFDSSxrQkFBQTtFQUNBLFFBQUE7QUFDSiIsImZpbGUiOiJtYWtlLXByZWZlcmVuY2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNvbnRlbnQge1xuICAgIC0tcGFkZGluZy1zdGFydDogNSU7XG4gICAgLS1wYWRkaW5nLWVuZDogNSU7XG4gICAgLS1wYWRkaW5nLXRvcDogMTAlO1xufVxuXG4uaW5wdXQtZ3JvdXAge1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICAgIC0tYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG59XG5cbi5kaXNwbGF5LXJvdyB7XG4gICAgLS1pb24tYmFja2dyb3VuZC1jb2xvcjogI2ZhNDY1OTtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuXG4uZXJyb3JzIHtcbiAgICBmb250LXNpemU6IHNtYWxsO1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIGJhY2tncm91bmQ6IHZhcigtLWlvbi1jb2xvci1kYW5nZXIpO1xuICAgIHBhZGRpbmctbGVmdDogMTVweDtcbiAgICBwYWRkaW5nLXRvcDogNXB4O1xuICAgIHBhZGRpbmctYm90dG9tOiA1cHg7XG59XG5cbi5pY29uLXBvc2l0aW9uIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgbGVmdDogMCU7XG59Il19 */");
+
+/***/ }),
+
+/***/ "74mu":
+/*!*************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js ***!
+  \*************************************************************/
+/*! exports provided: c, g, h, o */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return createColorClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getClassMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hostContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return openURL; });
+const hostContext = (selector, el) => {
+  return el.closest(selector) !== null;
+};
+/**
+ * Create the mode and color classes for the component based on the classes passed in
+ */
+const createColorClasses = (color, cssClassMap) => {
+  return (typeof color === 'string' && color.length > 0) ? Object.assign({ 'ion-color': true, [`ion-color-${color}`]: true }, cssClassMap) : cssClassMap;
+};
+const getClassList = (classes) => {
+  if (classes !== undefined) {
+    const array = Array.isArray(classes) ? classes : classes.split(' ');
+    return array
+      .filter(c => c != null)
+      .map(c => c.trim())
+      .filter(c => c !== '');
+  }
+  return [];
+};
+const getClassMap = (classes) => {
+  const map = {};
+  getClassList(classes).forEach(c => map[c] = true);
+  return map;
+};
+const SCHEME = /^[a-z][a-z0-9+\-.]*:/;
+const openURL = async (url, ev, direction, animation) => {
+  if (url != null && url[0] !== '#' && !SCHEME.test(url)) {
+    const router = document.querySelector('ion-router');
+    if (router) {
+      if (ev != null) {
+        ev.preventDefault();
+      }
+      return router.push(url, direction, animation);
+    }
+  }
+  return false;
+};
+
+
+
+
+/***/ }),
+
+/***/ "7Hsg":
+/*!***********************************************************************!*\
+  !*** ./src/app/preferences/make-preference/make-preference.module.ts ***!
+  \***********************************************************************/
+/*! exports provided: MakePreferencePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MakePreferencePageModule", function() { return MakePreferencePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _make_preference_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./make-preference-routing.module */ "X7AR");
+/* harmony import */ var _make_preference_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./make-preference.page */ "KhtY");
+
+
+
+
+
+
+
+let MakePreferencePageModule = class MakePreferencePageModule {
+};
+MakePreferencePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _make_preference_routing_module__WEBPACK_IMPORTED_MODULE_5__["MakePreferencePageRoutingModule"]
+        ],
+        declarations: [_make_preference_page__WEBPACK_IMPORTED_MODULE_6__["MakePreferencePage"]]
+    })
+], MakePreferencePageModule);
+
+
+
+/***/ }),
+
+/***/ "KhtY":
+/*!*********************************************************************!*\
+  !*** ./src/app/preferences/make-preference/make-preference.page.ts ***!
+  \*********************************************************************/
+/*! exports provided: MakePreferencePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MakePreferencePage", function() { return MakePreferencePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_make_preference_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./make-preference.page.html */ "/jrh");
+/* harmony import */ var _make_preference_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./make-preference.page.scss */ "3BsU");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var src_app_services_coffee_preference_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/coffee-preference.service */ "Dq5a");
+
+
+
+
+
+
+
+let MakePreferencePage = class MakePreferencePage {
+    constructor(coffeeService, location, fb) {
+        this.coffeeService = coffeeService;
+        this.location = location;
+        this.fb = fb;
+        this.preferenceList = [];
+        this.preferenceData = {};
+    }
+    ngOnInit() {
+        this.preferenceForm = this.fb.group({
+            preferenceName: [''],
+            countryName: [''],
+            cityName: [''],
+            coffeeType: ['']
+        });
+        this.coffeeService.readPreferences().subscribe(data => {
+            this.preferenceList = data.map(output => {
+                return {
+                    id: output.payload.doc.id,
+                    isEdit: false,
+                    preferenceName: output.payload.doc.data()['preferenceName'],
+                    coffeeType: output.payload.doc.data()['coffeeType'],
+                    cityName: output.payload.doc.data()['cityName'],
+                    countryName: output.payload.doc.data()['countryName']
+                };
+            });
+        });
+    }
+    createPreference() {
+        console.log(this.preferenceForm.value);
+        this.coffeeService.createPreference(this.preferenceForm.value).then(response => {
+            this.preferenceForm.reset();
+            console.log(response);
+            this.location.back();
+        })
+            .catch(error => {
+            console.log(error);
+        });
+    }
+    goBack() {
+        this.location.back();
+    }
+};
+MakePreferencePage.ctorParameters = () => [
+    { type: src_app_services_coffee_preference_service__WEBPACK_IMPORTED_MODULE_6__["CoffeePreferenceService"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"] },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"] }
+];
+MakePreferencePage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-make-preference',
+        template: _raw_loader_make_preference_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_make_preference_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], MakePreferencePage);
+
+
+
+/***/ }),
+
+/***/ "QQAA":
+/*!******************************************************************!*\
+  !*** ./src/app/explore-container/explore-container.component.ts ***!
+  \******************************************************************/
+/*! exports provided: ExploreContainerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExploreContainerComponent", function() { return ExploreContainerComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_explore_container_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./explore-container.component.html */ "m1kx");
+/* harmony import */ var _explore_container_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./explore-container.component.scss */ "huSS");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+let ExploreContainerComponent = class ExploreContainerComponent {
+    constructor() { }
+    ngOnInit() { }
+};
+ExploreContainerComponent.ctorParameters = () => [];
+ExploreContainerComponent.propDecorators = {
+    name: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Input"] }]
+};
+ExploreContainerComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-explore-container',
+        template: _raw_loader_explore_container_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_explore_container_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], ExploreContainerComponent);
+
+
+
+/***/ }),
+
+/***/ "X7AR":
+/*!*******************************************************************************!*\
+  !*** ./src/app/preferences/make-preference/make-preference-routing.module.ts ***!
+  \*******************************************************************************/
+/*! exports provided: MakePreferencePageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MakePreferencePageRoutingModule", function() { return MakePreferencePageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _make_preference_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./make-preference.page */ "KhtY");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _make_preference_page__WEBPACK_IMPORTED_MODULE_3__["MakePreferencePage"]
+    }
+];
+let MakePreferencePageRoutingModule = class MakePreferencePageRoutingModule {
+};
+MakePreferencePageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], MakePreferencePageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "ZaV5":
 /*!**************************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-4584ab5a.js ***!
   \**************************************************************************/
@@ -130,131 +414,7 @@ const detachComponent = (delegate, element) => {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/haptic-27b3f981.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/haptic-27b3f981.js ***!
-  \**************************************************************/
-/*! exports provided: a, b, c, d, h */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hapticSelectionStart; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hapticSelectionChanged; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hapticSelection; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hapticImpact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hapticSelectionEnd; });
-const HapticEngine = {
-  getEngine() {
-    const win = window;
-    return (win.TapticEngine) || (win.Capacitor && win.Capacitor.isPluginAvailable('Haptics') && win.Capacitor.Plugins.Haptics);
-  },
-  available() {
-    return !!this.getEngine();
-  },
-  isCordova() {
-    return !!window.TapticEngine;
-  },
-  isCapacitor() {
-    const win = window;
-    return !!win.Capacitor;
-  },
-  impact(options) {
-    const engine = this.getEngine();
-    if (!engine) {
-      return;
-    }
-    const style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
-    engine.impact({ style });
-  },
-  notification(options) {
-    const engine = this.getEngine();
-    if (!engine) {
-      return;
-    }
-    const style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
-    engine.notification({ style });
-  },
-  selection() {
-    this.impact({ style: 'light' });
-  },
-  selectionStart() {
-    const engine = this.getEngine();
-    if (!engine) {
-      return;
-    }
-    if (this.isCapacitor()) {
-      engine.selectionStart();
-    }
-    else {
-      engine.gestureSelectionStart();
-    }
-  },
-  selectionChanged() {
-    const engine = this.getEngine();
-    if (!engine) {
-      return;
-    }
-    if (this.isCapacitor()) {
-      engine.selectionChanged();
-    }
-    else {
-      engine.gestureSelectionChanged();
-    }
-  },
-  selectionEnd() {
-    const engine = this.getEngine();
-    if (!engine) {
-      return;
-    }
-    if (this.isCapacitor()) {
-      engine.selectionEnd();
-    }
-    else {
-      engine.gestureSelectionEnd();
-    }
-  }
-};
-/**
- * Trigger a selection changed haptic event. Good for one-time events
- * (not for gestures)
- */
-const hapticSelection = () => {
-  HapticEngine.selection();
-};
-/**
- * Tell the haptic engine that a gesture for a selection change is starting.
- */
-const hapticSelectionStart = () => {
-  HapticEngine.selectionStart();
-};
-/**
- * Tell the haptic engine that a selection changed during a gesture.
- */
-const hapticSelectionChanged = () => {
-  HapticEngine.selectionChanged();
-};
-/**
- * Tell the haptic engine we are done with a gesture. This needs to be
- * called lest resources are not properly recycled.
- */
-const hapticSelectionEnd = () => {
-  HapticEngine.selectionEnd();
-};
-/**
- * Use this to indicate success/failure/warning to the user.
- * options should be of the type `{ style: 'light' }` (or `medium`/`heavy`)
- */
-const hapticImpact = (options) => {
-  HapticEngine.impact(options);
-};
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/@ionic/core/dist/esm/spinner-configs-cd7845af.js":
+/***/ "h3R7":
 /*!***********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-cd7845af.js ***!
   \***********************************************************************/
@@ -378,63 +538,20 @@ const SPINNERS = spinners;
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js ***!
-  \*************************************************************/
-/*! exports provided: c, g, h, o */
+/***/ "huSS":
+/*!********************************************************************!*\
+  !*** ./src/app/explore-container/explore-container.component.scss ***!
+  \********************************************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return createColorClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getClassMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hostContext; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return openURL; });
-const hostContext = (selector, el) => {
-  return el.closest(selector) !== null;
-};
-/**
- * Create the mode and color classes for the component based on the classes passed in
- */
-const createColorClasses = (color, cssClassMap) => {
-  return (typeof color === 'string' && color.length > 0) ? Object.assign({ 'ion-color': true, [`ion-color-${color}`]: true }, cssClassMap) : cssClassMap;
-};
-const getClassList = (classes) => {
-  if (classes !== undefined) {
-    const array = Array.isArray(classes) ? classes : classes.split(' ');
-    return array
-      .filter(c => c != null)
-      .map(c => c.trim())
-      .filter(c => c !== '');
-  }
-  return [];
-};
-const getClassMap = (classes) => {
-  const map = {};
-  getClassList(classes).forEach(c => map[c] = true);
-  return map;
-};
-const SCHEME = /^[a-z][a-z0-9+\-.]*:/;
-const openURL = async (url, ev, direction, animation) => {
-  if (url != null && url[0] !== '#' && !SCHEME.test(url)) {
-    const router = document.querySelector('ion-router');
-    if (router) {
-      if (ev != null) {
-        ev.preventDefault();
-      }
-      return router.push(url, direction, animation);
-    }
-  }
-  return false;
-};
-
-
-
+/* harmony default export */ __webpack_exports__["default"] = ("#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n#container strong {\n  font-size: 20px;\n  line-height: 26px;\n}\n\n#container p {\n  font-size: 16px;\n  line-height: 22px;\n  color: #8c8c8c;\n  margin: 0;\n}\n\n#container a {\n  text-decoration: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2V4cGxvcmUtY29udGFpbmVyLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFFQSxrQkFBQTtFQUNBLE9BQUE7RUFDQSxRQUFBO0VBQ0EsUUFBQTtFQUNBLDJCQUFBO0FBQUY7O0FBR0E7RUFDRSxlQUFBO0VBQ0EsaUJBQUE7QUFBRjs7QUFHQTtFQUNFLGVBQUE7RUFDQSxpQkFBQTtFQUVBLGNBQUE7RUFFQSxTQUFBO0FBRkY7O0FBS0E7RUFDRSxxQkFBQTtBQUZGIiwiZmlsZSI6ImV4cGxvcmUtY29udGFpbmVyLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2NvbnRhaW5lciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcblxuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xuICB0b3A6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC01MCUpO1xufVxuXG4jY29udGFpbmVyIHN0cm9uZyB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgbGluZS1oZWlnaHQ6IDI2cHg7XG59XG5cbiNjb250YWluZXIgcCB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgbGluZS1oZWlnaHQ6IDIycHg7XG5cbiAgY29sb3I6ICM4YzhjOGM7XG5cbiAgbWFyZ2luOiAwO1xufVxuXG4jY29udGFpbmVyIGEge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59Il19 */");
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/explore-container/explore-container.component.html":
+/***/ "m1kx":
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/explore-container/explore-container.component.html ***!
   \**********************************************************************************************************/
@@ -447,54 +564,131 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/app/explore-container/explore-container.component.scss":
-/*!********************************************************************!*\
-  !*** ./src/app/explore-container/explore-container.component.scss ***!
-  \********************************************************************/
-/*! exports provided: default */
+/***/ "qULd":
+/*!**************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/haptic-27b3f981.js ***!
+  \**************************************************************/
+/*! exports provided: a, b, c, d, h */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#container {\n  text-align: center;\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n#container strong {\n  font-size: 20px;\n  line-height: 26px;\n}\n\n#container p {\n  font-size: 16px;\n  line-height: 22px;\n  color: #8c8c8c;\n  margin: 0;\n}\n\n#container a {\n  text-decoration: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZXhwbG9yZS1jb250YWluZXIvZXhwbG9yZS1jb250YWluZXIuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBQTtFQUVBLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSxRQUFBO0VBQ0EsMkJBQUE7QUFBRjs7QUFHQTtFQUNFLGVBQUE7RUFDQSxpQkFBQTtBQUFGOztBQUdBO0VBQ0UsZUFBQTtFQUNBLGlCQUFBO0VBRUEsY0FBQTtFQUVBLFNBQUE7QUFGRjs7QUFLQTtFQUNFLHFCQUFBO0FBRkYiLCJmaWxlIjoic3JjL2FwcC9leHBsb3JlLWNvbnRhaW5lci9leHBsb3JlLWNvbnRhaW5lci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNjb250YWluZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG5cbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgdG9wOiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNTAlKTtcbn1cblxuI2NvbnRhaW5lciBzdHJvbmcge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGxpbmUtaGVpZ2h0OiAyNnB4O1xufVxuXG4jY29udGFpbmVyIHAge1xuICBmb250LXNpemU6IDE2cHg7XG4gIGxpbmUtaGVpZ2h0OiAyMnB4O1xuXG4gIGNvbG9yOiAjOGM4YzhjO1xuXG4gIG1hcmdpbjogMDtcbn1cblxuI2NvbnRhaW5lciBhIHtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufSJdfQ== */");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return hapticSelectionStart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return hapticSelectionChanged; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return hapticSelection; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return hapticImpact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return hapticSelectionEnd; });
+const HapticEngine = {
+  getEngine() {
+    const win = window;
+    return (win.TapticEngine) || (win.Capacitor && win.Capacitor.isPluginAvailable('Haptics') && win.Capacitor.Plugins.Haptics);
+  },
+  available() {
+    return !!this.getEngine();
+  },
+  isCordova() {
+    return !!window.TapticEngine;
+  },
+  isCapacitor() {
+    const win = window;
+    return !!win.Capacitor;
+  },
+  impact(options) {
+    const engine = this.getEngine();
+    if (!engine) {
+      return;
+    }
+    const style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
+    engine.impact({ style });
+  },
+  notification(options) {
+    const engine = this.getEngine();
+    if (!engine) {
+      return;
+    }
+    const style = this.isCapacitor() ? options.style.toUpperCase() : options.style;
+    engine.notification({ style });
+  },
+  selection() {
+    this.impact({ style: 'light' });
+  },
+  selectionStart() {
+    const engine = this.getEngine();
+    if (!engine) {
+      return;
+    }
+    if (this.isCapacitor()) {
+      engine.selectionStart();
+    }
+    else {
+      engine.gestureSelectionStart();
+    }
+  },
+  selectionChanged() {
+    const engine = this.getEngine();
+    if (!engine) {
+      return;
+    }
+    if (this.isCapacitor()) {
+      engine.selectionChanged();
+    }
+    else {
+      engine.gestureSelectionChanged();
+    }
+  },
+  selectionEnd() {
+    const engine = this.getEngine();
+    if (!engine) {
+      return;
+    }
+    if (this.isCapacitor()) {
+      engine.selectionEnd();
+    }
+    else {
+      engine.gestureSelectionEnd();
+    }
+  }
+};
+/**
+ * Trigger a selection changed haptic event. Good for one-time events
+ * (not for gestures)
+ */
+const hapticSelection = () => {
+  HapticEngine.selection();
+};
+/**
+ * Tell the haptic engine that a gesture for a selection change is starting.
+ */
+const hapticSelectionStart = () => {
+  HapticEngine.selectionStart();
+};
+/**
+ * Tell the haptic engine that a selection changed during a gesture.
+ */
+const hapticSelectionChanged = () => {
+  HapticEngine.selectionChanged();
+};
+/**
+ * Tell the haptic engine we are done with a gesture. This needs to be
+ * called lest resources are not properly recycled.
+ */
+const hapticSelectionEnd = () => {
+  HapticEngine.selectionEnd();
+};
+/**
+ * Use this to indicate success/failure/warning to the user.
+ * options should be of the type `{ style: 'light' }` (or `medium`/`heavy`)
+ */
+const hapticImpact = (options) => {
+  HapticEngine.impact(options);
+};
+
+
+
 
 /***/ }),
 
-/***/ "./src/app/explore-container/explore-container.component.ts":
-/*!******************************************************************!*\
-  !*** ./src/app/explore-container/explore-container.component.ts ***!
-  \******************************************************************/
-/*! exports provided: ExploreContainerComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExploreContainerComponent", function() { return ExploreContainerComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-
-let ExploreContainerComponent = class ExploreContainerComponent {
-    constructor() { }
-    ngOnInit() { }
-};
-ExploreContainerComponent.ctorParameters = () => [];
-ExploreContainerComponent.propDecorators = {
-    name: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
-};
-ExploreContainerComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-explore-container',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./explore-container.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/explore-container/explore-container.component.html")).default,
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./explore-container.component.scss */ "./src/app/explore-container/explore-container.component.scss")).default]
-    })
-], ExploreContainerComponent);
-
-
-
-/***/ }),
-
-/***/ "./src/app/explore-container/explore-container.module.ts":
+/***/ "qtYk":
 /*!***************************************************************!*\
   !*** ./src/app/explore-container/explore-container.module.ts ***!
   \***************************************************************/
@@ -504,12 +698,12 @@ ExploreContainerComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExploreContainerComponentModule", function() { return ExploreContainerComponentModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _explore_container_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./explore-container.component */ "./src/app/explore-container/explore-container.component.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _explore_container_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./explore-container.component */ "QQAA");
 
 
 

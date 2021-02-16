@@ -51,8 +51,4 @@ export class ResetPasswordPage implements OnInit {
 
     await alert.present();
   }
-
-  goBack() {
-    this.location.back();
-  }
 }

@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-css-shim"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/css-shim-419db344.js":
+/***/ "PC2G":
 /*!****************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/css-shim-419db344.js ***!
   \****************************************************************/

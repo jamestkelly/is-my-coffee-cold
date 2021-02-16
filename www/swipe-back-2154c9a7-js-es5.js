@@ -1,7 +1,7 @@
 (function () {
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["swipe-back-2154c9a7-js"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/swipe-back-2154c9a7.js":
+    "V+6w":
     /*!******************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/swipe-back-2154c9a7.js ***!
       \******************************************************************/
@@ -9,7 +9,7 @@
     /*! exports provided: createSwipeBackGesture */
 
     /***/
-    function node_modulesIonicCoreDistEsmSwipeBack2154c9a7Js(module, __webpack_exports__, __webpack_require__) {
+    function V6w(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -24,19 +24,19 @@
 
       var _helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! ./helpers-90f46169.js */
-      "./node_modules/@ionic/core/dist/esm/helpers-90f46169.js");
+      "QPqR");
       /* harmony import */
 
 
       var _gesture_controller_31cb6bb9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! ./gesture-controller-31cb6bb9.js */
-      "./node_modules/@ionic/core/dist/esm/gesture-controller-31cb6bb9.js");
+      "y08P");
       /* harmony import */
 
 
       var _index_f49d994d_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! ./index-f49d994d.js */
-      "./node_modules/@ionic/core/dist/esm/index-f49d994d.js");
+      "iWo5");
 
       var createSwipeBackGesture = function createSwipeBackGesture(el, canStartHandler, onStartHandler, onMoveHandler, onEndHandler) {
         var win = el.ownerDocument.defaultView;

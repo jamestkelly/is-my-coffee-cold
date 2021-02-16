@@ -1,7 +1,7 @@
 (function () {
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["tap-click-71d2324a-js"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/tap-click-71d2324a.js":
+    "zlY0":
     /*!*****************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/tap-click-71d2324a.js ***!
       \*****************************************************************/
@@ -9,7 +9,7 @@
     /*! exports provided: startTapClick */
 
     /***/
-    function node_modulesIonicCoreDistEsmTapClick71d2324aJs(module, __webpack_exports__, __webpack_require__) {
+    function zlY0(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -24,7 +24,7 @@
 
       var _helpers_90f46169_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! ./helpers-90f46169.js */
-      "./node_modules/@ionic/core/dist/esm/helpers-90f46169.js");
+      "QPqR");
 
       var startTapClick = function startTapClick(config) {
         var lastTouch = -MOUSE_WAIT * 10;

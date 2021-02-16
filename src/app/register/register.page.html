@@ -1,37 +1,42 @@
+<ion-header>
+  <ion-toolbar class = "header-colour">
+    <ion-buttons slot="start">
+      <ion-back-button color = "light"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
 <ion-content>
-  <ion-button size = "small" fill = "clear" color = "cream" (click) = "goBack()">
-    Back
-    <ion-icon name = "chevron-back-outline" slot = "start"></ion-icon>
-  </ion-button>
 
   <ion-row class = "display-row">
-    <ion-text class = "display-row" color = "cream">
+    <ion-text class = "display-row" color = "light">
       <h1>Welcome aboard!</h1>
     </ion-text>
     <ion-item class = "display-row" no-lines color = "none" lines = "none">
       <img height = "150px" width = "150px" src = "../../assets/icon/coffee-cup-transparent.png">
     </ion-item>
-    <ion-text class = "display-row" color = "cream">
+    <ion-text class = "display-row" color = "light">
       <p>It's great to have you with us! I just need a few details from you before we can begin.</p>
     </ion-text>
   </ion-row>
 
   <div class = "input-group">
-    <ion-item color = "cream">
+    <ion-item color = "light">
       <ion-input type = "email" placeholder = "Email" [(ngModel)] = "userEmail">
       </ion-input>
     </ion-item>
-    <ion-item color = "cream">
+    <ion-item color = "light">
       <ion-input type = "password" placeholder = "Password" [(ngModel)] = "password">
       </ion-input>
     </ion-item>
-    <ion-item color = "cream">
+    <ion-item color = "light">
       <ion-input type = "password" placeholder = "Confirm Password" [(ngModel)] = "cPassword">
       </ion-input>
     </ion-item>
   </div>
 
-  <ion-button fill = "solid" expand = "block" color = "cream" (click) = "signUp()">
+  <ion-button fill = "solid" expand = "block" color = "light" (click) = "signUp()">
     Register Account
   </ion-button>
 </ion-content>

@@ -17,7 +17,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[42], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js":
+    "8Mb5":
     /*!***********************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js ***!
       \***********************************************************************/
@@ -25,7 +25,7 @@
     /*! exports provided: ion_virtual_scroll */
 
     /***/
-    function node_modulesIonicCoreDistEsmIonVirtualScrollEntryJs(module, __webpack_exports__, __webpack_require__) {
+    function Mb5(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -40,7 +40,7 @@
 
       var _index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! ./index-e806d1f6.js */
-      "./node_modules/@ionic/core/dist/esm/index-e806d1f6.js");
+      "A36C");
 
       var CELL_TYPE_ITEM = 'item';
       var CELL_TYPE_HEADER = 'header';

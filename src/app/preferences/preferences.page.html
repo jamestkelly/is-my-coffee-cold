@@ -23,10 +23,10 @@
         </ion-row>
 
         <ion-row>
-          <ion-button shape = "round" color = "cream" size = "small" (click) = "editPreference(item)">
+          <ion-button shape = "round" color = "dark" size = "small" (click) = "editPreference(item)">
             <ion-icon size = "small" slot = "icon-only" name = "create"></ion-icon>
           </ion-button>
-          <ion-button shape = "round" color = "cream" size = "small" (click) = "removePreference(item.id)">
+          <ion-button shape = "round" color = "dark" size = "small" (click) = "removePreference(item.id)">
             <ion-icon size = "small" slot = "icon-only" name = "trash"></ion-icon>
           </ion-button>
         </ion-row>
@@ -37,10 +37,10 @@
         <ion-card-title>
           <ion-grid>
             <ion-row>
-              <ion-button fill = "solid" color = "cream" size = "small" (click) = "item.isEdit = false">
+              <ion-button fill = "solid" color = "dark" size = "small" (click) = "item.isEdit = false">
                 Cancel
               </ion-button>
-              <ion-button fill = "solid" color = "cream" size = "small" (click) = "updatePreference(item)">
+              <ion-button fill = "solid" color = "dark" size = "small" (click) = "updatePreference(item)">
                 Update
               </ion-button>
             </ion-row>
@@ -49,11 +49,11 @@
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-label><strong>Preference Name</strong></ion-label>
+          <ion-label position = "floating"><strong>Preference Name</strong></ion-label>
           <ion-input type = "text" [(ngModel)] = "item.EditPreferenceName"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label><strong>Coffee Type</strong></ion-label>
+          <ion-label position = "floating"><strong>Coffee Type</strong></ion-label>
           <ion-select placeholder = "Flat White" type = "text" [(ngModel)] = "item.EditCoffee">
             <ion-select-option value = "Cappuccino">Cappuccino</ion-select-option>
             <ion-select-option value = "Flat White">Flat White</ion-select-option>
@@ -63,7 +63,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label><strong>City</strong></ion-label>
+          <ion-label position = "floating"><strong>City</strong></ion-label>
           <ion-select placeholder = "Brisbane" type = "text" [(ngModel)] = "item.EditCity">
             <ion-select-option value = "Adelaide">Adelaide</ion-select-option>
             <ion-select-option value = "Brisbane">Brisbane</ion-select-option>
@@ -78,7 +78,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label><strong>Country</strong></ion-label>
+          <ion-label position = "floating"><strong>Country</strong></ion-label>
           <ion-select placeholder = "Australia" type = "text" [(ngModel)] = "item.EditCountry">
             <ion-select-option value = "Australia">Australia</ion-select-option>
           </ion-select>

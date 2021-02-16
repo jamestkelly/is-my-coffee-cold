@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["swiper-bundle-95afeea2-js"],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/swiper.bundle-95afeea2.js":
+/***/ "7WBn":
 /*!*********************************************************************!*\
   !*** ./node_modules/@ionic/core/dist/esm/swiper.bundle-95afeea2.js ***!
   \*********************************************************************/

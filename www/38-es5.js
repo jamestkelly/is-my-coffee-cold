@@ -9,7 +9,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[38], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/ion-text.entry.js":
+    "ISmu":
     /*!*************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/ion-text.entry.js ***!
       \*************************************************************/
@@ -17,7 +17,7 @@
     /*! exports provided: ion_text */
 
     /***/
-    function node_modulesIonicCoreDistEsmIonTextEntryJs(module, __webpack_exports__, __webpack_require__) {
+    function ISmu(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -32,19 +32,19 @@
 
       var _index_e806d1f6_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
       /*! ./index-e806d1f6.js */
-      "./node_modules/@ionic/core/dist/esm/index-e806d1f6.js");
+      "A36C");
       /* harmony import */
 
 
       var _ionic_global_9d5c8ee3_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! ./ionic-global-9d5c8ee3.js */
-      "./node_modules/@ionic/core/dist/esm/ionic-global-9d5c8ee3.js");
+      "Zgba");
       /* harmony import */
 
 
       var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! ./theme-ff3fc52f.js */
-      "./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js");
+      "74mu");
 
       var textCss = ":host(.ion-color){color:var(--ion-color-base)}";
 

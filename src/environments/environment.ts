@@ -16,6 +16,10 @@ export const firebaseConfig = {
   measurementId: "G-3D58VV3L1N"
 };
 
+export const weatherConfig = {
+  apiKey: '92b30ef73aba0e9531f56ed3e67666a8'
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

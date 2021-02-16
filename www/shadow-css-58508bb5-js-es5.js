@@ -13,7 +13,7 @@
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["shadow-css-58508bb5-js"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/shadow-css-58508bb5.js":
+    "6foE":
     /*!******************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/shadow-css-58508bb5.js ***!
       \******************************************************************/
@@ -21,7 +21,7 @@
     /*! exports provided: scopeCss */
 
     /***/
-    function node_modulesIonicCoreDistEsmShadowCss58508bb5Js(module, __webpack_exports__, __webpack_require__) {
+    function foE(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);

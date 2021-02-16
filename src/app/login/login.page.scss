@@ -1,5 +1,5 @@
 ion-content {
-    --padding-top: 20%;
+    --padding-top: 0%;
     --padding-start: 5%;
     --padding-end: 5%;
     --ion-background-color: #fa4659;
@@ -10,10 +10,20 @@ ion-input {
     --border-color: transparent;
 }
 
+.logo {
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    height: 50%;
+    width: 50%;
+    padding: 0px;
+}
+
+
 .input-group {
     border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     --background-color: transparent;
 }
 

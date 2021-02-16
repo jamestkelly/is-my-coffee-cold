@@ -1,7 +1,7 @@
 (function () {
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-core-js"], {
     /***/
-    "./node_modules/@ionic/core/dist/esm/polyfills/core-js.js":
+    "t6o4":
     /*!****************************************************************!*\
       !*** ./node_modules/@ionic/core/dist/esm/polyfills/core-js.js ***!
       \****************************************************************/
@@ -9,7 +9,7 @@
     /*! no static exports found */
 
     /***/
-    function node_modulesIonicCoreDistEsmPolyfillsCoreJsJs(module, exports) {
+    function t6o4(module, exports) {
       /**
        * core-js 3.6.5
        * https://github.com/zloirock/core-js

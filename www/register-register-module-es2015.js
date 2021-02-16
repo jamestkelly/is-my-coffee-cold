@@ -1,19 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["register-register-module"],{
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.page.html":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.page.html ***!
-  \***********************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n<ion-header>\n  <ion-toolbar>\n    <ion-title>Registration</ion-title>\n    <ion-button slot = \"start\">\n      <ion-back-button defaultHref = \"login\"></ion-back-button>\n    </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label position = \"floating\">Username</ion-label>\n      <ion-input type = \"text\" [(ngModel)] = \"userEmail\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position = \"floating\">Password</ion-label>\n      <ion-input type = \"password\" [(ngModel)] = \"password\"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label position = \"floating\">Confirm Password</ion-label>\n      <ion-input type = \"password\" [(ngModel)] = \"cPassword\"></ion-input>\n    </ion-item>\n  </ion-list>\n  <ion-button fill = \"solid\" expand = \"block\" color = \"dark\" (click) = \"signUp()\">Sign Up</ion-button>\n</ion-content>\n");
-
-/***/ }),
-
-/***/ "./src/app/register/register-routing.module.ts":
+/***/ "2t07":
 /*!*****************************************************!*\
   !*** ./src/app/register/register-routing.module.ts ***!
   \*****************************************************/
@@ -23,10 +10,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageRoutingModule", function() { return RegisterPageRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _register_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./register.page */ "./src/app/register/register.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _register_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./register.page */ "b0Bx");
 
 
 
@@ -50,7 +37,128 @@ RegisterPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 
 /***/ }),
 
-/***/ "./src/app/register/register.module.ts":
+/***/ "UgDh":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.page.html ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\n  <ion-button size = \"small\" fill = \"clear\" color = \"cream\" (click) = \"goBack()\">\n    Back\n    <ion-icon name = \"chevron-back-outline\" slot = \"start\"></ion-icon>\n  </ion-button>\n\n  <ion-row class = \"display-row\">\n    <ion-text class = \"display-row\" color = \"cream\">\n      <h1>Welcome aboard!</h1>\n    </ion-text>\n    <ion-item class = \"display-row\" no-lines color = \"none\" lines = \"none\">\n      <img height = \"150px\" width = \"150px\" src = \"../../assets/icon/coffee-cup-transparent.png\">\n    </ion-item>\n    <ion-text class = \"display-row\" color = \"cream\">\n      <p>It's great to have you with us! I just need a few details from you before we can begin.</p>\n    </ion-text>\n  </ion-row>\n\n  <div class = \"input-group\">\n    <ion-item color = \"cream\">\n      <ion-input type = \"email\" placeholder = \"Email\" [(ngModel)] = \"userEmail\">\n      </ion-input>\n    </ion-item>\n    <ion-item color = \"cream\">\n      <ion-input type = \"password\" placeholder = \"Password\" [(ngModel)] = \"password\">\n      </ion-input>\n    </ion-item>\n    <ion-item color = \"cream\">\n      <ion-input type = \"password\" placeholder = \"Confirm Password\" [(ngModel)] = \"cPassword\">\n      </ion-input>\n    </ion-item>\n  </div>\n\n  <ion-button fill = \"solid\" expand = \"block\" color = \"cream\" (click) = \"signUp()\">\n    Register Account\n  </ion-button>\n</ion-content>");
+
+/***/ }),
+
+/***/ "b0Bx":
+/*!*******************************************!*\
+  !*** ./src/app/register/register.page.ts ***!
+  \*******************************************/
+/*! exports provided: RegisterPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPage", function() { return RegisterPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_register_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./register.page.html */ "UgDh");
+/* harmony import */ var _register_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./register.page.scss */ "x/mg");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "UbJi");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
+
+
+
+
+
+
+let RegisterPage = class RegisterPage {
+    constructor(auth, alert, router, location) {
+        this.auth = auth;
+        this.alert = alert;
+        this.router = router;
+        this.location = location;
+        this.userEmail = "";
+        this.password = "";
+        this.cPassword = "";
+    }
+    ngOnInit() {
+    }
+    signUp() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const { userEmail, password, cPassword } = this;
+            // Verify passwords match
+            if (password !== cPassword) {
+                this.showAlert("Error!", "Passwords do not match");
+                return console.error("Passwords do not match.");
+            }
+            // Verify something is entered
+            if (userEmail === "" && password === "") {
+                this.showAlert("Error!", "Invalid email address or password");
+                return console.error("Invalid email or password.");
+            }
+            try {
+                const result = yield this.auth.createUserWithEmailAndPassword(userEmail, password);
+                console.log(result);
+                this.showAlert("Success!", "Please login to continue.");
+                this.router.navigate(['../login']);
+            }
+            catch (err) {
+                console.dir(err);
+                this.showAlert("Error!", err.message);
+            }
+        });
+    }
+    showAlert(header, message) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const alert = yield this.alert.create({
+                header,
+                message,
+                buttons: ["Okay"]
+            });
+            yield alert.present();
+        });
+    }
+    goBack() {
+        this.location.back();
+    }
+};
+RegisterPage.ctorParameters = () => [
+    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"] }
+];
+RegisterPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-register',
+        template: _raw_loader_register_page_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_register_page_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], RegisterPage);
+
+
+
+/***/ }),
+
+/***/ "x/mg":
+/*!*********************************************!*\
+  !*** ./src/app/register/register.page.scss ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-content {\n  --padding-start: 5%;\n  --padding-end: 5%;\n  --padding-top: 10%;\n  --ion-background-color: #fa4659;\n}\n\nion-input {\n  --background-color: transparent;\n  --border-color: transparent;\n}\n\nion-nav-bar {\n  --padding-top: 1%;\n}\n\n.input-group {\n  border-radius: 10px;\n  overflow: hidden;\n  margin-bottom: 10px;\n  --background-color: transparent;\n}\n\n.display-row {\n  --ion-background-color: #fa4659;\n  align-items: center;\n  justify-content: center;\n}\n\n.errors {\n  font-size: small;\n  color: #fff;\n  background: var(--ion-color-danger);\n  padding-left: 15px;\n  padding-top: 5px;\n  padding-bottom: 5px;\n}\n\n.icon-position {\n  position: absolute;\n  left: 0%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3JlZ2lzdGVyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLCtCQUFBO0FBQ0o7O0FBRUE7RUFDSSwrQkFBQTtFQUNBLDJCQUFBO0FBQ0o7O0FBRUE7RUFDSSxpQkFBQTtBQUNKOztBQUVBO0VBQ0ksbUJBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EsK0JBQUE7QUFDSjs7QUFFQTtFQUNJLCtCQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtBQUNKOztBQUVBO0VBQ0ksZ0JBQUE7RUFDQSxXQUFBO0VBQ0EsbUNBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7QUFDSjs7QUFFQTtFQUNJLGtCQUFBO0VBQ0EsUUFBQTtBQUNKIiwiZmlsZSI6InJlZ2lzdGVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb250ZW50IHtcbiAgICAtLXBhZGRpbmctc3RhcnQ6IDUlO1xuICAgIC0tcGFkZGluZy1lbmQ6IDUlO1xuICAgIC0tcGFkZGluZy10b3A6IDEwJTtcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiAjZmE0NjU5O1xufVxuXG5pb24taW5wdXQge1xuICAgIC0tYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgLS1ib3JkZXItY29sb3I6IHRyYW5zcGFyZW50O1xufVxuXG5pb24tbmF2LWJhciB7XG4gICAgLS1wYWRkaW5nLXRvcDogMSU7XG59XG5cbi5pbnB1dC1ncm91cCB7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gICAgLS1iYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbn1cblxuLmRpc3BsYXktcm93IHtcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiAjZmE0NjU5O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5lcnJvcnMge1xuICAgIGZvbnQtc2l6ZTogc21hbGw7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYmFja2dyb3VuZDogdmFyKC0taW9uLWNvbG9yLWRhbmdlcik7XG4gICAgcGFkZGluZy1sZWZ0OiAxNXB4O1xuICAgIHBhZGRpbmctdG9wOiA1cHg7XG4gICAgcGFkZGluZy1ib3R0b206IDVweDtcbn1cblxuLmljb24tcG9zaXRpb24ge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBsZWZ0OiAwJTtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "x5bZ":
 /*!*********************************************!*\
   !*** ./src/app/register/register.module.ts ***!
   \*********************************************/
@@ -60,13 +168,13 @@ RegisterPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _register_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./register-routing.module */ "./src/app/register/register-routing.module.ts");
-/* harmony import */ var _register_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./register.page */ "./src/app/register/register.page.ts");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
+/* harmony import */ var _register_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./register-routing.module */ "2t07");
+/* harmony import */ var _register_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./register.page */ "b0Bx");
 
 
 
@@ -87,98 +195,6 @@ RegisterPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         declarations: [_register_page__WEBPACK_IMPORTED_MODULE_6__["RegisterPage"]]
     })
 ], RegisterPageModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/register/register.page.scss":
-/*!*********************************************!*\
-  !*** ./src/app/register/register.page.scss ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3JlZ2lzdGVyL3JlZ2lzdGVyLnBhZ2Uuc2NzcyJ9 */");
-
-/***/ }),
-
-/***/ "./src/app/register/register.page.ts":
-/*!*******************************************!*\
-  !*** ./src/app/register/register.page.ts ***!
-  \*******************************************/
-/*! exports provided: RegisterPage */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPage", function() { return RegisterPage; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/__ivy_ngcc__/fesm2015/angular-fire-auth.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/__ivy_ngcc__/fesm2015/ionic-angular.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-
-
-
-
-
-let RegisterPage = class RegisterPage {
-    constructor(auth, alert, router) {
-        this.auth = auth;
-        this.alert = alert;
-        this.router = router;
-        this.userEmail = "";
-        this.password = "";
-        this.cPassword = "";
-    }
-    ngOnInit() {
-    }
-    signUp() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const { userEmail, password, cPassword } = this;
-            // Verify passwords match
-            if (password !== cPassword) {
-                this.showAlert("Error!", "Passwords do not match");
-                return console.error("Passwords do not match.");
-            }
-            try {
-                const result = yield this.auth.createUserWithEmailAndPassword(userEmail, password);
-                console.log(result);
-                this.showAlert("Success!", "Please login to continue.");
-                this.router.navigate(['./tabs']);
-            }
-            catch (err) {
-                console.dir(err);
-                this.showAlert("Error!", err.message);
-            }
-        });
-    }
-    showAlert(header, message) {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            const alert = yield this.alert.create({
-                header,
-                message,
-                buttons: ["Okay"]
-            });
-            yield alert.present();
-        });
-    }
-};
-RegisterPage.ctorParameters = () => [
-    { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
-];
-RegisterPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-register',
-        template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! raw-loader!./register.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.page.html")).default,
-        styles: [Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(/*! ./register.page.scss */ "./src/app/register/register.page.scss")).default]
-    })
-], RegisterPage);
 
 
 
