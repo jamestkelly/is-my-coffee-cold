@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CoffeePreferenceService } from '../services/coffee-preference.service';
 import { NavController, NavParams } from '@ionic/angular';
-import { coffeePreference } from '../shared/coffeePreference';
 
 interface PreferenceData {
   preferenceName: string;

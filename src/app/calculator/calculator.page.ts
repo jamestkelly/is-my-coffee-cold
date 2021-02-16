@@ -22,6 +22,7 @@ export class CalculatorPage {
   coffeeTpe: string = "";
   cityName: string = "";
   countryName: string = "";
+  preferenceChosen: [];
 
   constructor
   (
@@ -29,6 +30,22 @@ export class CalculatorPage {
   ) {}
 
   public isManual: boolean = false;
+
+  ngOnInit() {
+    this.coffeeService.readPreferences().subscribe(data => {
+      this.preferenceList = data.map(output => {
+        return {
+          id: output.payload.doc.id,
+          isEdit: false,
+          preferenceName: output.payload.doc.data()['preferenceName'],
+          coffeeType: output.payload.doc.data()['coffeeType'],
+          cityName: output.payload.doc.data()['cityName'],
+          countryName: output.payload.doc.data()['countryName']
+        };
+      })
+      console.log(this.preferenceList);
+    });
+  }
 
   userSelectMethod($event) {
     this.isManual = !this.isManual;

@@ -9,7 +9,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col offset = 2.5 size = 12>
+      <ion-col offset = 2.25 size = 12>
         <ion-item no-lines color = "none" lines = "none">
           <img height = "150px" width = "150px" src = "../../assets/icon/calculate-coffee-transparent.png">
         </ion-item>
@@ -78,9 +78,27 @@
     </span>
 
     <ng-template #elseBlock>
-      <ion-text>
-        ohgodohshitohfuck
-      </ion-text>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position = "floating">Preference</ion-label>
+            <ion-select placeholder = "Preference Name" type = "text" [(ngModel)] = "preferenceChosen" [selectedText] = "preferenceChosen">
+              <ion-select-option *ngFor = "let preference of preferenceList" [value] = "item">
+                {{ preference.preferenceName }}
+              </ion-select-option>
+              <ion-select-option value = "Null">None</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button fill = "solid" expand = "block" color = "dark">
+            Calculate
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ng-template>
   </ion-grid>
 
