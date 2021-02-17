@@ -530,6 +530,10 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"../calculator/display-results/display-results.module": [
+		"NPxJ",
+		"display-results-display-results-module"
+	],
 	"../preferences/make-preference/make-preference.module": [
 		"7Hsg",
 		"default~calculator-calculator-module~firebase-auth~preferences-make-preference-make-preference-modul~652de080",

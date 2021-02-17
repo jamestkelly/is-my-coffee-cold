@@ -606,6 +606,7 @@
     /***/
     function zn8P(module, exports, __webpack_require__) {
       var map = {
+        "../calculator/display-results/display-results.module": ["NPxJ", "display-results-display-results-module"],
         "../preferences/make-preference/make-preference.module": ["7Hsg", "default~calculator-calculator-module~firebase-auth~preferences-make-preference-make-preference-modul~652de080", "default~calculator-calculator-module~preferences-make-preference-make-preference-module~preferences-~8b5f8370", "common"]
       };
 

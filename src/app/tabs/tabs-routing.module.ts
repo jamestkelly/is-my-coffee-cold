@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DataResolverService } from '../resolver/data-resolver.service';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [

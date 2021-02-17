@@ -98,7 +98,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ0YWJzLnBhZ2Uuc2NzcyJ9 */";
+      __webpack_exports__["default"] = "ion-tab-bar {\n  background-color: #fa4659;\n}\n\nion-tab-button {\n  color: #ffffff;\n}\n\nion-tab-button:focus {\n  color: #000000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3RhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0MseUJBQUE7QUFDRDs7QUFFQTtFQUNJLGNBQUE7QUFDSjs7QUFFQTtFQUNJLGNBQUE7QUFDSiIsImZpbGUiOiJ0YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10YWItYmFyIHtcbiBiYWNrZ3JvdW5kLWNvbG9yOiAjZmE0NjU5O1xufVxuXG5pb24tdGFiLWJ1dHRvbiB7XG4gICAgY29sb3I6ICNmZmZmZmY7XG59XG5cbmlvbi10YWItYnV0dG9uOmZvY3Vze1xuICAgIGNvbG9yOiAjMDAwMDAwO1xufSJdfQ== */";
       /***/
     },
 
@@ -227,7 +227,7 @@
           loadChildren: function loadChildren() {
             return Promise.all(
             /*! import() | calculator-calculator-module */
-            [__webpack_require__.e("default~calculator-calculator-module~firebase-auth~preferences-make-preference-make-preference-modul~652de080"), __webpack_require__.e("default~calculator-calculator-module~preferences-make-preference-make-preference-module~preferences-~8b5f8370"), __webpack_require__.e("common"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null,
+            [__webpack_require__.e("default~calculator-calculator-module~firebase-auth~preferences-make-preference-make-preference-modul~652de080"), __webpack_require__.e("default~calculator-calculator-module~preferences-make-preference-make-preference-module~preferences-~8b5f8370"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null,
             /*! ../calculator/calculator.module */
             "sIv/")).then(function (m) {
               return m.CalculatorPageModule;
@@ -240,7 +240,7 @@
             loadChildren: function loadChildren() {
               return Promise.all(
               /*! import() | preferences-preferences-module */
-              [__webpack_require__.e("default~calculator-calculator-module~firebase-auth~preferences-make-preference-make-preference-modul~652de080"), __webpack_require__.e("default~calculator-calculator-module~preferences-make-preference-make-preference-module~preferences-~8b5f8370"), __webpack_require__.e("common"), __webpack_require__.e("preferences-preferences-module")]).then(__webpack_require__.bind(null,
+              [__webpack_require__.e("default~calculator-calculator-module~firebase-auth~preferences-make-preference-make-preference-modul~652de080"), __webpack_require__.e("default~calculator-calculator-module~preferences-make-preference-make-preference-module~preferences-~8b5f8370"), __webpack_require__.e("preferences-preferences-module")]).then(__webpack_require__.bind(null,
               /*! ../preferences/preferences.module */
               "KqXm")).then(function (m) {
                 return m.PreferencesPageModule;
@@ -248,14 +248,17 @@
             }
           }]
         }, {
+          path: 'calculator/display-results',
+          loadChildren: '../calculator/display-results/display-results.module#DisplayResultsPageModule'
+        }, {
           path: 'preferences/make-preference',
           loadChildren: '../preferences/make-preference/make-preference.module#MakePreferencePageModule'
         }, {
           path: 'settings',
           loadChildren: function loadChildren() {
-            return Promise.all(
+            return __webpack_require__.e(
             /*! import() | settings-settings-module */
-            [__webpack_require__.e("common"), __webpack_require__.e("settings-settings-module")]).then(__webpack_require__.bind(null,
+            "settings-settings-module").then(__webpack_require__.bind(null,
             /*! ../settings/settings.module */
             "7wo0")).then(function (m) {
               return m.SettingsPageModule;

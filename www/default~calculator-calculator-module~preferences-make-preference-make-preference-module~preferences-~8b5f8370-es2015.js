@@ -1378,6 +1378,52 @@ let CoffeePreferenceService = class CoffeePreferenceService {
         var seconds = second - minutes * 60;
         return [minutes, seconds];
     }
+    // Method to get city ID from local data
+    getCityId(cityName, countryCode) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const data = yield this.getLocalData('city.list.json');
+            // Search data until relevant city ID is found
+            for (let k = 0; k < Object.keys(data).length; k++) {
+                if (cityName === data[k].name && countryCode === data[k].country) {
+                    console.log(data[k].id); // Temporary for debugging
+                    return data[k].id;
+                }
+            }
+        });
+    }
+    getLocalData(fileName) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            var data;
+            yield fetch(`../../assets/data/${fileName}`).then(res => res.json())
+                .then(json => {
+                data = json;
+            });
+            return data;
+        });
+    }
+    getCountryCode(countryName) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const data = yield this.getLocalData('countryCodes.json'); // Fetch country data
+            let countryCode = "";
+            // Temporary for v1 of is-my-coffee-cold (Add support for other countries later)
+            if (countryName === "Australia") {
+                countryCode = "AU";
+                return countryCode;
+            }
+            else {
+                // Search data until a match for country name to country code is found
+                while (countryCode === "") {
+                    for (let i = 0; i < Object.keys(data).length; i++) {
+                        if (data[i].Name === countryName) {
+                            countryCode = data[i].Code;
+                            break; // End the search
+                        }
+                    }
+                }
+                return countryCode;
+            }
+        });
+    }
 };
 CoffeePreferenceService.ctorParameters = () => [
     { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_3__["AngularFirestore"] },

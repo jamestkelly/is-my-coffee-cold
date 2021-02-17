@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CoffeePreferenceService } from '../services/coffee-preference.service';
-import { Resolve } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { DataService } from '../services/data.service';
 
 interface PreferenceData {
   preferenceName: string;
@@ -22,15 +24,21 @@ export class CalculatorPage {
   coffeeType: string = "";
   cityName: string = "";
   countryName: string = "";
+  dataReturned: any;
   preferenceChosen: [];
   preferenceArray = [];
+  outputData = [];
 
   constructor
   (
-    private coffeeService: CoffeePreferenceService
+    private coffeeService: CoffeePreferenceService,
+    private dataService: DataService,
+    public alert: AlertController,
+    public route: Router,
   ) {}
 
   public isManual: boolean = false;
+  public isCalculated: boolean = false;
 
   ngOnInit() {
     this.coffeeService.readPreferences().subscribe(data => {
@@ -78,22 +86,19 @@ export class CalculatorPage {
       }
     }
 
-    this.calculateCoffee(preferenceArray);
+    this.outputData = await this.calculateCoffee(preferenceArray);
+    let message = await this.createMessage();
+    await this.showAlert("Success!", message);
   }
 
   async calculateCoffee(preferenceArray: any) {
     let countryCode = "AU"; // Temporary for Australia only use
     let cityID = this.getAusCityId(preferenceArray[1]);
-    console.log(countryCode);
-    console.log(cityID);
     let coffeeTemp = this.coffeeService.getCoffeeTemp(preferenceArray[0]);
-    console.log(coffeeTemp);
     let celsius = await this.getWeather(cityID);
-    console.log(celsius);
     let seconds = await this.coffeeService.modifiedEuler(celsius, coffeeTemp);
-    console.log(seconds);
     let timeRemaining = this.coffeeService.convertTime(seconds);
-    console.log(timeRemaining);
+    return [timeRemaining[0], timeRemaining[1].toFixed(2), celsius, preferenceArray[1]];
   }
 
   getAusCityId(cityName: string) {
@@ -124,5 +129,22 @@ export class CalculatorPage {
     const json = await response.json();
     let celsius = json.main.temp;
     return celsius;
-}
+  }
+
+  async showAlert(header: string, message: string) {
+    const alert = await this.alert.create({
+      header,
+      message,
+      buttons: ["Okay"]
+    })
+
+    await alert.present();
+  }
+
+  async createMessage() {
+    let message =
+      `At the current temperature of ${this.outputData[2]} in ${this.outputData[3]}, it will take approximately ${this.outputData[0]} minutes
+        and ${this.outputData[1]} seconds for your coffee to go 'cold'!`;
+    return message;
+  }
 }

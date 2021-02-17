@@ -1971,6 +1971,145 @@
             var minutes = Math.floor(second / 60);
             var seconds = second - minutes * 60;
             return [minutes, seconds];
+          } // Method to get city ID from local data
+
+        }, {
+          key: "getCityId",
+          value: function getCityId(cityName, countryCode) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var data, k;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      _context.next = 2;
+                      return this.getLocalData('city.list.json');
+
+                    case 2:
+                      data = _context.sent;
+                      k = 0;
+
+                    case 4:
+                      if (!(k < Object.keys(data).length)) {
+                        _context.next = 11;
+                        break;
+                      }
+
+                      if (!(cityName === data[k].name && countryCode === data[k].country)) {
+                        _context.next = 8;
+                        break;
+                      }
+
+                      console.log(data[k].id); // Temporary for debugging
+
+                      return _context.abrupt("return", data[k].id);
+
+                    case 8:
+                      k++;
+                      _context.next = 4;
+                      break;
+
+                    case 11:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "getLocalData",
+          value: function getLocalData(fileName) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var data;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      _context2.next = 2;
+                      return fetch("../../assets/data/".concat(fileName)).then(function (res) {
+                        return res.json();
+                      }).then(function (json) {
+                        data = json;
+                      });
+
+                    case 2:
+                      return _context2.abrupt("return", data);
+
+                    case 3:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2);
+            }));
+          }
+        }, {
+          key: "getCountryCode",
+          value: function getCountryCode(countryName) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              var data, countryCode, i;
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      _context3.next = 2;
+                      return this.getLocalData('countryCodes.json');
+
+                    case 2:
+                      data = _context3.sent;
+                      // Fetch country data
+                      countryCode = ""; // Temporary for v1 of is-my-coffee-cold (Add support for other countries later)
+
+                      if (!(countryName === "Australia")) {
+                        _context3.next = 9;
+                        break;
+                      }
+
+                      countryCode = "AU";
+                      return _context3.abrupt("return", countryCode);
+
+                    case 9:
+                      if (!(countryCode === "")) {
+                        _context3.next = 20;
+                        break;
+                      }
+
+                      i = 0;
+
+                    case 11:
+                      if (!(i < Object.keys(data).length)) {
+                        _context3.next = 18;
+                        break;
+                      }
+
+                      if (!(data[i].Name === countryName)) {
+                        _context3.next = 15;
+                        break;
+                      }
+
+                      countryCode = data[i].Code;
+                      return _context3.abrupt("break", 18);
+
+                    case 15:
+                      i++;
+                      _context3.next = 11;
+                      break;
+
+                    case 18:
+                      _context3.next = 9;
+                      break;
+
+                    case 20:
+                      return _context3.abrupt("return", countryCode);
+
+                    case 21:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3, this);
+            }));
           }
         }]);
 
