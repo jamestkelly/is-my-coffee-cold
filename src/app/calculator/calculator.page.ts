@@ -98,7 +98,7 @@ export class CalculatorPage {
     let celsius = await this.getWeather(cityID);
     let seconds = await this.coffeeService.modifiedEuler(celsius, coffeeTemp);
     let timeRemaining = this.coffeeService.convertTime(seconds);
-    return [timeRemaining[0], timeRemaining[1].toFixed(2), celsius, preferenceArray[1]];
+    return [timeRemaining[0], timeRemaining[1].toFixed(), celsius, preferenceArray[1]];
   }
 
   getAusCityId(cityName: string) {
@@ -143,7 +143,8 @@ export class CalculatorPage {
 
   async createMessage() {
     let message =
-      `At the current temperature of ${this.outputData[2]} in ${this.outputData[3]}, it will take approximately ${this.outputData[0]} minutes
+      `At the current temperature of ${this.outputData[2]} degrees Celsius in ${this.outputData[3]},
+        it will take approximately ${this.outputData[0]} minutes
         and ${this.outputData[1]} seconds for your coffee to go 'cold'!`;
     return message;
   }
