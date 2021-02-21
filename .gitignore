@@ -1,2 +1,4 @@
 node_modules/
 environments/environment.ts
+android/
+ios/

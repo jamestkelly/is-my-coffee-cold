@@ -1,0 +1,26 @@
+.input-group {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    --background-color: transparent;
+}
+
+.display-row {
+    --ion-background-color: #fa4659;
+    align-items: center;
+    justify-content: center;
+}
+
+.errors {
+    font-size: small;
+    color: #fff;
+    background: var(--ion-color-danger);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.icon-position {
+    position: absolute;
+    left: 0%;
+}
