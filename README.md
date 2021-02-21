@@ -59,3 +59,10 @@ This will then launch the application on a simulator in Xcode (or an Android emu
 I plan to in future release this application for both Android and iOS devices on the Google Play and App Stores for public download and use. Beyond that additional developments and iterations on the appearance and overall quality of functionality of the application is planned for the near future.
 
 ## Alpha Version Demonstration
+Screen shot of Login Page:
+
+![alt-text](https://github.com/jamestkelly/is-my-coffee-cold/blob/main/Screenshots/HomeScreen.png)
+
+Screen recording of application in simulator:
+
+![alt-text](https://github.com/jamestkelly/is-my-coffee-cold/blob/main/Screenshots/Functionality.gif)
