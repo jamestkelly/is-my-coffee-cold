@@ -2,3 +2,7 @@ node_modules/
 environments/environment.ts
 android/
 ios/
+www/
+e2e/
+.expo/
+.idea/
