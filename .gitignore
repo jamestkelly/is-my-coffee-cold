@@ -6,3 +6,5 @@ www/
 e2e/
 .expo/
 .idea/
+
+.DS_Store
