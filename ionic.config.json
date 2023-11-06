@@ -1,7 +1,0 @@
-{
-  "name": "is-my-coffee-cold",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
