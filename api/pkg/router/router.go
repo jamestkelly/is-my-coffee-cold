@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jamestkelly/is-my-coffee-cold/pkg/handlers"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/middleware"
 )
@@ -22,8 +23,8 @@ func InitialiseRouter(apiVersion int) *gin.Engine {
 	{
 		statusGroup := api.Group("/status")
 		{
-			statusGroup.GET("/health")
-			statusGroup.GET("/machine")
+			statusGroup.GET("/", handlers.StatusCheck)
+			statusGroup.GET("/machine", handlers.MachineInformation)
 		}
 		calculateGroup := api.Group("/calculate")
 		{
