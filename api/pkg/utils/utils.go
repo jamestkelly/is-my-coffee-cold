@@ -3,6 +3,7 @@ package utils
 import (
 	"errors"
 	"fmt"
+	"math"
 	"os"
 	"reflect"
 	"strconv"
@@ -93,4 +94,48 @@ func GetBooleanEnvironmentVariable(key string) (bool, error) {
 	}
 
 	return res, nil
+}
+
+// FindClosest
+// Recursive method to find the closest value in an array to the provided input value.
+func FindClosest(arr []float64, left, right int, target float64) float64 {
+	// Base case for when there is only one element remaining in the array
+	if left == right {
+		return arr[left]
+	}
+
+	// Find mid-point index
+	mid := (left + right) / 2
+
+	// Recusrive search to find closest values in left and right halves of array
+	leftClosest := FindClosest(arr, left, mid, target)
+	rightClosest := FindClosest(arr, mid+1, right, target)
+
+	if math.Abs(leftClosest-target) <= math.Abs(rightClosest-target) {
+		return leftClosest
+	}
+
+	return rightClosest
+}
+
+// FindClosestIndex
+// Recursive method to find the index of the closest value in an array to the provided input value.
+func FindClosestIndex(arr []float64, left, right int, target float64) int {
+	// Base case for when there is only one element remaining in the array
+	if left == right {
+		return left
+	}
+
+	// Find mid-point index
+	mid := (left + right) / 2
+
+	// Recusrive search to find closest values in left and right halves of array
+	leftClosestIndex := FindClosestIndex(arr, left, mid, target)
+	rightClosestIndex := FindClosestIndex(arr, mid+1, right, target)
+
+	if math.Abs(arr[leftClosestIndex]-target) <= math.Abs(arr[rightClosestIndex]-target) {
+		return leftClosestIndex
+	}
+
+	return rightClosestIndex
 }

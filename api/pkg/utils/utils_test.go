@@ -158,3 +158,54 @@ func TestGetBooleanEnvironmentVariable(t *testing.T) {
 		t.Errorf("Expected 'false' but got '%v' instead.", value)
 	}
 }
+
+// TestFindClosest
+// Unit test to verify that the FindClosest method correctly finds the closest value to the given target.
+func TestFindClosest(t *testing.T) {
+	arr := []float64{1.0, 2.0, 3.0, 7.0, 9.0}
+
+	// Test cases with various target values
+	testCases := []struct {
+		target   float64
+		expected float64
+	}{
+		{target: 4.0, expected: 3.0},  // Closest value is 3.0
+		{target: 8.0, expected: 7.0},  // Closest value is 7.0
+		{target: 1.5, expected: 1.0},  // Closest value is 1.0
+		{target: 10.0, expected: 9.0}, // Closest value is 9.0
+		// Add more test cases as needed
+	}
+
+	for _, testCase := range testCases {
+		result := FindClosest(arr, 0, len(arr)-1, testCase.target)
+		if result != testCase.expected {
+			t.Errorf("For target %v, expected %v, but got %v", testCase.target, testCase.expected, result)
+		}
+	}
+}
+
+// TestFindClosestIndex
+// Unit test to verify that the FindClosestIndex method correctly finds the index of the closest value to the
+// given target.
+func TestFindClosestIndex(t *testing.T) {
+	arr := []float64{1.0, 2.0, 3.0, 7.0, 9.0}
+
+	// Test cases with various target values
+	testCases := []struct {
+		target   float64
+		expected int
+	}{
+		{target: 4.0, expected: 2},  // Closest value is at index 2
+		{target: 8.0, expected: 3},  // Closest value is at index 3
+		{target: 1.5, expected: 0},  // Closest value is at index 0
+		{target: 10.0, expected: 4}, // Closest value is at index 4
+		// Add more test cases as needed
+	}
+
+	for _, testCase := range testCases {
+		result := FindClosestIndex(arr, 0, len(arr)-1, testCase.target)
+		if result != testCase.expected {
+			t.Errorf("For target %v, expected index %v, but got %v", testCase.target, testCase.expected, result)
+		}
+	}
+}
