@@ -30,9 +30,9 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 
 	// Approximate corresponding coffee temperature for each corresponding time
 	for i := 0; i < len(arr)-1; i++ {
-		k1 := stepSize * ((k*-1)*arr[i] - localTemp)
-		k2 := stepSize * ((k*-1)*arr[i] + k1 - localTemp)
-		arr[i+1] = arr[i] + 1/2*(k1+k2)
+		k1 := stepSize * ((-k) * (arr[i] - localTemp))
+		k2 := stepSize * ((-k) * (arr[i] + k1 - localTemp))
+		arr[i+1] = arr[i] + 0.5*(k1+k2)
 	}
 
 	return arr
@@ -42,9 +42,9 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 // Private method to approximate the time taken in seconds to reach a certain point on a y-axis via the
 // modified Euler method.
 func modifiedEuler(localTemp, coffeeTemp, undrinkableTemp float64) int {
-	start := 0.00 // Minutes
-	end := 40.00  // Minutes
-	steps := end * 60.00
+	start := 0.0 // Minutes
+	end := 40.0  // Minutes
+	steps := end * 60.0
 	stepSize := (end - start) / steps
 	timeArr := getSteppedTimeArray(start, steps, stepSize)
 	tempArr := getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize)

@@ -209,3 +209,26 @@ func TestFindClosestIndex(t *testing.T) {
 		}
 	}
 }
+
+// TestAlmostEqual
+// Unit test to verify that the AlmostEqual method correctly verifies that two float64
+// values are within the provided epsilon.
+func TestAlmostEqual(t *testing.T) {
+	tests := []struct {
+		a, b, epsilon float64
+		expected      bool
+	}{
+		{1.0, 1.0002, 0.0002, true},                // Equal within epsilon
+		{0.0, 0.0001, 0.0001, true},                // Equal within epsilon
+		{-1.0, -1.0002, 0.0002, true},              // Equal within epsilon
+		{123456789.0, 123456788.999, 0.001, false}, // Not within epsilon
+	}
+
+	for _, test := range tests {
+		result := AlmostEqual(test.a, test.b, test.epsilon)
+		if result != test.expected {
+			t.Errorf("For %.4f and %.4f with epsilon %.4f, expected %t, but got %t",
+				test.a, test.b, test.epsilon, test.expected, result)
+		}
+	}
+}

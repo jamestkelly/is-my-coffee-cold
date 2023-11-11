@@ -139,3 +139,9 @@ func FindClosestIndex(arr []float64, left, right int, target float64) int {
 
 	return rightClosestIndex
 }
+
+// AlmostEqual
+// Checks if two float64 values are approximately equal
+func AlmostEqual(a, b, epsilon float64) bool {
+	return math.Abs(a-b) <= epsilon
+}
