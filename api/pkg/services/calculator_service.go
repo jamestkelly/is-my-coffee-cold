@@ -38,10 +38,12 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 	return arr
 }
 
-// modifiedEuler
-// Private method to approximate the time taken in seconds to reach a certain point on a y-axis via the
-// modified Euler method.
-func modifiedEuler(localTemp, coffeeTemp, undrinkableTemp float64) int {
+// calculateDecay
+// Approximates the amount of time taken in seconds for a coffee of a given temperature to reach the
+// provided `undrinkable` temperature given the surrounding temperature. This method combines Newton's
+// rate of cooling with the modified Euler method to interpolate the point at which the temperature has
+// decayed corresponding to the given limit.
+func calculateDecay(localTemp, coffeeTemp, undrinkableTemp float64) int {
 	start := 0.0 // Minutes
 	end := 40.0  // Minutes
 	steps := end * 60.0
