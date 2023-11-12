@@ -1,6 +1,8 @@
 package services
 
 import (
+	"fmt"
+
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/utils"
 )
@@ -44,6 +46,15 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 // rate of cooling with the modified Euler method to interpolate the point at which the temperature has
 // decayed corresponding to the given limit.
 func calculateDecay(localTemp, coffeeTemp, undrinkableTemp float64) int {
+	calculatorServiceLogger.LogMessage(
+		fmt.Sprintf(
+			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",
+			undrinkableTemp,
+			localTemp,
+			coffeeTemp,
+		),
+		"INFO",
+	)
 	start := 0.0 // Minutes
 	end := 40.0  // Minutes
 	steps := end * 60.0
