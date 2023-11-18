@@ -40,12 +40,13 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 	return arr
 }
 
-// calculateDecay
+// calculateDecayRecursive
 // Approximates the amount of time taken in seconds for a coffee of a given temperature to reach the
 // provided `undrinkable` temperature given the surrounding temperature. This method combines Newton's
 // rate of cooling with the modified Euler method to interpolate the point at which the temperature has
-// decayed corresponding to the given limit.
-func calculateDecay(localTemp, coffeeTemp, undrinkableTemp float64) int {
+// decayed corresponding to the given limit. It uses the recursive `utils.FindClosestIndex` method to
+// determine the point at which the coffee becomes undrinkable.
+func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor float64) int {
 	calculatorServiceLogger.LogMessage(
 		fmt.Sprintf(
 			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",
@@ -56,12 +57,51 @@ func calculateDecay(localTemp, coffeeTemp, undrinkableTemp float64) int {
 		"INFO",
 	)
 	start := 0.0 // Minutes
-	end := 40.0  // Minutes
-	steps := end * 60.0
+	end := 180.0 // Minutes
+	steps := end * factor
 	stepSize := (end - start) / steps
 	timeArr := getSteppedTimeArray(start, steps, stepSize)
 	tempArr := getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize)
 	closestTempIndex := utils.FindClosestIndex(tempArr, 0, len(tempArr)-1, undrinkableTemp)
 
 	return int(timeArr[closestTempIndex] * 60)
+}
+
+// calculateDecayIterative
+// Approximates the amount of time taken in seconds for a coffee of a given temperature to reach the
+// provided `undrinkable` temperature given the surrounding temperature. This method combines Newton's
+// rate of cooling with the modified Euler method to interpolate the point at which the temperature has
+// decayed corresponding to the given limit. It uses the iterate or _original_ version of the calculateDecay
+// method.
+//
+// Deprecated: The iterative method for this decay method was determined to be less performant than the
+// recursive improved method.
+func calculateDecayIterative(localTemp, coffeeTemp, undrinkableTemp, factor float64) int {
+	calculatorServiceLogger.LogMessage(
+		fmt.Sprintf(
+			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",
+			undrinkableTemp,
+			localTemp,
+			coffeeTemp,
+		),
+		"INFO",
+	)
+	start := 0.0 // Minutes
+	end := 180.0 // Minutes
+	steps := end * factor
+	stepSize := (end - start) / steps
+	timeArr := getSteppedTimeArray(start, steps, stepSize)
+	tempArr := getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize)
+
+	minutes := 0.0
+
+	for k := 0; k < len(tempArr); k++ {
+		temperature := tempArr[k]
+		if temperature < undrinkableTemp {
+			minutes = timeArr[k]
+			break
+		}
+	}
+
+	return int(minutes * 60.0)
 }

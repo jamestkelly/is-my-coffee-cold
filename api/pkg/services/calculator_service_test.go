@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -53,16 +54,17 @@ func TestGetApproximateTemparatureArray(t *testing.T) {
 	}
 }
 
-// TestCalculateDecay
-// Unit test to verify that the `calculateDecay` method correctly approximates the amount of time
+// TestCalculateDecayRecursive
+// Unit test to verify that the `calculateDecayRecursive` method correctly approximates the amount of time
 // taken for a liquid to cool via the implementation of the modified Euler method alongside Newton's
 // rate of cooling.
-func TestCalculateDecay(t *testing.T) {
+func TestCalculateDecayRecursive(t *testing.T) {
 	localTemperature := 21.0  // Celcius
 	coffeeTemperature := 80.0 // Celcius
-	undrinkable := 21.0       // Celcius
-	expectedResult := 2399    // Seconds
-	result := calculateDecay(localTemperature, coffeeTemperature, undrinkable)
+	undrinkable := 24.0       // Celcius
+	expectedResult := 1787    // Seconds
+	factor := 1000.0
+	result := calculateDecayRecursive(localTemperature, coffeeTemperature, undrinkable, factor)
 
 	if reflect.TypeOf(result) != reflect.TypeOf(expectedResult) {
 		t.Errorf("Expected result to be type of '%s', got '%s' instead.", reflect.TypeOf(expectedResult), reflect.TypeOf(result))
@@ -70,5 +72,71 @@ func TestCalculateDecay(t *testing.T) {
 
 	if result != expectedResult {
 		t.Errorf("Expected result to be %d, got %d instead.", expectedResult, result)
+	}
+}
+
+// TestCalculateDecayIterative
+// Unit test to verify that the `calculateDecayIterative` method correctly approximates the amount of time
+// taken for a liquid to cool via the implementation of the modified Euler method alongside Newton's
+// rate of cooling.
+func TestCalculateDecayIterative(t *testing.T) {
+	localTemperature := 21.0  // Celcius
+	coffeeTemperature := 80.0 // Celcius
+	undrinkable := 24.0       // Celcius
+	expectedResult := 1787    // Seconds
+	factor := 1000.0
+	result := calculateDecayIterative(localTemperature, coffeeTemperature, undrinkable, factor)
+
+	if reflect.TypeOf(result) != reflect.TypeOf(expectedResult) {
+		t.Errorf("Expected result to be type of '%s', got '%s' instead.", reflect.TypeOf(expectedResult), reflect.TypeOf(result))
+	}
+
+	if result != expectedResult {
+		t.Errorf("Expected result to be %d, got %d instead.", expectedResult, result)
+	}
+}
+
+// table
+// Simple structure to house input steps for iterations in benchmark tests.
+var table = []struct {
+	input float64
+}{
+	{input: 1000.0},
+	{input: 10000.0},
+	{input: 100000.0},
+	{input: 1000000.0},
+}
+
+// BenchmarkCalculateDecayIterative
+// Benchmark test for the iterative calculation of temperature decay.
+func BenchmarkCalculateDecayIterative(b *testing.B) {
+	localTemperature := 21.0  // Celcius
+	coffeeTemperature := 80.0 // Celcius
+	undrinkable := 24.0       // Celcius
+
+	for _, v := range table {
+		b.Run(fmt.Sprintf("steps_%v", v.input), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				result := calculateDecayIterative(localTemperature, coffeeTemperature, undrinkable, v.input)
+				b.Log(result)
+			}
+		})
+	}
+}
+
+// BenchmarkCalculateDecayRecursive
+// Benchmark test for the recursive calculation of temperature decay.
+func BenchmarkCalculateDecayRecursive(b *testing.B) {
+	localTemperature := 21.0  // Celcius
+	coffeeTemperature := 80.0 // Celcius
+	undrinkable := 24.0       // Celcius
+
+	for _, v := range table {
+		b.Run(fmt.Sprintf("steps_%v", v.input), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				result := calculateDecayRecursive(localTemperature, coffeeTemperature, undrinkable, v.input)
+				b.Log(result)
+			}
+		})
 	}
 }
