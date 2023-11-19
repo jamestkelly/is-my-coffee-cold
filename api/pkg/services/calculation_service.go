@@ -4,11 +4,12 @@ import (
 	"fmt"
 
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/is-my-coffee-cold/pkg/models"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/utils"
 )
 
 // calculatorServiceLogger A logger interface utilised for calculator serivce method logging.
-var calculatorServiceLogger = log.Logger{Prefix: "StatusService"}
+var calculationServiceLogger = log.Logger{Prefix: "CalculationService"}
 
 // getSteppedTimeArray
 // Generates an array of times in minutes, e.g., 1.0 for 1 minute, incremented by the provided step size.
@@ -46,8 +47,8 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 // rate of cooling with the modified Euler method to interpolate the point at which the temperature has
 // decayed corresponding to the given limit. It uses the recursive `utils.FindClosestIndex` method to
 // determine the point at which the coffee becomes undrinkable.
-func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor float64) int {
-	calculatorServiceLogger.LogMessage(
+func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor float64) models.CoffeeUndrinkableTimeResponse {
+	calculationServiceLogger.LogMessage(
 		fmt.Sprintf(
 			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",
 			undrinkableTemp,
@@ -64,7 +65,9 @@ func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor floa
 	tempArr := getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize)
 	closestTempIndex := utils.FindClosestIndex(tempArr, 0, len(tempArr)-1, undrinkableTemp)
 
-	return int(timeArr[closestTempIndex] * 60)
+	return models.CoffeeUndrinkableTimeResponse{
+		Seconds: int(timeArr[closestTempIndex] * 60),
+	}
 }
 
 // calculateDecayIterative
@@ -76,8 +79,8 @@ func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor floa
 //
 // Deprecated: The iterative method for this decay method was determined to be less performant than the
 // recursive improved method.
-func calculateDecayIterative(localTemp, coffeeTemp, undrinkableTemp, factor float64) int {
-	calculatorServiceLogger.LogMessage(
+func calculateDecayIterative(localTemp, coffeeTemp, undrinkableTemp, factor float64) models.CoffeeUndrinkableTimeResponse {
+	calculationServiceLogger.LogMessage(
 		fmt.Sprintf(
 			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",
 			undrinkableTemp,
@@ -103,5 +106,7 @@ func calculateDecayIterative(localTemp, coffeeTemp, undrinkableTemp, factor floa
 		}
 	}
 
-	return int(minutes * 60.0)
+	return models.CoffeeUndrinkableTimeResponse{
+		Seconds: int(minutes * 60.0),
+	}
 }

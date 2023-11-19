@@ -64,13 +64,13 @@ func TestCalculateDecayRecursive(t *testing.T) {
 	undrinkable := 24.0       // Celcius
 	expectedResult := 1787    // Seconds
 	factor := 1000.0
-	result := calculateDecayRecursive(localTemperature, coffeeTemperature, undrinkable, factor)
+	result := CalculateDecayRecursive(localTemperature, coffeeTemperature, undrinkable, factor)
 
-	if reflect.TypeOf(result) != reflect.TypeOf(expectedResult) {
+	if reflect.TypeOf(result.Seconds) != reflect.TypeOf(expectedResult) {
 		t.Errorf("Expected result to be type of '%s', got '%s' instead.", reflect.TypeOf(expectedResult), reflect.TypeOf(result))
 	}
 
-	if result != expectedResult {
+	if result.Seconds != expectedResult {
 		t.Errorf("Expected result to be %d, got %d instead.", expectedResult, result)
 	}
 }
@@ -85,14 +85,14 @@ func TestCalculateDecayIterative(t *testing.T) {
 	undrinkable := 24.0       // Celcius
 	expectedResult := 1787    // Seconds
 	factor := 1000.0
-	result := calculateDecayIterative(localTemperature, coffeeTemperature, undrinkable, factor)
+	result := CalculateDecayIterative(localTemperature, coffeeTemperature, undrinkable, factor)
 
-	if reflect.TypeOf(result) != reflect.TypeOf(expectedResult) {
-		t.Errorf("Expected result to be type of '%s', got '%s' instead.", reflect.TypeOf(expectedResult), reflect.TypeOf(result))
+	if reflect.TypeOf(result.Seconds) != reflect.TypeOf(expectedResult) {
+		t.Errorf("Expected result to be type of '%s', got '%s' instead.", reflect.TypeOf(expectedResult), reflect.TypeOf(result.Seconds))
 	}
 
-	if result != expectedResult {
-		t.Errorf("Expected result to be %d, got %d instead.", expectedResult, result)
+	if result.Seconds != expectedResult {
+		t.Errorf("Expected result to be %d, got %d instead.", expectedResult, result.Seconds)
 	}
 }
 
@@ -117,7 +117,7 @@ func BenchmarkCalculateDecayIterative(b *testing.B) {
 	for _, v := range table {
 		b.Run(fmt.Sprintf("steps_%v", v.input), func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				result := calculateDecayIterative(localTemperature, coffeeTemperature, undrinkable, v.input)
+				result := CalculateDecayIterative(localTemperature, coffeeTemperature, undrinkable, v.input)
 				b.Log(result)
 			}
 		})
@@ -134,7 +134,7 @@ func BenchmarkCalculateDecayRecursive(b *testing.B) {
 	for _, v := range table {
 		b.Run(fmt.Sprintf("steps_%v", v.input), func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
-				result := calculateDecayRecursive(localTemperature, coffeeTemperature, undrinkable, v.input)
+				result := CalculateDecayRecursive(localTemperature, coffeeTemperature, undrinkable, v.input)
 				b.Log(result)
 			}
 		})
