@@ -47,7 +47,7 @@ func getApproximateTemparatureArray(localTemp, coffeeTemp, steps, stepSize float
 // rate of cooling with the modified Euler method to interpolate the point at which the temperature has
 // decayed corresponding to the given limit. It uses the recursive `utils.FindClosestIndex` method to
 // determine the point at which the coffee becomes undrinkable.
-func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor float64) models.CoffeeUndrinkableTimeResponse {
+func CalculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor float64) models.CoffeeUndrinkableTimeResponse {
 	calculationServiceLogger.LogMessage(
 		fmt.Sprintf(
 			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",
@@ -79,7 +79,7 @@ func calculateDecayRecursive(localTemp, coffeeTemp, undrinkableTemp, factor floa
 //
 // Deprecated: The iterative method for this decay method was determined to be less performant than the
 // recursive improved method.
-func calculateDecayIterative(localTemp, coffeeTemp, undrinkableTemp, factor float64) models.CoffeeUndrinkableTimeResponse {
+func CalculateDecayIterative(localTemp, coffeeTemp, undrinkableTemp, factor float64) models.CoffeeUndrinkableTimeResponse {
 	calculationServiceLogger.LogMessage(
 		fmt.Sprintf(
 			"Calculating coffee temperature decay to %vC, given local temperature of %vC and initial coffee temperature %vC.",

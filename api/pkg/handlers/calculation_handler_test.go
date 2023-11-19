@@ -35,5 +35,47 @@ func TestPostCoffeeUndrinkableTimeRecursive(t *testing.T) {
 		req.Header.Set("Content-Type", "application/json")
 		r.ServeHTTP(w, req)
 		assert.Equal(t, 200, w.Code)
+
+		// Unmarshal the response body into the expected structure
+		var response models.CoffeeUndrinkableTimeResponse
+		err = json.Unmarshal(w.Body.Bytes(), &response)
+		assert.NoError(t, err)
+
+		// Add assertion for the 'Seconds' field
+		assert.Equal(t, 1787, response.Seconds)
+	})
+}
+
+// TestPostCoffeeUndrinkableTimeRecursive
+// Unit test to verify functionality of the PostCoffeeUndrinkableTimeRecursive method. It instantiates a default
+// *gin.Engine and simulates the end-point.
+func TestPostCoffeeUndrinkableIterative(t *testing.T) {
+	r := gin.Default()
+	r.POST("/is-my-coffee-cold", PostCoffeeUndrinkableTimeIterative)
+
+	t.Run("Valid Request", func(t *testing.T) {
+		request := models.CoffeeUndrinkableTimeRequest{
+			LocalTemperature:  21.0,
+			CoffeeTemperature: 80.0,
+			Undrinkable:       24.0,
+			Factor:            180.0,
+		}
+
+		body, err := json.Marshal(request)
+		assert.NoError(t, err)
+
+		w := httptest.NewRecorder()
+		req, _ := http.NewRequest("POST", "/is-my-coffee-cold", strings.NewReader(string(body)))
+		req.Header.Set("Content-Type", "application/json")
+		r.ServeHTTP(w, req)
+		assert.Equal(t, 200, w.Code)
+
+		// Unmarshal the response body into the expected structure
+		var response models.CoffeeUndrinkableTimeResponse
+		err = json.Unmarshal(w.Body.Bytes(), &response)
+		assert.NoError(t, err)
+
+		// Add assertion for the 'Seconds' field
+		assert.Equal(t, 1787, response.Seconds)
 	})
 }

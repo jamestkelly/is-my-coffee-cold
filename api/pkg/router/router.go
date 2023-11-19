@@ -28,7 +28,8 @@ func InitialiseRouter(apiVersion int) *gin.Engine {
 		}
 		calculateGroup := api.Group("/calculate")
 		{
-			calculateGroup.POST("/is-my-coffee-cold")
+			calculateGroup.POST("/v1/is-my-coffee-cold", handlers.PostCoffeeUndrinkableTimeIterative)
+			calculateGroup.POST("/v2/is-my-coffee-cold", handlers.PostCoffeeUndrinkableTimeRecursive)
 		}
 		userGroup := api.Group("/user")
 		{
