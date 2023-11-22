@@ -10,6 +10,9 @@
 .env.test.local
 .env.production.local
 
+# Firebase configuration
+firebase-admin-key.json
+
 # Dependencies
 node_modules
 /.pnp

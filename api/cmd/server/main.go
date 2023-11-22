@@ -5,16 +5,17 @@ import (
 	"fmt"
 	"os"
 
+	firebase "firebase.google.com/go"
 	"github.com/jamestkelly/is-my-coffee-cold/internal/config"
+	"github.com/jamestkelly/is-my-coffee-cold/internal/fire"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/router"
 )
 
-// serverLogger A logger interface for logs from the root of the server.
-// serverConfig A structure containing server properties, e.g., port.
 var (
-	serverLogger = log.Logger{Prefix: "ServerLogger"}
-	ServerConfig config.ServerConfig
+	serverLogger = log.Logger{Prefix: "ServerLogger"} // serverLogger A logger interface for logs from the root of the server.
+	ServerConfig config.ServerConfig                  // serverConfig A structure containing server properties, e.g., port.
+	App          *firebase.App                        // App A pointer to the Firebase application.
 )
 
 // init
@@ -23,13 +24,23 @@ func init() {
 	s, err := config.GetServerConfiguration()
 	if err != nil {
 		serverLogger.LogMessage(
-			fmt.Sprintf("Error instantiating server configuration: %v. Exiting.", err),
+			fmt.Sprintf("Error instantiating server configuration due to error: %v. Exiting.", err),
+			"ERROR",
+		)
+		os.Exit(1)
+	}
+
+	app, err := fire.InitialiseFirebaseApp()
+	if err != nil {
+		serverLogger.LogMessage(
+			fmt.Sprintf("Error instantiating Firebase application due to error: %v. Exiting.", err),
 			"ERROR",
 		)
 		os.Exit(1)
 	}
 
 	ServerConfig = s
+	App = app
 }
 
 // main
