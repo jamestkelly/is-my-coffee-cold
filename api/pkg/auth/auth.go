@@ -3,17 +3,16 @@ package auth
 import (
 	"context"
 	"fmt"
-	"os"
 
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/auth"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/models"
 )
 
 var (
-	authLogger = log.Logger{Prefix: "AuthenticationService"} // authLogger A logger interface for printing logs regarding authentication services.
-	C          Client                                        // Client A pointer to the structure housing the Firebase authentication client used for user management.
+	authLogger = logger.LoggerInterface{Prefix: "AuthenticationService"} // authLogger A logger interface for printing logs regarding authentication services.
+	C          Client                                                    // Client A pointer to the structure housing the Firebase authentication client used for user management.
 )
 
 // Client
@@ -29,9 +28,8 @@ func InitialiseClient(app *firebase.App, ctx context.Context) {
 	if err != nil {
 		authLogger.LogMessage(
 			fmt.Sprintf("Unabled to initialise authentication client due to error: %v. Exiting...", err),
-			"ERROR",
+			"FATAL",
 		)
-		os.Exit(1)
 	}
 
 	C.AuthService = c
@@ -52,7 +50,7 @@ func (C Client) RegisterUser(ctx context.Context, user models.User) (*auth.UserR
 	u, err := C.AuthService.CreateUser(ctx, params)
 	if err != nil {
 		authLogger.LogMessage(
-			fmt.Sprintf("Unabled to create user due to error: %v. Exiting...", err),
+			fmt.Sprintf("Unabled to create user due to error: %v. Aborting...", err),
 			"ERROR",
 		)
 		return nil, err

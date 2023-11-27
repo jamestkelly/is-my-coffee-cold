@@ -3,19 +3,18 @@ package main
 import (
 	"flag"
 	"fmt"
-	"os"
 
 	firebase "firebase.google.com/go"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/internal/config"
 	"github.com/jamestkelly/is-my-coffee-cold/internal/fire"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/router"
 )
 
 var (
-	serverLogger = log.Logger{Prefix: "ServerLogger"} // serverLogger A logger interface for logs from the root of the server.
-	ServerConfig config.ServerConfig                  // serverConfig A structure containing server properties, e.g., port.
-	App          *firebase.App                        // App A pointer to the Firebase application.
+	serverLogger = logger.LoggerInterface{Prefix: "ServerLogger"} // serverLogger A logger interface for logs from the root of the server.
+	ServerConfig config.ServerConfig                              // serverConfig A structure containing server properties, e.g., port.
+	App          *firebase.App                                    // App A pointer to the Firebase application.
 )
 
 // init
@@ -25,18 +24,16 @@ func init() {
 	if err != nil {
 		serverLogger.LogMessage(
 			fmt.Sprintf("Error instantiating server configuration due to error: %v. Exiting.", err),
-			"ERROR",
+			"FATAL",
 		)
-		os.Exit(1)
 	}
 
 	app, err := fire.InitialiseFirebaseApp()
 	if err != nil {
 		serverLogger.LogMessage(
 			fmt.Sprintf("Error instantiating Firebase application due to error: %v. Exiting.", err),
-			"ERROR",
+			"FATAL",
 		)
-		os.Exit(1)
 	}
 
 	ServerConfig = s
@@ -53,8 +50,7 @@ func main() {
 	if err != nil {
 		serverLogger.LogMessage(
 			fmt.Sprintf("Unable to initialise API Server v%d at Port(%d) due to error: %v", ServerConfig.APIVersion, ServerConfig.Port, err),
-			"ERROR",
+			"FATAL",
 		)
-		os.Exit(1)
 	}
 }

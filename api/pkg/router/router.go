@@ -4,13 +4,13 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/handlers"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/middleware"
 )
 
 // routerLogger A Logger interface used to print logs for the router service.
-var routerLogger = log.Logger{Prefix: "RouterService"}
+var routerLogger = logger.LoggerInterface{Prefix: "RouterService"}
 
 // InitialiseRouter
 // Creates the *gin.Engine used to service end-points for the API server.

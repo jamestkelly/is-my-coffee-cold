@@ -2,15 +2,14 @@ package config
 
 import (
 	"fmt"
-	"os"
 
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/utils"
 )
 
 // serverConfigLogger
 // Logger interface for logging server configuration logs.
-var serverConfigLogger = log.Logger{Prefix: "ServerConfigurationService"}
+var serverConfigLogger = logger.LoggerInterface{Prefix: "ServerConfigurationService"}
 
 // ServerConfig
 // Structure containing server attributes, e.g., port number, API version, etc.
@@ -26,18 +25,16 @@ func GetServerConfiguration() (ServerConfig, error) {
 	if err != nil {
 		serverConfigLogger.LogMessage(
 			fmt.Sprintf("Unabled to load 'IS_MY_COFFEE_COLD_API_PORT' due to error: %v. Exiting...", err),
-			"ERROR",
+			"FATAL",
 		)
-		os.Exit(1)
 	}
 
 	apiVersion, err := utils.GetIntEnvironmentVariable("IS_MY_COFFEE_COLD_API_VERSION")
 	if err != nil {
 		serverConfigLogger.LogMessage(
 			fmt.Sprintf("Unabled to load 'IS_MY_COFFEE_COLD_API_VERSION' due to error: %v. Exiting...", err),
-			"ERROR",
+			"FATAL",
 		)
-		os.Exit(1)
 	}
 
 	return ServerConfig{

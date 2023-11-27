@@ -5,13 +5,13 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/models"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/services"
 )
 
 // calculationLogger A logger interface for printing logs regarding calculation functions.
-var calculationLogger = log.Logger{Prefix: "CalculationHandler"}
+var calculationLogger = logger.LoggerInterface{Prefix: "CalculationHandler"}
 
 // PostCoffeeUndrinkableTimeRecursive
 // Handler for request to calculate the amount of time a coffee goes cold via the recursive implementation.

@@ -3,13 +3,13 @@ package services
 import (
 	"fmt"
 
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/models"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/utils"
 )
 
 // calculatorServiceLogger A logger interface utilised for calculator serivce method logging.
-var calculationServiceLogger = log.Logger{Prefix: "CalculationService"}
+var calculationServiceLogger = logger.LoggerInterface{Prefix: "CalculationService"}
 
 // getSteppedTimeArray
 // Generates an array of times in minutes, e.g., 1.0 for 1 minute, incremented by the provided step size.

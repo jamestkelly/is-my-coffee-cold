@@ -5,10 +5,10 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 )
 
-var middlewareLogger = log.Logger{Prefix: "MiddlewareService"}
+var middlewareLogger = logger.LoggerInterface{Prefix: "MiddlewareService"}
 
 // LogRequest
 // Custom logger for logging of requests to the API server.

@@ -1,6 +1,6 @@
 module github.com/jamestkelly/is-my-coffee-cold
 
-go 1.21
+go 1.21.3
 
 require (
 	github.com/fatih/color v1.16.0
@@ -23,6 +23,7 @@ require (
 	github.com/google/uuid v1.4.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.0 // indirect
+	github.com/jamestkelly/go-logger-interface v1.0.0 // indirect
 	github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect

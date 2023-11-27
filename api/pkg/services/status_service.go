@@ -5,12 +5,12 @@ import (
 	"time"
 
 	"github.com/elastic/go-sysinfo"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/models"
 )
 
 // statusServiceLogger A logger interface utilised for status serivce method logging.
-var statusServiceLogger = log.Logger{Prefix: "StatusService"}
+var statusServiceLogger = logger.LoggerInterface{Prefix: "StatusService"}
 
 // GetStatusCheckInformation
 // Retrieves the status check information.

@@ -5,12 +5,12 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jamestkelly/is-my-coffee-cold/pkg/log"
+	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/services"
 )
 
 // statusLogger A logger interface for printing logs regarding status information.
-var statusLogger = log.Logger{Prefix: "StatusHandler"}
+var statusLogger = logger.LoggerInterface{Prefix: "StatusHandler"}
 
 // StatusCheck
 // Returns a basic health-check response.
