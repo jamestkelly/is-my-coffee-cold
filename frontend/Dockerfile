@@ -1,38 +1,37 @@
-ARG BASE_REGISTRY=registry.access.redhat.com
-ARG BASE_BUILDER=ubi8/nodejs-18
-ARG BASE_RUNNER=ubi8/nodejs-18-minimal
-ARG BASE_IMAGE_VERSION=latest
 
-FROM ${BASE_REGISTRY}/${BASE_BUILDER}:${BASE_IMAGE_VERSION} AS builder
+FROM node:18-alpine AS base
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
 
-ENV HOME=/app
-WORKDIR ${HOME}
-ENV PATH ${HOME}/node_modules/.bin:$PATH
+COPY package.json package-lock.json ./
+RUN  npm install --production
 
-USER 0
-COPY package.json ./
-COPY package-lock.json ./
+FROM node:18-alpine AS builder
+WORKDIR /app
+COPY --from=base /app/node_modules ./node_modules
+COPY . .
 
-RUN npm ci --silent
-RUN npm install react-scripts -g --silent
+ENV NEXT_TELEMETRY_DISABLED 1
 
-COPY . ./
 RUN npm run build
 
-FROM ${BASE_REGISTRY}/${BASE_RUNNER}:${BASE_IMAGE_VERSION} AS runner
+FROM node:18-alpine AS runner
+WORKDIR /app
 
-LABEL name="is-my-coffee-cold/app"
-LABEL description="Front-end application for is-my-coffee-cold"
-LABEL architecture=x86_64
-LABEL maintainer="is-my-coffee-cold"
-LABEL vendor="is-my-coffee-cold"
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
-USER 0
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-RUN rm -f /etc/localtime && \
-    ln -s /usr/share/zoneinfo/${LOCAL_TZ} /etc/localtime
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
-COPY --from=build /app/build /usr/share/nginx/html
+USER nextjs
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD ["npm", "start"]
