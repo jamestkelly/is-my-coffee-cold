@@ -1,0 +1,23 @@
+version: "3.2"
+services:
+  api:
+    image: is-my-coffee-cold/api
+    container_name: api
+    restart: always
+    build: 
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3005"
+    env_file: api/.env
+  app:
+    image: is-my-coffee-cold/app
+    container_name: app
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    env_file:
+      - frontend/.env

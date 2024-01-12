@@ -1,10 +1,27 @@
-node_modules/
-environments/environment.ts
-android/
-ios/
-www/
-e2e/
-.expo/
-.idea/
-
+# Miscellaneous
+.vscode
 .DS_Store
+.idea
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase configuration
+firebase-admin-key.json
+
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# Production
+build
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
