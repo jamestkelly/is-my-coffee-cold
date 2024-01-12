@@ -11,3 +11,15 @@ type User struct {
 	PhotoURL      string `json:"photoUrl"`
 	Disabled      bool   `json:"bool"`
 }
+
+// GetUserByIdRequest
+// Structure used for requests to fetch users by ID.
+type GetUserByIdRequest struct {
+	UserID string `json:"userId"`
+}
+
+// GetUserByEmailRequest
+// Structure used for requests to fetch users by email.
+type GetUserByEmailRequest struct {
+	Email string `json:"email"`
+}

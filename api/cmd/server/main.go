@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 
@@ -8,6 +9,7 @@ import (
 	"github.com/jamestkelly/go-logger-interface"
 	"github.com/jamestkelly/is-my-coffee-cold/internal/config"
 	"github.com/jamestkelly/is-my-coffee-cold/internal/fire"
+	"github.com/jamestkelly/is-my-coffee-cold/pkg/auth"
 	"github.com/jamestkelly/is-my-coffee-cold/pkg/router"
 )
 
@@ -32,6 +34,14 @@ func init() {
 	if err != nil {
 		serverLogger.LogMessage(
 			fmt.Sprintf("Error instantiating Firebase application due to error: %v. Exiting.", err),
+			"FATAL",
+		)
+	}
+
+	err = auth.InitialiseClient(app, context.Background())
+	if err != nil {
+		serverLogger.LogMessage(
+			fmt.Sprintf("Error instantiating Firebase authentication client due to error: %v. Exiting.", err),
 			"FATAL",
 		)
 	}

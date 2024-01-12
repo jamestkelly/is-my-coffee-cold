@@ -23,16 +23,18 @@ type Client struct {
 
 // InitialiseClient
 // Instantiates the authentication client.
-func InitialiseClient(app *firebase.App, ctx context.Context) {
+func InitialiseClient(app *firebase.App, ctx context.Context) error {
 	c, err := app.Auth(ctx)
 	if err != nil {
 		authLogger.LogMessage(
 			fmt.Sprintf("Unabled to initialise authentication client due to error: %v. Exiting...", err),
 			"FATAL",
 		)
+		return err
 	}
 
 	C.AuthService = c
+	return nil
 }
 
 // RegisterUser
@@ -100,4 +102,61 @@ func GetUserByEmail(ctx context.Context, userEmail string) (*auth.UserRecord, er
 		"INFO",
 	)
 	return u, nil
+}
+
+// VerifyUserToken
+// Verifies a supplied user token and returns the corresponding user ID.
+func VerifyUserToken(ctx context.Context, idToken string) (bool, error) {
+	_, err := C.AuthService.VerifyIDToken(ctx, idToken)
+	if err != nil {
+		authLogger.LogMessage(
+			fmt.Sprintf("Unabled to decode IDToken(%s) due to error: %v.", idToken, err),
+			"ERROR",
+		)
+		return false, err
+	}
+
+	return true, nil
+}
+
+// DeleteUserByUID
+// Deletes a user from the Firebase client corresponding to the supplied UID.
+func DeleteUserByUID(ctx context.Context, uid string) error {
+	err := C.AuthService.DeleteUser(ctx, uid)
+	if err != nil {
+		authLogger.LogMessage(
+			fmt.Sprintf("Unable to delete User(%s) due to error: %v.", uid, err),
+			"ERROR",
+		)
+		return err
+	}
+
+	authLogger.LogMessage(
+		fmt.Sprintf("Successfully deleted User(%s).", uid),
+		"INFO",
+	)
+	return nil
+}
+
+// DeleteUserByEmail
+// Deletes a user from the Firebase client corresponding to the supplied email.
+func DeleteUserByEmail(ctx context.Context, userEmail string) error {
+	u, err := GetUserByEmail(ctx, userEmail)
+	if err != nil {
+		authLogger.LogMessage(
+			fmt.Sprintf("Unable to retrieve User(%s) UID due to error: %v", userEmail, err),
+			"ERROR",
+		)
+		return err
+	}
+
+	err = C.AuthService.DeleteUser(ctx, u.UID)
+	if err != nil {
+		authLogger.LogMessage(
+			fmt.Sprintf("Unable to delete User(%s) due to error: %v", userEmail, err),
+			"ERROR",
+		)
+		return err
+	}
+	return nil
 }

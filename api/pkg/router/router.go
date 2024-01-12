@@ -28,12 +28,13 @@ func InitialiseRouter(apiVersion int) *gin.Engine {
 		}
 		calculateGroup := api.Group("/calculate")
 		{
-			calculateGroup.POST("/v1/is-my-coffee-cold", handlers.PostCoffeeUndrinkableTimeIterative)
-			calculateGroup.POST("/v2/is-my-coffee-cold", handlers.PostCoffeeUndrinkableTimeRecursive)
+			calculateGroup.POST("/v1/is-my-coffee-cold", middleware.AuthenticationMiddleware, handlers.PostCoffeeUndrinkableTimeIterative)
+			calculateGroup.POST("/v2/is-my-coffee-cold", middleware.AuthenticationMiddleware, handlers.PostCoffeeUndrinkableTimeRecursive)
 		}
 		userGroup := api.Group("/user")
 		{
-			userGroup.GET("/:userID")
+			userGroup.GET("/:uid", middleware.AuthenticationMiddleware, handlers.GetUserById)
+			userGroup.GET("/:email", middleware.AuthenticationMiddleware, handlers.GetUserByEmail)
 		}
 	}
 
