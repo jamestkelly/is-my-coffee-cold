@@ -56,6 +56,7 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://is-my-coffee-cold.web.app)
@@ -64,17 +65,17 @@
 
 Essentially, the crux of this application is equating the point at which the temperature of a coffee, $t$, is less than the _undrinkable_ threshold supplied, e.g., $t_{x} = 40$ degrees Celcius. The primary equation being that of Newton's law of cooling:
 
-$$ T = Ce^{-kt} + T_{a} $$
+$$ T = Ce^{-kt} + T\_{a} $$
 
 To briefly summarise the mathematics utilised, in interpolation, we are generally given a set of $(x, y)$ coordinates. Given this, we can determin a function $f$ that passes between these two points. While, a second-order function, e.g., Taylor's method would provide higher accuracy than Huen's method; the requirement to differentiate $f(t, y)$ makes the gains in accuracy not entirely worth the loss in optimisation. As such, instead of differentiating $f(t, y)$ directly, we use a numerical approximation to the derivative.
 
 Given a _derivative_ of a function is the limiting value of the slope of the line connecting two points on a curve, then for suitably small values of step-size $h$, it is possible to use the following approximation.
 
-$$ f'(t_{i}, y_{i}) \approx \frac{f(t_{i+1}, y_{i+1}) - f(t_{i}, y_{i})}{h}$$
+$$ f'(t*{i}, y*{i}) \approx \frac{f(t*{i+1}, y*{i+1}) - f(t*{i}, y*{i})}{h}$$
 
 Then using Euler’s method to approximate $y_{i+1}$ on the right-hand side (RHS) to second order locally we derive what is called the modified Euler method. The mathematical explanation of this can be seen [here](https://web.physics.utah.edu/~detar/phys6720/handouts/ode/ode/node3.html). Notably, this equation **does not** take into account the impacts of say being indoors compared to outdoors or the material the coffee cup is made of. Rather it assumes that the temperature of the coffee will change in direct proportion to the surrounding temperature in the area.
 
-The remainder of the application follows standard paradigms for [CRUD](https://budibase.com/blog/crud-app/) applications, albeit expanded to a full-stack pattern with a back-end API load-balanced via an API Gateway. 
+The remainder of the application follows standard paradigms for [CRUD](https://budibase.com/blog/crud-app/) applications, albeit expanded to a full-stack pattern with a back-end API load-balanced via an API Gateway.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,15 +83,16 @@ The remainder of the application follows standard paradigms for [CRUD](https://b
 
 The following are the main languages and technologies utilised in building the application.
 
-* [![Docker][Docker.com]][Docker-url]
-* [![Go][Go.dev]][Go-url]
-* [![Oracle Cloud Infrastructure][Oracle.dev]][Oracle-url]
-* [![React][React.js]][React-url]
-* [![TypeScript][TypeScript.ts]][TypeScript-url]
+- [![Docker][Docker.com]][Docker-url]
+- [![Go][Go.dev]][Go-url]
+- [![Oracle Cloud Infrastructure][Oracle.dev]][Oracle-url]
+- [![React][React.js]][React-url]
+- [![TypeScript][TypeScript.ts]][TypeScript-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To run the entire application locally you can follow either one of two options:
@@ -102,15 +104,14 @@ To run the entire application locally you can follow either one of two options:
 
 The following are the assumed prerequisites required for local development and usage of the application.
 
-* `npm`
+- `npm`
   ```sh
   npm install npm@latest -g
   ```
-* `go`
-    * Follow the instructions [here](https://go.dev/doc/install).
-* `docker`
-    * Follow the instructions [here](https://www.docker.com/get-started/).
- 
+- `go`
+  - Follow the instructions [here](https://go.dev/doc/install).
+- `docker`
+  - Follow the instructions [here](https://www.docker.com/get-started/).
 
 ### Installation
 
@@ -123,9 +124,9 @@ For both pathways in local development and usage of the application, you will ne
    git clone https://github.com/jamestkelly/is-my-coffe-cold.git
    ```
 2. Copy the environment variables for each respective service
-    ```sh
-    cd api && cp .env.template .env && cd ../frontend && cp .env.template .env
-    ```
+   ```sh
+   cd api && cp .env.template .env && cd ../frontend && cp .env.template .env
+   ```
 3. Populate the environment variables for each service with the corresponding values.
 
 #### Via Docker Compose
@@ -139,6 +140,7 @@ For both pathways in local development and usage of the application, you will ne
 #### Manual Execution
 
 1. Install the required packages
+
    ```sh
    cd api
    go mod install
@@ -146,12 +148,13 @@ For both pathways in local development and usage of the application, you will ne
    cd ../frontend
    npm install
    ```
+
 2. Initialise the back-end API server
    ```sh
    cd api
    go run cmd/server/main.go
    ```
-3. Initialise the front-end 
+3. Initialise the front-end
    ```sh
    cd frontend
    npm run start
@@ -160,6 +163,7 @@ For both pathways in local development and usage of the application, you will ne
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
@@ -169,31 +173,40 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
 - [x] Build original application (re: [`is-my-coffee-cold/v1`](https://github.com/jamestkelly/is-my-coffee-cold/releases/tag/v1.0.0))
 - [x] Create new design for the _new brew_, e.g., 2023 onwards.
 - [ ] Build API microservice.
-    - [x] Convert original `TypeScript` code to `Go` for calculating coffee temperature decay.
-    - [x] Integrate Firebase Admin SDK.
-    - [ ] Implement an authentication (`auth`) service.
+  - [x] Convert original `TypeScript` code to `Go` for calculating coffee temperature decay.
+  - [x] Integrate Firebase Admin SDK.
+  - [ ] Implement an authentication (`auth`) service.
 - [ ] Abstract API microservices behind API Gateway.
 - [ ] Build new front-end application.
-    - [ ] Integrate with API microservice via API Gateway.
+  - [ ] Integrate with API microservice via API Gateway.
+  - [ ] Integrate API microservices with front-end client application.
 - [ ] Establish application life-cycle.
-    - [ ] Create Docker images via corresponding `Dockerfiles`.
-        - [ ] Front-end
-        - [ ] API
-        - [ ] API Gateway
-    - [ ] Implement build and deploy pipeline for the front-end via Firebase.
-    - [ ] Implement build and deploy pipelines for the API and API Gateway to Oracle Cloud Infrastructure.
+  - [x] Create Docker images via corresponding `Dockerfiles` for local containerised development.
+    - [x] Front-end
+    - [x] API
+  - [ ] Implement Kubernetes for application microservices.
+    - [ ] API
+    - [ ] API Gateway (Kong)
+  - [ ] Implement build and deploy pipeline for the front-end via Firebase.
+  - [ ] Implement build and deploy pipelines for the API and API Gateway to Oracle Cloud Infrastructure.
+- [ ] Add sub-repository specific `README.md` information, e.g., for the API and front-end.
+- [ ] Write up documentation covering application information and host it via GitHub repository [Wiki](https://github.com/jamestkelly/is-my-coffee-cold/wiki).
 - [ ] Push _stable_ release of the application.
+- [ ] Create long-term roadmap.
+- [ ] Implement a way for users to provide feedback and bugs beyond GitHub issues.
 
 See the [open issues](https://github.com/jamestkelly/is-my-coffee-cold/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -210,6 +223,7 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the GNU Affero General Public License. See `LICENSE.txt` for more information.
@@ -217,6 +231,7 @@ Distributed under the GNU Affero General Public License. See `LICENSE.txt` for m
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
+
 ## Contact
 
 Jim Tran kelly - jimkelly.t@outlook.com
@@ -226,16 +241,18 @@ Project Link: [https://github.com/jamestkelly/is-my-coffee-cold](https://github.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
 The following are several references and guides used in building the application that I would like to acknowledge.
 
-* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
 [contributors-shield]: https://img.shields.io/github/contributors/jamestkelly/is-my-coffee-cold.svg?style=for-the-badge
 [contributors-url]: https://github.com/jamestkelly/is-my-coffee-cold/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/jamestkelly/is-my-coffee-cold.svg?style=for-the-badge
@@ -251,6 +268,7 @@ The following are several references and guides used in building the application
 [product-screenshot]: doc/img/product_screenshot.png
 
 <!-- Built with badges-->
+
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Firebase.dev]: https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white
