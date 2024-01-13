@@ -34,6 +34,10 @@ func InitialiseClient(app *firebase.App, ctx context.Context) error {
 	}
 
 	C.AuthService = c
+	authLogger.LogMessage(
+		"Successfully initialised authentication service.",
+		"INFO",
+	)
 	return nil
 }
 
@@ -64,6 +68,21 @@ func (C Client) RegisterUser(ctx context.Context, user models.User) (*auth.UserR
 	)
 
 	return u, nil
+}
+
+// VerifyUserToken
+// Verifies a supplied user token and returns the corresponding decoded token.
+func VerifyUserToken(ctx context.Context, idToken string) (*auth.Token, error) {
+	token, err := C.AuthService.VerifyIDToken(ctx, idToken)
+	if err != nil {
+		authLogger.LogMessage(
+			fmt.Sprintf("Unabled to decode IDToken(%s) due to error: %v.", idToken, err),
+			"ERROR",
+		)
+		return nil, err
+	}
+
+	return token, nil
 }
 
 // GetUserByUID
@@ -102,21 +121,6 @@ func GetUserByEmail(ctx context.Context, userEmail string) (*auth.UserRecord, er
 		"INFO",
 	)
 	return u, nil
-}
-
-// VerifyUserToken
-// Verifies a supplied user token and returns the corresponding user ID.
-func VerifyUserToken(ctx context.Context, idToken string) (bool, error) {
-	_, err := C.AuthService.VerifyIDToken(ctx, idToken)
-	if err != nil {
-		authLogger.LogMessage(
-			fmt.Sprintf("Unabled to decode IDToken(%s) due to error: %v.", idToken, err),
-			"ERROR",
-		)
-		return false, err
-	}
-
-	return true, nil
 }
 
 // DeleteUserByUID

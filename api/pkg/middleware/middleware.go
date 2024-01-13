@@ -32,7 +32,7 @@ func LogRequest() gin.HandlerFunc {
 func AuthenticationMiddleware(ctx *gin.Context) {
 	idToken := ctx.Request.Header.Get("Authorization")
 
-	if isValid, err := auth.VerifyUserToken(ctx.Request.Context(), idToken); err != nil || !isValid {
+	if _, err := auth.VerifyUserToken(ctx.Request.Context(), idToken); err != nil {
 		ctx.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorised"})
 		return
 	}
