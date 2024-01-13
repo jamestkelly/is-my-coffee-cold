@@ -22,29 +22,29 @@ func PostCoffeeUndrinkableTimeRecursive(ctx *gin.Context) {
 	if err := ctx.BindJSON(&request); err != nil {
 		msg := fmt.Sprintf("Unable to parse request due to error: %v", err)
 		calculationLogger.LogMessage(msg, "ERROR")
-		ctx.IndentedJSON(http.StatusBadRequest, msg)
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": msg})
 		return
 	}
 
 	if request.LocalTemperature == 0.0 || request.CoffeeTemperature == 0.0 || request.Undrinkable == 0.0 {
-		ctx.IndentedJSON(http.StatusBadRequest, "No temperature can be zero (0) to calculate coffee temperature decay.")
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "No temperature can be zero (0) to calculate coffee temperature decay."})
 		return
 	}
 
 	if request.CoffeeTemperature < request.Undrinkable {
 		msg := fmt.Sprintf("Coffee temperature %vC cannot be lower than undrinkable temperature %vC.", request.CoffeeTemperature, request.Undrinkable)
-		ctx.IndentedJSON(http.StatusBadRequest, msg)
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": msg})
 		return
 	}
 
 	if request.Undrinkable <= request.LocalTemperature {
 		msg := fmt.Sprintf("Undrinkable temperature %vC cannot be lower than local temperature %vC.", request.Undrinkable, request.LocalTemperature)
-		ctx.IndentedJSON(http.StatusBadRequest, msg)
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": msg})
 		return
 	}
 
 	if request.Factor == -1.0 {
-		ctx.IndentedJSON(
+		ctx.JSON(
 			http.StatusOK,
 			services.CalculateDecayRecursive(
 				request.LocalTemperature,
@@ -55,7 +55,7 @@ func PostCoffeeUndrinkableTimeRecursive(ctx *gin.Context) {
 		)
 	}
 
-	ctx.IndentedJSON(
+	ctx.JSON(
 		http.StatusOK,
 		services.CalculateDecayRecursive(
 			request.LocalTemperature,
@@ -78,29 +78,29 @@ func PostCoffeeUndrinkableTimeIterative(ctx *gin.Context) {
 	if err := ctx.BindJSON(&request); err != nil {
 		msg := fmt.Sprintf("Unable to parse request due to error: %v", err)
 		calculationLogger.LogMessage(msg, "ERROR")
-		ctx.IndentedJSON(http.StatusBadRequest, msg)
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": msg})
 		return
 	}
 
 	if request.LocalTemperature == 0.0 || request.CoffeeTemperature == 0.0 || request.Undrinkable == 0.0 {
-		ctx.IndentedJSON(http.StatusBadRequest, "No temperature can be zero (0) to calculate coffee temperature decay.")
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "No temperature can be zero (0) to calculate coffee temperature decay."})
 		return
 	}
 
 	if request.CoffeeTemperature < request.Undrinkable {
 		msg := fmt.Sprintf("Coffee temperature %vC cannot be lower than undrinkable temperature %vC.", request.CoffeeTemperature, request.Undrinkable)
-		ctx.IndentedJSON(http.StatusBadRequest, msg)
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": msg})
 		return
 	}
 
 	if request.Undrinkable <= request.LocalTemperature {
 		msg := fmt.Sprintf("Undrinkable temperature %vC cannot be lower than local temperature %vC.", request.Undrinkable, request.LocalTemperature)
-		ctx.IndentedJSON(http.StatusBadRequest, msg)
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": msg})
 		return
 	}
 
 	if request.Factor == -1.0 {
-		ctx.IndentedJSON(
+		ctx.JSON(
 			http.StatusOK,
 			services.CalculateDecayIterative(
 				request.LocalTemperature,
@@ -111,7 +111,7 @@ func PostCoffeeUndrinkableTimeIterative(ctx *gin.Context) {
 		)
 	}
 
-	ctx.IndentedJSON(
+	ctx.JSON(
 		http.StatusOK,
 		services.CalculateDecayIterative(
 			request.LocalTemperature,
