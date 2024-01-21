@@ -9,37 +9,45 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
+import { useLocale } from "next-intl";
 import { Fragment, useState } from "react";
+import translations from '../../../../public/lang/clientTranslations.json';
 import CoffeeIcon from "../icons/coffee";
-
-const supportItems = [
-  {
-    name: "Documentation",
-    description: "View the docs",
-    href: "https://github.com/jamestkelly/is-my-coffee-cold/wiki",
-    icon: DocumentIcon,
-  },
-  {
-    name: "Issues",
-    description: "Report a bug",
-    href: "https://github.com/jamestkelly/is-my-coffee-cold/issues",
-    icon: BugAntIcon,
-  },
-  {
-    name: "Community",
-    description: "Join the discussion",
-    href: "https://github.com/jamestkelly/is-my-coffee-cold/discussions",
-    icon: UserGroupIcon,
-  },
-];
-const callsToAction = [{ name: "Watch demo", href: "#", icon: PlayCircleIcon }];
+import LocaleSwitch from "../localeSelect/localeSelect";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
+  const locale = useLocale();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const headerTranslations = translations.Header.find(lang => lang.locale === locale);
+
+  const supportItems = [
+    {
+      name: headerTranslations?.support?.documentation?.title,
+      description: headerTranslations?.support?.documentation?.description,
+      href: "https://github.com/jamestkelly/is-my-coffee-cold/wiki",
+      icon: DocumentIcon,
+    },
+    {
+      name: headerTranslations?.support?.issues?.title,
+      description: headerTranslations?.support?.issues?.description,
+      href: "https://github.com/jamestkelly/is-my-coffee-cold/issues",
+      icon: BugAntIcon,
+    },
+    {
+      name: headerTranslations?.support?.community?.title,
+      description: headerTranslations?.support?.community?.description,
+      href: "https://github.com/jamestkelly/is-my-coffee-cold/discussions",
+      icon: UserGroupIcon,
+    },
+  ];
+  const callsToAction = [
+    { name: headerTranslations?.watchDemo?.title, href: "#", icon: PlayCircleIcon },
+  ]; // TODO: Replace with current demo video for app
 
   return (
     <header className="bg-white">
@@ -63,20 +71,20 @@ export default function Header() {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
             onClick={() => setMobileMenuOpen(true)}
           >
-            <span className="sr-only">Open main menu</span>
+            <span className="sr-only">{headerTranslations?.openMainMenu}</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <Popover.Group className="hidden lg:flex lg:gap-x-12 inline-flex items-center justify-center">
+        <Popover.Group className="hidden lg:flex lg:gap-x-12 items-center justify-center">
           <a
             href="/support"
-            className="text-sm font-semibold leading-6 text-gray-900"
+            className="text-sm p-2 rounded-md font-semibold leading-6 text-gray-900 hover:bg-gray-50"
           >
-            About
+            {headerTranslations?.about?.title}
           </a>
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-              Support
+            <Popover.Button className="flex items-center gap-x-1 p-2 rounded-md text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+              {headerTranslations?.support?.title}
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
@@ -136,12 +144,13 @@ export default function Header() {
               </Popover.Panel>
             </Transition>
           </Popover>
+          <LocaleSwitch />
           <div className="bg-primary-0 hover:bg-primary-1 hidden lg:flex lg:flex-1 lg:justify-end py-2 px-8 rounded-xl">
             <a
               href="/login"
               className="text-sm font-semibold leading-6 text-white-primary"
             >
-              Login
+              {headerTranslations?.login?.title}
             </a>
           </div>
         </Popover.Group>
@@ -168,7 +177,7 @@ export default function Header() {
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className="sr-only">Close menu</span>
+              <span className="sr-only">{headerTranslations?.closeMenu}</span>
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
@@ -179,13 +188,13 @@ export default function Header() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  About
+                  {headerTranslations?.about?.title}
                 </a>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                        Support
+                        {headerTranslations?.support?.title}
                         <ChevronDownIcon
                           className={classNames(
                             open ? "rotate-180" : "",
@@ -213,9 +222,9 @@ export default function Header() {
               <div className="py-6">
                 <a
                   href="/login"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base text-center font-semibold mb-2 block rounded bg-primary-0 px-6 pb-2 pt-2.5 leading-7 text-white-primary hover:bg-primary-1"
+                  className="-mx-3 block rounded-lg py-2.5 text-base text-center font-semibold mb-2 bg-primary-0 px-6 pb-2 pt-2.5 leading-7 text-white-primary hover:bg-primary-1"
                 >
-                  Login
+                  {headerTranslations?.login?.title}
                 </a>
               </div>
             </div>

@@ -1,0 +1,91 @@
+{
+  "Header": [
+    {
+      "locale": "en",
+      "support": {
+        "title": "Support",
+        "documentation": {
+          "title": "Documentation",
+          "description": "View the docs"
+        },
+        "issues": {
+          "title": "Issues",
+          "description": "Report a bug"
+        },
+        "community": {
+          "title": "Community",
+          "description": "Join the discussion"
+        }
+      },
+      "watchDemo": {
+        "title": "Watch demo"
+      },
+      "about": {
+        "title": "About"
+      },
+      "login": {
+        "title": "Login"
+      },
+      "openMainMenu": "Open main menu",
+      "closeMenu": "Close menu"
+    },
+    {
+      "locale": "fr",
+      "support": {
+        "title": "Soutien",
+        "documentation": {
+          "title": "Documentation",
+          "description": "Consulter la documentation"
+        },
+        "issues": {
+          "title": "Problèmes",
+          "description": "Signaler un bug"
+        },
+        "community": {
+          "title": "Communauté",
+          "description": "Rejoignez la discussion"
+        }
+      },
+      "watchDemo": {
+        "title": "Regarder la démo"
+      },
+      "about": {
+        "title": "Qui sommes-nous"
+      },
+      "login": {
+        "title": "Login"
+      },
+      "openMainMenu": "Ouvrir le menu principal",
+      "closeMenu": "Fermer le menu"
+    },
+    {
+      "locale": "jp",
+      "support": {
+        "title": "サポート",
+        "documentation": {
+          "title": "ドキュメンテーション",
+          "description": "ドキュメントを見る"
+        },
+        "issues": {
+          "title": "問題",
+          "description": "バグを報告"
+        },
+        "community": {
+          "title": "コミュニティ",
+          "description": "ディスカッションに参加する"
+        }
+      },
+      "watchDemo": {
+        "title": "デモンストレーションを見る"
+      },
+      "about": {
+        "title": "私たちについて"
+      },
+      "login": {
+        "title": "ログイン"
+      },
+      "openMainMenu": "メインメニューを開く",
+      "closeMenu": "メニューを閉じる"
+    }
+  ]
+}
