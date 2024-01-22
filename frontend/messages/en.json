@@ -1,5 +1,23 @@
 {
   "Index": {
     "title": "is-my-coffee-cold"
+  },
+  "Footer": {
+    "gettingStarted": {
+      "title": "Getting Started",
+      "register": "Sign up",
+      "login": "Login",
+      "about": "About"
+    },
+    "support": {
+      "title": "Support",
+      "documentation": "Documentation",
+      "issues": "Issues",
+      "community": "Community",
+      "demo": "Watch demonstration"
+    },
+    "copyright": "©2024 is-my-coffee-cold. All rights reserved",
+    "privacyPolicy": "Privacy policy",
+    "termsOfService": "Terms of service"
   }
 }

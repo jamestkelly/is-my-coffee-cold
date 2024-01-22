@@ -1,7 +1,12 @@
+import { useTranslations } from "next-intl";
+import CoffeeIcon from "../icons/coffee";
+
 export default function Footer() {
+  const t = useTranslations("Footer");
+
   return (
     <>
-      <footer className="py-6 dark:bg-gray-800 dark:text-gray-50">
+      <footer className="py-6 bg-secondary-2 text-black-primary dark:bg-tertiary-1 dark:white-primary">
         <div className="container px-6 mx-auto space-y-6 divide-y dark:divide-gray-400 md:space-y-12 divide-opacity-50">
           <div className="grid grid-cols-12">
             <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
@@ -11,116 +16,84 @@ export default function Footer() {
                 className="flex justify-center space-x-3 md:justify-start"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-400">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 32 32"
-                    fill="currentColor"
-                    className="flex-shrink-0 w-5 h-5 rounded-full dark:text-gray-900"
-                  >
-                    <path d="M18.266 26.068l7.839-7.854 4.469 4.479c1.859 1.859 1.859 4.875 0 6.734l-1.104 1.104c-1.859 1.865-4.875 1.865-6.734 0zM30.563 2.531l-1.109-1.104c-1.859-1.859-4.875-1.859-6.734 0l-6.719 6.734-6.734-6.734c-1.859-1.859-4.875-1.859-6.734 0l-1.104 1.104c-1.859 1.859-1.859 4.875 0 6.734l6.734 6.734-6.734 6.734c-1.859 1.859-1.859 4.875 0 6.734l1.104 1.104c1.859 1.859 4.875 1.859 6.734 0l21.307-21.307c1.859-1.859 1.859-4.875 0-6.734z"></path>
-                  </svg>
+                  <CoffeeIcon />
                 </div>
-                <span className="self-center text-2xl font-semibold">
-                  Brand name
+                <span className="self-center text-l font-bold">
+                  is-my-coffee-cold
                 </span>
               </a>
             </div>
             <div className="col-span-6 text-center md:text-left md:col-span-3">
-              <p className="pb-1 text-lg font-medium">Category</p>
+              <p className="pb-1 text-base font-medium">
+                {t("gettingStarted.title")}
+              </p>
               <ul>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
+                    {t("gettingStarted.register")}
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
+                    {t("gettingStarted.login")}
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
+                    {t("gettingStarted.about")}
                   </a>
                 </li>
               </ul>
             </div>
             <div className="col-span-6 text-center md:text-left md:col-span-3">
-              <p className="pb-1 text-lg font-medium">Category</p>
+              <p className="pb-1 text-base font-medium">{t("support.title")}</p>
               <ul>
-                <li>
+                <li className="hover:text-violet-400">
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
+                    {t("support.documentation")}
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
+                    {t("support.issues")}
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
+                    {t("support.community")}
                   </a>
                 </li>
                 <li>
                   <a
                     rel="noopener noreferrer"
                     href="#"
-                    className="hover:dark:text-violet-400"
+                    className="text-base hover:text-green-300 hover:dark:text-primary-1"
                   >
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="hover:dark:text-violet-400"
-                  >
-                    Link
+                    {t("support.demo")}
                   </a>
                 </li>
               </ul>
@@ -128,12 +101,12 @@ export default function Footer() {
           </div>
           <div className="grid justify-center pt-6 lg:justify-between">
             <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-              <span>©2024 All rights reserved</span>
+              <span>{t("copyright")}</span>
               <a rel="noopener noreferrer" href="#">
-                <span>Privacy policy</span>
+                <span className="hover:text-green-300 hover:dark:text-primary-1">{t("privacyPolicy")}</span>
               </a>
               <a rel="noopener noreferrer" href="#">
-                <span>Terms of service</span>
+                <span className="hover:text-green-300 hover:dark:text-primary-1">{t("termsOfService")}</span>
               </a>
             </div>
             <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
@@ -170,7 +143,7 @@ export default function Footer() {
               </a>
               <a
                 rel="noopener noreferrer"
-                href="#"
+                href="https://github.com/jamestkelly/is-my-coffee-cold"
                 title="GitHub"
                 className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900"
               >

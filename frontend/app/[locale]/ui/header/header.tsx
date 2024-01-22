@@ -78,12 +78,12 @@ export default function Header() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12 items-center justify-center">
           <a
             href="/support"
-            className="text-sm p-2 rounded-md font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+            className="text-base p-2 rounded-md font-semibold leading-6 text-gray-900 hover:bg-gray-50"
           >
             {headerTranslations?.about?.title}
           </a>
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 p-2 rounded-md text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+            <Popover.Button className="flex items-center gap-x-1 p-2 rounded-md text-base font-semibold leading-6 text-gray-900 hover:bg-gray-50">
               {headerTranslations?.support?.title}
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
@@ -148,7 +148,7 @@ export default function Header() {
           <div className="bg-primary-0 hover:bg-primary-1 hidden lg:flex lg:flex-1 lg:justify-end py-2 px-8 rounded-xl">
             <a
               href="/login"
-              className="text-sm font-semibold leading-6 text-white-primary"
+              className="text-base font-semibold leading-6 text-white-primary"
             >
               {headerTranslations?.login?.title}
             </a>
