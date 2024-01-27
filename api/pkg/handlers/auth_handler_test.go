@@ -2,6 +2,7 @@ package handlers
 
 import "testing"
 
-func TestXxx(t *testing.T) {
-	t.Log("Hello!")
+// Test
+func TestGetUserById(t *testing.T) {
+
 }

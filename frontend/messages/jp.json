@@ -1,0 +1,23 @@
+{
+  "Index": {
+    "title": "is-my-coffee-cold"
+  },
+  "Footer": {
+    "gettingStarted": {
+      "title": "はじめる",
+      "register": "登録する",
+      "login": "ログイン",
+      "about": "私たちについて"
+    },
+    "support": {
+      "title": "サポート",
+      "documentation": "ドキュメンテーション",
+      "issues": "問題",
+      "community": "コミュニティ",
+      "demo": "デモンストレーションを見る"
+    },
+    "copyright": "©2024 is-my-coffee-cold. 無断転載を禁じます",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "Header": [
+    {
+      "locale": "en",
+      "support": {
+        "title": "Support",
+        "documentation": {
+          "title": "Documentation",
+          "description": "View the docs"
+        },
+        "issues": {
+          "title": "Issues",
+          "description": "Report a bug"
+        },
+        "community": {
+          "title": "Community",
+          "description": "Join the discussion"
+        }
+      },
+      "watchDemo": {
+        "title": "Watch demo"
+      },
+      "about": {
+        "title": "About"
+      },
+      "login": {
+        "title": "Login"
+      },
+      "openMainMenu": "Open main menu",
+      "closeMenu": "Close menu"
+    },
+    {
+      "locale": "fr",
+      "support": {
+        "title": "Soutien",
+        "documentation": {
+          "title": "Documentation",
+          "description": "Consulter la documentation"
+        },
+        "issues": {
+          "title": "Problèmes",
+          "description": "Signaler un bug"
+        },
+        "community": {
+          "title": "Communauté",
+          "description": "Rejoignez la discussion"
+        }
+      },
+      "watchDemo": {
+        "title": "Regarder la démo"
+      },
+      "about": {
+        "title": "Qui sommes-nous"
+      },
+      "login": {
+        "title": "Login"
+      },
+      "openMainMenu": "Ouvrir le menu principal",
+      "closeMenu": "Fermer le menu"
+    },
+    {
+      "locale": "jp",
+      "support": {
+        "title": "サポート",
+        "documentation": {
+          "title": "ドキュメンテーション",
+          "description": "ドキュメントを見る"
+        },
+        "issues": {
+          "title": "問題",
+          "description": "バグを報告"
+        },
+        "community": {
+          "title": "コミュニティ",
+          "description": "ディスカッションに参加する"
+        }
+      },
+      "watchDemo": {
+        "title": "デモンストレーションを見る"
+      },
+      "about": {
+        "title": "私たちについて"
+      },
+      "login": {
+        "title": "ログイン"
+      },
+      "openMainMenu": "メインメニューを開く",
+      "closeMenu": "メニューを閉じる"
+    }
+  ],
+  "Hero": [
+    {
+      "locale": "en",
+      "intro": "Perfect temperature, every time.",
+      "description": "Never drink a cold coffee again. Know the perfect temperature for your coffee no matter where you are in the world!",
+      "register": "Sign Up"
+    },
+    {
+      "locale": "jp",
+      "intro": "いつも完璧な温度。",
+      "description": "もう寒いコーヒーは飲まないでください。世界のどこにいても、あなたのコーヒーの完璧な温度を知ってください！",
+      "register": "登録する"
+    },
+    {
+      "locale": "fr",
+      "intro": "Température parfaite, à chaque fois.",
+      "description": "Ne buvez plus jamais de café froid. Connaissez la température parfaite pour votre café, peu importe où vous êtes dans le monde!",
+      "register": "S'inscrire"
+    }
+  ]
+}
