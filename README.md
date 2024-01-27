@@ -59,7 +59,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://is-my-coffee-cold.web.app)
+<div align="center">
+  <img src="doc/img/product_screencapture.gif">
+</div>
 
 `is-my-coffee-cold` is a simple full-stack web application built to calculate the amount of time you have until your coffee goes cold, i.e., becomes _undrinkable_. The application achieves this through the combination of localised weather data sourced via external API calls alongside the [Huen's method](https://en.wikipedia.org/wiki/Heun%27s_method) (otherwise referred to as the modified Euler method) for interpolating polynomials and [Newton's law of cooling](https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling).
 
@@ -181,7 +183,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [ ] Build API microservice.
   - [x] Convert original `TypeScript` code to `Go` for calculating coffee temperature decay.
   - [x] Integrate Firebase Admin SDK.
-  - [ ] Implement an authentication (`auth`) service.
+  - [x] Implement an authentication (`auth`) service.
 - [ ] Abstract API microservices behind API Gateway.
 - [ ] Build new front-end application.
   - [ ] Integrate with API microservice via API Gateway.
@@ -265,7 +267,7 @@ The following are several references and guides used in building the application
 [license-url]: https://github.com/jamestkelly/is-my-coffee-cold/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jimkellyt
-[product-screenshot]: doc/img/product_screenshot.png
+[product-screenshot]: doc/img/product_screencapture.gif
 
 <!-- Built with badges-->
 

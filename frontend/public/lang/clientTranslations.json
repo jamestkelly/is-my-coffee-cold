@@ -87,5 +87,25 @@
       "openMainMenu": "メインメニューを開く",
       "closeMenu": "メニューを閉じる"
     }
+  ],
+  "Hero": [
+    {
+      "locale": "en",
+      "intro": "Perfect temperature, every time.",
+      "description": "Never drink a cold coffee again. Know the perfect temperature for your coffee no matter where you are in the world!",
+      "register": "Sign Up"
+    },
+    {
+      "locale": "jp",
+      "intro": "いつも完璧な温度。",
+      "description": "もう寒いコーヒーは飲まないでください。世界のどこにいても、あなたのコーヒーの完璧な温度を知ってください！",
+      "register": "登録する"
+    },
+    {
+      "locale": "fr",
+      "intro": "Température parfaite, à chaque fois.",
+      "description": "Ne buvez plus jamais de café froid. Connaissez la température parfaite pour votre café, peu importe où vous êtes dans le monde!",
+      "register": "S'inscrire"
+    }
   ]
 }

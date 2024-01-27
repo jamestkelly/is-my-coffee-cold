@@ -16,7 +16,7 @@ export default function LocaleLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <div className="flex flex-col h-screen justify-between">
+        <div className="flex flex-col h-screen justify-between bg-white-primary">
           <Header />
           {children}
           <Footer />

@@ -37,7 +37,7 @@ export default function LocaleSwitch() {
     <div className="relative inline-block text-left rounded-md hover:bg-gray-50">
       <Listbox value={selectedLanguage} onChange={handleLanguageChange}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default bg-white py-2 pl-2 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-default bg-white py-2 pl-2 pr-10 text-left rounded-md hover:bg-gray-50 sm:text-sm">
             <LanguageIcon className="h-5 w-5 text-gray-900" />
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronDownIcon
@@ -52,7 +52,7 @@ export default function LocaleSwitch() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-fit rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute mt-1 max-h-60 w-fit z-20 rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {languages.map((locale, localeIdx) => (
                 <Listbox.Option
                   key={localeIdx}

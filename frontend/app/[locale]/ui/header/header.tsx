@@ -1,5 +1,6 @@
 "use client";
 
+import translations from "@/public/lang/clientTranslations.json";
 import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
@@ -11,7 +12,7 @@ import {
 import { ChevronDownIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 import { useLocale } from "next-intl";
 import { Fragment, useState } from "react";
-import translations from '../../../../public/lang/clientTranslations.json';
+import LinkButton from "../buttons/linkButton";
 import CoffeeIcon from "../icons/coffee";
 import LocaleSwitch from "../localeSelect/localeSelect";
 
@@ -23,7 +24,9 @@ export default function Header() {
   const locale = useLocale();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const headerTranslations = translations.Header.find(lang => lang.locale === locale);
+  const headerTranslations = translations.Header.find(
+    (lang) => lang.locale === locale
+  );
 
   const supportItems = [
     {
@@ -46,11 +49,15 @@ export default function Header() {
     },
   ];
   const callsToAction = [
-    { name: headerTranslations?.watchDemo?.title, href: "#", icon: PlayCircleIcon },
+    {
+      name: headerTranslations?.watchDemo?.title,
+      href: "#",
+      icon: PlayCircleIcon,
+    },
   ]; // TODO: Replace with current demo video for app
 
   return (
-    <header className="bg-white">
+    <header className="bg-white-primary">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -145,14 +152,12 @@ export default function Header() {
             </Transition>
           </Popover>
           <LocaleSwitch />
-          <div className="bg-primary-0 hover:bg-primary-1 hidden lg:flex lg:flex-1 lg:justify-end py-2 px-8 rounded-xl">
-            <a
-              href="/login"
-              className="text-base font-semibold leading-6 text-white-primary"
-            >
-              {headerTranslations?.login?.title}
-            </a>
-          </div>
+          <LinkButton
+            href="/login"
+            linkClassName="text-base font-semibold leading-6 text-white-primary"
+            className="bg-primary-0 hover:bg-primary-1 hidden lg:flex lg:flex-1 lg:justify-end py-2 px-8 rounded-xl"
+            displayText={headerTranslations?.login?.title}
+          />
         </Popover.Group>
       </nav>
       <Dialog
