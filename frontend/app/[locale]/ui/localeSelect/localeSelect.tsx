@@ -37,7 +37,7 @@ export default function LocaleSwitch() {
     <div className="relative inline-block text-left rounded-md hover:bg-gray-50">
       <Listbox value={selectedLanguage} onChange={handleLanguageChange}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default bg-white py-2 pl-2 pr-10 text-left rounded-md hover:bg-gray-50 sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-default bg-white-primary py-2 pl-2 pr-10 text-left rounded-md hover:bg-gray-50 sm:text-sm">
             <LanguageIcon className="h-5 w-5 text-gray-900" />
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronDownIcon

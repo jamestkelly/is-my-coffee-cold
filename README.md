@@ -36,6 +36,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#functionality">Built With</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -59,9 +60,7 @@
 
 ## About The Project
 
-<div align="center">
-  <img src="doc/img/product_screencapture.gif">
-</div>
+[![Product Name Screen Shot][product-screenshot]](https://is-my-coffee-cold.web.app)
 
 `is-my-coffee-cold` is a simple full-stack web application built to calculate the amount of time you have until your coffee goes cold, i.e., becomes _undrinkable_. The application achieves this through the combination of localised weather data sourced via external API calls alongside the [Huen's method](https://en.wikipedia.org/wiki/Heun%27s_method) (otherwise referred to as the modified Euler method) for interpolating polynomials and [Newton's law of cooling](https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling).
 
@@ -78,6 +77,17 @@ $$ f'(t*{i}, y*{i}) \approx \frac{f(t*{i+1}, y*{i+1}) - f(t*{i}, y*{i})}{h}$$
 Then using Euler’s method to approximate $y_{i+1}$ on the right-hand side (RHS) to second order locally we derive what is called the modified Euler method. The mathematical explanation of this can be seen [here](https://web.physics.utah.edu/~detar/phys6720/handouts/ode/ode/node3.html). Notably, this equation **does not** take into account the impacts of say being indoors compared to outdoors or the material the coffee cup is made of. Rather it assumes that the temperature of the coffee will change in direct proportion to the surrounding temperature in the area.
 
 The remainder of the application follows standard paradigms for [CRUD](https://budibase.com/blog/crud-app/) applications, albeit expanded to a full-stack pattern with a back-end API load-balanced via an API Gateway.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Functionality
+
+The following is a `*.gif` containing the home page of the web application.
+
+<div align="center">
+  <img src="doc/img/product_screencapture.gif">
+</div>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -267,7 +277,7 @@ The following are several references and guides used in building the application
 [license-url]: https://github.com/jamestkelly/is-my-coffee-cold/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jimkellyt
-[product-screenshot]: doc/img/product_screencapture.gif
+[product-screenshot]: doc/img/product_screenshot.png
 
 <!-- Built with badges-->
 
