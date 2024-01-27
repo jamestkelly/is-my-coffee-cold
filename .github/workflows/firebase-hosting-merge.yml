@@ -5,7 +5,8 @@ name: Deploy to Firebase Hosting on merge
 'on':
   push:
     branches:
-      - main
+      - not-a-real-branch # Temporarily disable deploy to hosting on merge
+      #- main
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
