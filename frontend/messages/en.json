@@ -19,5 +19,25 @@
     "copyright": "©2024 is-my-coffee-cold. All rights reserved",
     "privacyPolicy": "Privacy policy",
     "termsOfService": "Terms of service"
+  },
+  "Benefits": {
+    "statement": "Here's how is-my-coffee-cold can help!",
+    "demo": "View our demo",
+    "time": {
+      "title": "Save time",
+      "description": "Too busy, or can't stay near your coffee? Now you can estimate how long you have until it goes cold!"
+    },
+    "enjoyment": {
+      "title": "Increase enjoyment",
+      "description": "Enjoy your coffee at an optimal temperature for you! The right temperature and enhance the flavour."
+    },
+    "reduce": {
+      "title": "Reduce waste",
+      "description": "Never throw out a coffee because it's gone cold again and reduce food waste."
+    },
+    "precision": {
+      "title": "Precision Brewing",
+      "description": "Adjust your brewing techniques to match the climate, ensuring a satisfying and perfectly timed cup regardless of the weather."
+    }
   }
 }

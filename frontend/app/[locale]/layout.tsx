@@ -1,8 +1,8 @@
+import { switchThemeDuration } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "./ui/footer/footer";
-import Header from "./ui/header/header";
+import { ThemeProvider } from "./ui/theme/themeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 export default function LocaleLayout({ children, params: { locale } }) {
   return (
     <html lang={locale}>
-      <body className={inter.className}>
-        <div className="flex flex-col h-screen justify-between bg-white-primary">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+      <body
+        className={`${inter.className} bg-white-primary dark:bg-primary-1 ${switchThemeDuration}`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

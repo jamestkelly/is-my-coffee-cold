@@ -1,5 +1,6 @@
 import { SVGProps } from "react";
-const CoffeeIcon = (props: SVGProps<SVGSVGElement>) => (
+
+export const CoffeeIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={400}
@@ -12,4 +13,3 @@ const CoffeeIcon = (props: SVGProps<SVGSVGElement>) => (
     <path d="M128.55 148.7c-1.1.3-3.95 2.15-6.35 4.1-2.35 1.95-5.15 3.6-6.2 3.7-4.6.3-6.25 4.1-3 7 2.7 2.45 8 .9 13.5-3.95 5.1-4.5 6.9-4.45 13.4.45 4.65 3.5 5.95 4 10.6 4 4.65 0 5.95-.5 10.6-4 6.55-4.9 8-4.95 13.15-.55 7 6 15.75 6.65 15.75 1.2 0-1.7-3.45-4.85-4.3-4-.35.35-3-1.2-5.9-3.4-8.8-6.7-15.3-6.75-23.3-.15-5.85 4.8-6.1 4.8-12.25-.1-5.1-4.05-10.95-5.65-15.7-4.3z" />
   </svg>
 );
-export default CoffeeIcon;

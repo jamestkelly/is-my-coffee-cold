@@ -13,8 +13,9 @@ import { ChevronDownIcon, PlayCircleIcon } from "@heroicons/react/24/solid";
 import { useLocale } from "next-intl";
 import { Fragment, useState } from "react";
 import LinkButton from "../buttons/linkButton";
-import CoffeeIcon from "../icons/coffee";
-import LocaleSwitch from "../localeSelect/localeSelect";
+import { CoffeeIcon } from "../icons";
+import LocaleSwitch from "../locale/localeSwitch";
+import { ThemeSwitcher } from "../theme/themeSwitcher";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -57,7 +58,7 @@ export default function Header() {
   ]; // TODO: Replace with current demo video for app
 
   return (
-    <header className="bg-white-primary">
+    <header className="bg-white-primary dark:bg-primary-1">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
@@ -85,19 +86,18 @@ export default function Header() {
         <Popover.Group className="hidden lg:flex lg:gap-x-12 items-center justify-center">
           <a
             href="/support"
-            className="text-base p-2 rounded-md font-semibold leading-6 text-gray-900 hover:bg-gray-50"
+            className="text-base p-2 rounded-md font-semibold leading-6 text-gray-900 hover:bg-gray-100 hover:scale-110 active:scale-100 duration-200"
           >
             {headerTranslations?.about?.title}
           </a>
           <Popover className="relative">
-            <Popover.Button className="flex items-center gap-x-1 p-2 rounded-md text-base font-semibold leading-6 text-gray-900 hover:bg-gray-50">
+            <Popover.Button className="flex items-center gap-x-1 p-2 rounded-md text-base font-semibold leading-6 text-gray-900 hover:bg-gray-100 hover:scale-110 active:scale-100 duration-200">
               {headerTranslations?.support?.title}
               <ChevronDownIcon
                 className="h-5 w-5 flex-none text-gray-400"
                 aria-hidden="true"
               />
             </Popover.Button>
-
             <Transition
               as={Fragment}
               enter="transition ease-out duration-200"
@@ -152,6 +152,7 @@ export default function Header() {
             </Transition>
           </Popover>
           <LocaleSwitch />
+          <ThemeSwitcher />
           <LinkButton
             href="/login"
             linkClassName="text-base font-semibold leading-6 text-white-primary"

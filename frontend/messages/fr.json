@@ -19,5 +19,25 @@
     "copyright": "©2024 is-my-coffee-cold. Tous droits réservés",
     "privacyPolicy": "Politique de confidentialité",
     "termsOfService": "Conditions d'utilisation"
+  },
+  "Benefits": {
+    "statement": "Voici comment is-my-coffee-cold peut vous aider!",
+    "demo": "Voir notre démo",
+    "time": {
+      "title": "Économisez du temps",
+      "description": "Trop occupé ou ne pouvez pas rester près de votre café? Maintenant, vous pouvez estimer combien de temps il vous reste avant qu'il ne refroidisse!"
+    },
+    "enjoyment": {
+      "title": "Augmentez le plaisir",
+      "description": "Dégustez votre café à une température optimale pour vous! La bonne température améliore la saveur."
+    },
+    "reduce": {
+      "title": "Réduisez le gaspillage",
+      "description": "Ne jetez plus de café parce qu'il est devenu froid et réduisez le gaspillage alimentaire."
+    },
+    "precision": {
+      "title": "Brassage précis",
+      "description": "Ajustez vos techniques de brassage en fonction du climat, garantissant une tasse satisfaisante et parfaitement chronométrée quel que soit le temps."
+    }
   }
 }

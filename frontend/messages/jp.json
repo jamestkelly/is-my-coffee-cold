@@ -19,5 +19,25 @@
     "copyright": "©2024 is-my-coffee-cold. 無断転載を禁じます",
     "privacyPolicy": "プライバシーポリシー",
     "termsOfService": "利用規約"
+  },
+  "Benefits": {
+    "statement": "こうやって is-my-coffee-cold が助けになります！",
+    "demo": "デモを見る",
+    "time": {
+      "title": "時間を節約",
+      "description": "忙しすぎるか、コーヒーのそばにいられない場合は？今なら、冷めるまでの時間を見積もることができます！"
+    },
+    "enjoyment": {
+      "title": "喜びを増やす",
+      "description": "最適な温度でコーヒーを楽しんでください！適切な温度で風味が向上します。"
+    },
+    "reduce": {
+      "title": "無駄を減らす",
+      "description": "コーヒーが冷めて捨てることはもうありません。食品廃棄を減らしましょう。"
+    },
+    "precision": {
+      "title": "精密なブリュー",
+      "description": "気候に合わせてブリュー技術を調整し、天候に関係なく満足のいく、完璧なタイミングのコーヒーカップを保証します。"
+    }
   }
 }

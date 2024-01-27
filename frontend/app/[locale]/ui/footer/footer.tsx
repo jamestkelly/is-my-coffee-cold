@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import CoffeeIcon from "../icons/coffee";
+import { CoffeeIcon } from "../icons";
 
 export default function Footer() {
   const t = useTranslations("Footer");

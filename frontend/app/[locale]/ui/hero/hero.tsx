@@ -4,7 +4,7 @@ import translations from "@/public/lang/clientTranslations.json";
 import { useLocale } from "next-intl";
 import { Suspense } from "react";
 import LinkButton from "../buttons/linkButton";
-import { CoffeCupModel } from "../three/coffeeCup";
+import { CoffeCupModel } from "../coffeeCup/coffeeCup";
 
 export default function Hero() {
   const locale = useLocale();

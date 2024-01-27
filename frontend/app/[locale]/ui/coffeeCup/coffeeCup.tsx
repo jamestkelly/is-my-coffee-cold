@@ -11,12 +11,12 @@ export const CoffeCupModel: React.FC = () => {
     <Canvas
       shadows
       camera={{
-        fov: 20,
+        fov: 25,
         near: 0.1,
         far: 1000,
         position: [0, 0, 5],
       }}
-      style={{ height: "375px", width: "100%" }}
+      style={{ height: "400px", width: "100%" }}
     >
       <CoffeeCup />
       <OrbitControls enableZoom={false} />
