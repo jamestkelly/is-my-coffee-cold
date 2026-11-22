@@ -22,5 +22,7 @@
   "allow": "Use my location",
   "failed": "Outdoor temperature unavailable. You can enter it above.",
   "source": "Outdoor reading from {source}.",
-  "note": "An estimate, not a timer. A lid or insulated mug can change the cooling time."
+  "note": "An estimate, not a timer. A lid or insulated mug can change the cooling time.",
+  "how": "How does the coffee cooling calculator work?",
+  "model": "Coffee loses heat fastest when it is much hotter than the surrounding air. This calculator uses Newton’s law of cooling with a fixed rate of 0.1 per minute. For coffee starting at 80 °C in a 21 °C room, a 40 °C cutoff gives about 11 minutes, while a 24 °C cutoff gives about 30. If the room is as warm as your cutoff, the coffee won’t cool to it."
 }

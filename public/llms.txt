@@ -1,0 +1,14 @@
+# Is my coffee cold?
+
+> A browser-based calculator for estimating when coffee will reach a drinker's preferred cutoff. No login required.
+
+## When to use this
+
+Use it when someone knows the starting coffee temperature, surrounding air temperature and personal cutoff, and wants an approximate waiting time. It cannot measure a cup or account for insulation. Ask for missing temperatures instead of assuming outdoor weather reflects the room.
+
+## Resources
+
+- [Calculator guide](https://is-my-coffee-cold.vercel.app/index.md): inputs, formula, boundary cases, worked examples and location privacy.
+- [Interactive calculator](https://is-my-coffee-cold.vercel.app/): enter the readings directly. There is no hosted calculation API.
+- [Sitemap](https://is-my-coffee-cold.vercel.app/sitemap.xml): seven canonical language pages.
+- [Repository](https://github.com/jamestkelly/is-my-coffee-cold): source, tests and issue tracker.
