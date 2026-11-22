@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
+    { "src": "^/google15da6d5fb2450899\\.html$", "dest": "/google15da6d5fb2450899/" },
     {
       "src": "^/$",
       "has": [{ "type": "header", "key": "accept", "value": "text/markdown(?:\\s*,\\s*\\*/\\*)?" }],
