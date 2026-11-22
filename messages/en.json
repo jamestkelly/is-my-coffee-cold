@@ -38,5 +38,7 @@
   "hostPolicy": "Vercel’s privacy policy",
   "questionsPrivacy": "Questions? Use the public issue tracker without including coordinates or other personal details:",
   "duration": "{n, plural, one {<value>#</value> minute} other {<value>#</value> minutes}}",
-  "shortDuration": "<value>{n, number}</value> minute"
+  "shortDuration": "<value>{n, number}</value> minute",
+  "searchTitle": "Coffee Cooling Calculator — Is My Coffee Cold?",
+  "searchDescription": "How long until your coffee gets cold? Enter its current temperature, the room temperature, and your preferred cutoff to estimate cooling time in °C or °F."
 }

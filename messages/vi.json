@@ -38,5 +38,7 @@
   "hostPolicy": "Chính sách quyền riêng tư của Vercel",
   "questionsPrivacy": "Nếu có câu hỏi, hãy dùng trang theo dõi vấn đề công khai. Đừng đăng tọa độ hay thông tin cá nhân khác:",
   "duration": "{n, plural, other {<value>#</value> phút}}",
-  "shortDuration": "<value>{n, number}</value> phút"
+  "shortDuration": "<value>{n, number}</value> phút",
+  "searchTitle": "Tính thời gian cà phê nguội",
+  "searchDescription": "Bao lâu nữa cà phê sẽ nguội? Nhập nhiệt độ hiện tại của cà phê, nhiệt độ môi trường và mức bạn thấy quá nguội để ước tính thời gian. Hỗ trợ cả °C và °F."
 }

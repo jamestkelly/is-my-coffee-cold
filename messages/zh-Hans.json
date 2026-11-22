@@ -38,5 +38,7 @@
   "hostPolicy": "Vercel 隐私政策",
   "questionsPrivacy": "如有疑问，可使用公开的问题跟踪页面。请勿提供坐标或其他个人信息：",
   "duration": "{n, plural, other {<value>#</value> 分钟}}",
-  "shortDuration": "<value>{n, number}</value> 分钟"
+  "shortDuration": "<value>{n, number}</value> 分钟",
+  "searchTitle": "咖啡冷却时间计算器",
+  "searchDescription": "咖啡还要多久才会凉？输入咖啡当前温度、环境温度以及你觉得太凉的温度，即可估算冷却时间。支持摄氏度和华氏度。"
 }

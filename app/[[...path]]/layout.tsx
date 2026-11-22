@@ -13,8 +13,8 @@ export async function generateMetadata({ params }: { params: Params }) {
   const locale = await getLocale(params);
   const privacy = (await params).path?.at(-1) === 'privacy';
   const t = translator(locale);
-  const title = privacy ? `${t('privacy')} | ${t('title')}` : t('title');
-  const description = privacy ? t('privacyDescription') : t('estimate');
+  const title = privacy ? `${t('privacy')} | ${t('title')}` : t('searchTitle');
+  const description = privacy ? t('privacyDescription') : t('searchDescription');
   const urls = privacy ? privacyUrls : localeUrls;
   const canonical = urls[locale];
   return {
