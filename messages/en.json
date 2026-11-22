@@ -4,7 +4,7 @@
   "estimate": "Cooling estimate",
   "fields": "Temperatures",
   "cutoff": "Too cold for me at",
-  "coffee": "Coffee temperature",
+  "coffee": "Current coffee temperature",
   "air": "Room / outdoors",
   "increase": "Increase: {field}",
   "decrease": "Decrease: {field}",
@@ -12,7 +12,7 @@
   "less": "Less than",
   "one": "{n} minute",
   "other": "{n} minutes",
-  "until": "Until your coffee reaches {t} °C.",
+  "until": "For your coffee to cool from {start} to {cutoff}.",
   "cold": "Already too cold.",
   "unreachable": "Won’t reach that temperature here.",
   "incomplete": "Enter all three temperatures.",
@@ -25,5 +25,6 @@
   "note": "An estimate, not a timer. A lid or insulated mug can change the cooling time.",
   "how": "How does the coffee cooling calculator work?",
   "model": "Coffee loses heat fastest when it is much hotter than the surrounding air. This calculator uses Newton’s law of cooling with a fixed rate of 0.1 per minute. For coffee starting at 80 °C in a 21 °C room, a 40 °C cutoff gives about 11 minutes, while a 24 °C cutoff gives about 30. If the room is as warm as your cutoff, the coffee won’t cool to it.",
-  "privacy": "Privacy"
+  "privacy": "Privacy",
+  "unit": "Temperature unit"
 }

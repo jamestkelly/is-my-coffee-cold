@@ -4,7 +4,7 @@
   "estimate": "Thời gian nguội ước tính",
   "fields": "Nhiệt độ",
   "cutoff": "Tôi thấy quá nguội ở mức",
-  "coffee": "Nhiệt độ cà phê",
+  "coffee": "Nhiệt độ hiện tại của cà phê",
   "air": "Trong nhà / ngoài trời",
   "increase": "Tăng: {field}",
   "decrease": "Giảm: {field}",
@@ -12,7 +12,7 @@
   "less": "Còn chưa đến",
   "one": "{n} phút",
   "other": "{n} phút",
-  "until": "Đến khi cà phê nguội xuống {t} °C.",
+  "until": "Để cà phê nguội từ {start} xuống {cutoff}.",
   "cold": "Cà phê đã quá nguội.",
   "unreachable": "Cà phê sẽ không nguội đến mức đó ở đây.",
   "incomplete": "Hãy nhập đủ ba mức nhiệt độ.",
@@ -25,5 +25,6 @@
   "note": "Đây là ước tính, không phải đồng hồ đếm ngược. Nắp đậy hoặc cốc giữ nhiệt có thể làm thay đổi thời gian nguội.",
   "how": "Thời gian nguội được tính như thế nào?",
   "model": "Chênh lệch nhiệt độ giữa cà phê và không khí càng lớn thì cà phê càng nguội nhanh. Công cụ dùng định luật làm nguội của Newton với hệ số cố định 0,1 mỗi phút. Trong phòng 21 °C, cà phê ở 80 °C mất khoảng 11 phút để xuống 40 °C và khoảng 30 phút để xuống 24 °C.",
-  "privacy": "Quyền riêng tư (tiếng Anh)"
+  "privacy": "Quyền riêng tư (tiếng Anh)",
+  "unit": "Đơn vị nhiệt độ"
 }

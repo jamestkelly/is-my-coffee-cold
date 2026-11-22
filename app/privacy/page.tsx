@@ -11,7 +11,7 @@ export default function Privacy() {
     <a href="/">← Back to the calculator</a>
     <h1>Privacy</h1>
     <h2>Entering temperatures</h2>
-    <p>Your browser calculates the cooling time. You don’t need an account, and the calculator doesn’t send your coffee temperature or cutoff to a calculation service. When you switch languages, edited temperatures can appear after the # in the URL to preserve your cup. That part is not sent in the web request, but someone you share the full link with can see it.</p>
+    <p>Your browser calculates the cooling time. You don’t need an account, and the calculator doesn’t send your coffee temperature or cutoff to a calculation service. Edited readings and your unit choice appear after the # in the URL so you can bookmark or share your cup. That part is not sent in the web request, but someone you share the full link with can see it. Location coordinates are never included in the link.</p>
     <h2>Using outdoor weather</h2>
     <p>Manual entry never asks for your location. If you select “Use outdoor temperature” and then “Use my location”, your browser checks location permission. It rounds latitude and longitude to one decimal place before requesting the current air temperature directly from Open-Meteo. The provider receives those approximate coordinates and your IP address. The app does not store your coordinates.</p>
     <p>You can decline permission and keep entering temperatures yourself. To change an earlier decision, use your browser’s site permissions. See <a href="https://open-meteo.com/en/terms">Open-Meteo’s terms and privacy notice</a> for how it handles requests.</p>

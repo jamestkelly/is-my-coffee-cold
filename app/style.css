@@ -21,6 +21,9 @@ h2 { font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -.06em; line-height: 1.1
 h2 strong { font-size: 1.4em; color: var(--blue); font-variant-numeric: tabular-nums; }
 .message { font-size: clamp(1.7rem, 4vw, 3rem); max-width: 18ch; }
 .fields { min-width: 0; }
+.units { display: flex; gap: 1rem; border: 0; padding: 0; margin: 0 0 .8rem; }
+.units label { display: inline-flex; gap: .3rem; align-items: center; min-height: 44px; cursor: pointer; }
+.units input { margin: 0; accent-color: var(--blue); }
 .site-links { display: flex; flex-wrap: wrap; gap: 0 1.25rem; margin-top: clamp(2rem, 5vw, 4rem); border-top: 1px solid #cbd5df; }
 .site-links a { display: inline-flex; align-items: center; min-height: 44px; color: #475569; font-size: .875rem; text-underline-offset: .2em; }
 .site-links a:hover, .site-links a:focus-visible { color: var(--blue); }

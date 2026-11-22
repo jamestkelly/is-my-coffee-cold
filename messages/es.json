@@ -4,7 +4,7 @@
   "estimate": "Tiempo estimado de enfriamiento",
   "fields": "Temperaturas",
   "cutoff": "Demasiado frío para mí a",
-  "coffee": "Temperatura del café",
+  "coffee": "Temperatura actual del café",
   "air": "Ambiente / exterior",
   "increase": "Aumentar: {field}",
   "decrease": "Reducir: {field}",
@@ -12,7 +12,7 @@
   "less": "Menos de",
   "one": "{n} minuto",
   "other": "{n} minutos",
-  "until": "Para que el café llegue a {t} °C.",
+  "until": "Para que el café se enfríe de {start} a {cutoff}.",
   "cold": "Ya está demasiado frío.",
   "unreachable": "Aquí no alcanzará esa temperatura.",
   "incomplete": "Introduce las tres temperaturas.",
@@ -25,5 +25,6 @@
   "note": "Es una estimación, no un temporizador. Una tapa o una taza térmica puede cambiar el tiempo de enfriamiento.",
   "how": "¿Cómo se calcula el tiempo de enfriamiento?",
   "model": "Cuanto mayor sea la diferencia entre la temperatura del café y la del aire, más rápido se enfriará. Usamos la ley de enfriamiento de Newton con un coeficiente de 0,1 por minuto. En una habitación a 21 °C, un café a 80 °C tarda unos 11 minutos en llegar a 40 °C y unos 30 en llegar a 24 °C.",
-  "privacy": "Privacidad (en inglés)"
+  "privacy": "Privacidad (en inglés)",
+  "unit": "Unidad de temperatura"
 }

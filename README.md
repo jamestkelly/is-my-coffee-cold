@@ -4,7 +4,7 @@
 
 Enter your coffee temperature, the air temperature and your personal cutoff. The answer updates as you type. No account, location permission or backend is needed. If you’re outside, **Use outdoor temperature** can fill in the air temperature for you. With your permission, the browser sends approximate coordinates to [Open-Meteo](https://open-meteo.com/); the reading remains editable. In a kitchen, use the room temperature instead.
 
-The calculator speaks English, French, Spanish, Simplified Chinese, Japanese, Korean and Vietnamese. Changing languages preserves your cup. You can also link straight to a language, such as [Français](https://is-my-coffee-cold.vercel.app/fr/) or [日本語](https://is-my-coffee-cold.vercel.app/ja/).
+Use °C or °F in any of the seven languages. Enter the **current** coffee temperature: the estimate starts from that reading, not from when you poured the drink. Copy or bookmark the address to keep the readings and unit, for example [80 °C down to 40 °C](https://is-my-coffee-cold.vercel.app/#cutoff=40). Switching languages preserves your cup.
 
 ## Why do the last few degrees take so long?
 

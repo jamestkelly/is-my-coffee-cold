@@ -4,18 +4,20 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Select, SelectContent, SelectItem, SelectItemIndicator, SelectLabel, SelectTrigger, SelectValue } from '@ui-sdk/react/select';
 import { NumberInput, NumberInputControl, NumberInputDecrement, NumberInputGroup, NumberInputIncrement } from '@ui-sdk/react/number-input';
 import { coolingMinutes } from '../lib/cooling';
+import { cupHash, defaultCup, displayReading, readCup, toCelsius, type Cup, type Unit } from '../lib/cup';
 import { copy, languages, isLocale, type Locale } from '../lib/languages';
 const options = Object.entries(languages).map(([value, label]) => ({ value, label }));
 
-function Temperature({ id, label, value, change, children, locale }: {
+function Temperature({ id, label, value, change, children, locale, unit }: {
+  unit: Unit;
   locale: Locale;
   id: string; label: string; value: number | null; change: (n: number | null) => void; children?: ReactNode;
 }) {
   return <div className="field">
-    <div className="label-row"><label htmlFor={id}>{label}<span className="sr"> (°C)</span></label>{children}</div>
-    <NumberInput value={value} onValueChange={change} locale={locale} step={0.1} largeStep={1}>
+    <div className="label-row"><label htmlFor={id}>{label}<span className="sr"> (°{unit})</span></label>{children}</div>
+    <NumberInput value={displayReading(value, unit)} onValueChange={n => change(toCelsius(n, unit))} locale={locale} step={0.1} largeStep={1}>
       <NumberInputGroup className="control">
-        <div className="reading"><NumberInputControl id={id} /><span aria-hidden="true">°C</span></div>
+        <div className="reading"><NumberInputControl id={id} /><span aria-hidden="true">°{unit}</span></div>
         <NumberInputDecrement aria-label={copy[locale].decrease.replace('{field}', label)}>−</NumberInputDecrement>
         <NumberInputIncrement aria-label={copy[locale].increase.replace('{field}', label)}>+</NumberInputIncrement>
       </NumberInputGroup>
@@ -26,9 +28,16 @@ function Temperature({ id, label, value, change, children, locale }: {
 export default function Calculator({ locale: initialLocale }: { locale: Locale }) {
   const [locale, setLocale] = useState(initialLocale);
   const t = copy[locale];
-  const [cutoff, setCutoff] = useState<number | null>(24);
-  const [coffee, setCoffee] = useState<number | null>(80);
-  const [air, setAir] = useState<number | null>(21);
+  const [cup, setCup] = useState(defaultCup);
+  const { cutoff, coffee, air, unit } = cup;
+  const currentCup = useRef(cup);
+  function editCup(patch: Partial<Cup>) {
+    const next = { ...currentCup.current, ...patch };
+    currentCup.current = next;
+    setCup(next);
+    const hash = cupHash(next);
+    if (location.hash !== hash) history.replaceState(history.state, '', location.pathname + location.search + hash);
+  }
   const [weather, setWeather] = useState<'idle' | 'loading' | 'success' | 'failed'>('idle');
   const [explain, setExplain] = useState(false);
   const request = useRef(0);
@@ -40,17 +49,18 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
   const [sourceBefore, sourceAfter] = t.source.split('{source}');
 
   useEffect(() => {
-    const onBack = () => {
+    const restore = () => {
       const lang = location.pathname.split('/')[1];
       setLocale(isLocale(lang) ? lang : 'en');
+      currentCup.current = readCup(location.hash);
+      setCup(currentCup.current);
+      request.current++;
+      setWeather('idle');
+      setExplain(false);
     };
-    window.addEventListener('popstate', onBack);
-    const values = new URLSearchParams(location.hash.slice(1));
-    for (const [key, set] of [['coffee', setCoffee], ['air', setAir], ['cutoff', setCutoff]] as const) {
-      const text = values.get(key);
-      if (text !== null) set(text.trim() && Number.isFinite(Number(text)) ? Number(text) : null);
-    }
-    return () => window.removeEventListener('popstate', onBack);
+    restore();
+    window.addEventListener('popstate', restore);
+    return () => window.removeEventListener('popstate', restore);
   }, []);
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -59,11 +69,7 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
   }, [locale, t]);
   function switchLanguage(next: unknown) {
     if (!isLocale(next) || next === locale) return;
-    const values = new URLSearchParams();
-    for (const [key, value, initial] of [['coffee', coffee, 80], ['air', air, 21], ['cutoff', cutoff, 24]] as const) {
-      if (value !== initial) values.set(key, value === null ? '' : String(value));
-    }
-    history.pushState(null, '', `/${next}/${values.size ? `#${values}` : ''}`);
+    history.pushState(null, '', `/${next}/${cupHash(currentCup.current)}`);
     setLocale(next);
   }
 
@@ -82,7 +88,7 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
       const temp = (await response.json()).current?.temperature_2m;
       if (!Number.isFinite(temp)) throw Error();
       if (request.current === current) {
-        setAir(Math.round(temp));
+        editCup({ air: Math.round(temp) });
         setWeather('success');
       }
     } catch {
@@ -102,13 +108,16 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
       {typeof minutes === 'number' ? <>
         <p>{rounded ? t.about : t.less}</p>
         <h2>{before}<strong>{format.format(rounded || 1)}</strong>{after}</h2>
-        <p>{t.until.replace('{t}', format.format(cutoff!))}</p>
+        <p>{t.until.replace('{start}', `${format.format(displayReading(coffee, unit)!)} °${unit}`).replace('{cutoff}', `${format.format(displayReading(cutoff, unit)!)} °${unit}`)}</p>
       </> : <h2 className="message">{t[minutes]}</h2>}
     </section>
     <section className="fields" aria-label={t.fields}>
-      <Temperature locale={locale} id="cutoff" label={t.cutoff} value={cutoff} change={setCutoff} />
-      <Temperature locale={locale} id="coffee" label={t.coffee} value={coffee} change={setCoffee} />
-      <Temperature locale={locale} id="ambient" label={t.air} value={air} change={n => { request.current++; setAir(n); setWeather('idle'); }}>
+      <fieldset className="units"><legend className="sr">{t.unit}</legend>
+        {(['C', 'F'] as const).map(u => <label key={u}><input type="radio" name="unit" checked={unit === u} onChange={() => editCup({ unit: u })} /> °{u}</label>)}
+      </fieldset>
+      <Temperature locale={locale} unit={unit} id="cutoff" label={t.cutoff} value={cutoff} change={cutoff => editCup({ cutoff })} />
+      <Temperature locale={locale} unit={unit} id="coffee" label={t.coffee} value={coffee} change={coffee => editCup({ coffee })} />
+      <Temperature locale={locale} unit={unit} id="ambient" label={t.air} value={air} change={air => { request.current++; editCup({ air }); setWeather('idle'); }}>
         <button className="link" disabled={weather === 'loading'} aria-expanded={explain} onClick={() => setExplain(!explain)}>
           {weather === 'loading' ? t.loading : t.weather}
         </button>

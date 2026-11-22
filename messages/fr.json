@@ -4,7 +4,7 @@
   "estimate": "Temps de refroidissement estimé",
   "fields": "Températures",
   "cutoff": "Trop froid pour moi à",
-  "coffee": "Température du café",
+  "coffee": "Température actuelle du café",
   "air": "Ambiante / extérieure",
   "increase": "Augmenter : {field}",
   "decrease": "Diminuer : {field}",
@@ -12,7 +12,7 @@
   "less": "Moins de",
   "one": "{n} minute",
   "other": "{n} minutes",
-  "until": "Avant que votre café atteigne {t} °C.",
+  "until": "Pour que votre café passe de {start} à {cutoff}.",
   "cold": "Déjà trop froid.",
   "unreachable": "Votre café n’atteindra pas cette température ici.",
   "incomplete": "Saisissez les trois températures.",
@@ -25,5 +25,6 @@
   "note": "C’est une estimation, pas un minuteur. Un couvercle ou une tasse isotherme peut modifier le temps de refroidissement.",
   "how": "Comment le temps de refroidissement est-il calculé ?",
   "model": "Plus le café est chaud par rapport à l’air, plus il refroidit vite. Le calcul utilise la loi de Newton avec un coefficient de 0,1 par minute. Dans une pièce à 21 °C, un café à 80 °C atteint 40 °C en 11 minutes environ, mais il lui faut près de 30 minutes pour atteindre 24 °C.",
-  "privacy": "Confidentialité (en anglais)"
+  "privacy": "Confidentialité (en anglais)",
+  "unit": "Unité de température"
 }
