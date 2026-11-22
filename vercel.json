@@ -8,6 +8,14 @@
       "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
     },
     { "src": "^/$", "headers": { "Vary": "Accept" }, "continue": true },
-    { "src": "^/index\\.md$", "headers": { "Content-Type": "text/markdown; charset=utf-8" }, "continue": true }
+    { "src": "^/index\\.md$", "headers": { "Content-Type": "text/markdown; charset=utf-8" }, "continue": true },
+    { "handle": "error" },
+    {
+      "src": "/.*",
+      "status": 404,
+      "has": [{ "type": "header", "key": "accept", "value": "text/markdown(?:\\s*,\\s*\\*/\\*)?" }],
+      "dest": "/not-found.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
+    }
   ]
 }

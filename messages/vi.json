@@ -24,5 +24,6 @@
   "source": "Nhiệt độ ngoài trời do {source} cung cấp.",
   "note": "Đây là ước tính, không phải đồng hồ đếm ngược. Nắp đậy hoặc cốc giữ nhiệt có thể làm thay đổi thời gian nguội.",
   "how": "Thời gian nguội được tính như thế nào?",
-  "model": "Chênh lệch nhiệt độ giữa cà phê và không khí càng lớn thì cà phê càng nguội nhanh. Công cụ dùng định luật làm nguội của Newton với hệ số cố định 0,1 mỗi phút. Trong phòng 21 °C, cà phê ở 80 °C mất khoảng 11 phút để xuống 40 °C và khoảng 30 phút để xuống 24 °C."
+  "model": "Chênh lệch nhiệt độ giữa cà phê và không khí càng lớn thì cà phê càng nguội nhanh. Công cụ dùng định luật làm nguội của Newton với hệ số cố định 0,1 mỗi phút. Trong phòng 21 °C, cà phê ở 80 °C mất khoảng 11 phút để xuống 40 °C và khoảng 30 phút để xuống 24 °C.",
+  "privacy": "Quyền riêng tư (tiếng Anh)"
 }

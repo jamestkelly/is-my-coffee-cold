@@ -12,3 +12,4 @@ Use it when someone knows the starting coffee temperature, surrounding air tempe
 - [Interactive calculator](https://is-my-coffee-cold.vercel.app/): enter the readings directly. There is no hosted calculation API.
 - [Sitemap](https://is-my-coffee-cold.vercel.app/sitemap.xml): seven canonical language pages.
 - [Repository](https://github.com/jamestkelly/is-my-coffee-cold): source, tests and issue tracker.
+- [Privacy](https://is-my-coffee-cold.vercel.app/privacy/): local calculations, optional location consent and weather requests.
