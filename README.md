@@ -2,7 +2,7 @@
 
 How long until this cup is too cold **for me**? Open the page, enter the coffee temperature, the surrounding air temperature and your preferred cutoff. Get an estimate without creating an account or sharing your location.
 
-**Status: rebuild plan.** There is no runnable app yet. The [previous implementation](https://github.com/jamestkelly/is-my-coffee-cold/tree/de903338) is preserved in Git history.
+**Run locally:** With Node 24 and pnpm, run `pnpm install --frozen-lockfile` and `pnpm dev`. `pnpm build` generates the static site in `out/`. The [previous implementation](https://github.com/jamestkelly/is-my-coffee-cold/tree/de903338) is preserved in Git history.
 
 ## The first visit
 
