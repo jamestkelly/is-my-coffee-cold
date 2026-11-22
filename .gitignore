@@ -20,6 +20,10 @@ node_modules
 
 # Production
 build
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
 
 # Logs
 npm-debug.log*

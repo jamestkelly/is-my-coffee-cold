@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   validate:
-    name: Validate Release Tooling
+    name: Validate Calculator and Release Tooling
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Source
@@ -31,6 +31,12 @@ jobs:
           const { plugins } = JSON.parse(readFileSync('.releaserc.json', 'utf8'));
           for (const [name] of plugins) await import(name);
           JS
+      - name: Verify Calculator and Static Export
+        run: |
+          pnpm typecheck
+          pnpm test
+          pnpm build
+          test -s out/index.html
   branch-name:
     name: Validate Source Branch
     if: github.event_name == 'pull_request'
