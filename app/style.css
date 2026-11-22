@@ -1,8 +1,17 @@
 :root { color-scheme: light; font: 100%/1.45 system-ui, sans-serif; color: #101929; background: #f5fafc; --blue: #063cce; }
 * { box-sizing: border-box; }
 body, p, h1, h2 { margin: 0; }
-main { max-width: 73rem; margin: auto; padding: clamp(1.5rem, 5vw, 4.5rem); }
-h1 { font-size: clamp(1.55rem, 3vw, 2.3rem); letter-spacing: -.055em; padding-bottom: .6em; border-bottom: 1px solid #8998aa; }
+main { width: min(calc(100% - 3rem), 1000px); margin: auto; padding-block: clamp(1.5rem, 5vw, 4.5rem); }
+header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1rem; padding-bottom: .7rem; border-bottom: 1px solid #8998aa; }
+h1 { font-size: clamp(1.3125rem, 3vw, 2.3rem); letter-spacing: -.045em; }
+.language { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .5rem; font-size: .875rem; color: #475569; background: transparent; border: 1px solid transparent; border-radius: .25rem; }
+.language:hover, .language[data-open] { background: white; border-color: #899aaf; }
+.language:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.languages { background: white; border: 1px solid #899aaf; border-radius: .4rem; padding: 6px; z-index: 2; width: 224px; max-width: calc(100vw - 24px); max-height: min(340px, var(--available-height, calc(100dvh - 24px))); overflow: auto; overscroll-behavior: contain; box-shadow: 0 8px 24px #17243b1f; }
+.languages [role=option] { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: .5rem .75rem; cursor: pointer; }
+.languages [data-selected] { color: var(--blue); font-weight: 650; }
+.languages [data-highlighted] { background: #e7efff; }
+.languages[data-modality=keyboard] [data-highlighted] { outline: 2px solid var(--blue); outline-offset: -2px; }
 .calculator { display: grid; gap: clamp(2.3rem, 6vw, 5rem); padding-top: clamp(2.6rem, 7vw, 6rem); }
 .estimate { min-height: 9.5rem; font-size: clamp(1.15rem, 2.4vw, 1.6rem); letter-spacing: -.03em; }
 h2 { font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -.06em; line-height: 1.1; margin: .12em 0 .28em; overflow-wrap: anywhere; }
@@ -27,4 +36,5 @@ button { cursor: pointer; }
 button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: -3px; }
 .note, .notice, [role=status]:not(:empty) { margin-top: 1.25rem; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-@media (min-width: 48rem) { .calculator { grid-template-columns: 1fr 1fr; } }
+.label-row .link { font-size: .875rem; }
+@media (min-width: 1000px) { .calculator { grid-template-columns: 1fr 1fr; } }
