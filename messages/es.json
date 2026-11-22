@@ -10,9 +10,7 @@
   "decrease": "Reducir: {field}",
   "about": "Aproximadamente",
   "less": "Menos de",
-  "one": "{n} minuto",
-  "other": "{n} minutos",
-  "until": "Para bajar de {start} a {cutoff}.",
+  "until": "Para bajar de {start, number} °{unit} a {cutoff, number} °{unit}.",
   "cold": "Ya está demasiado frío.",
   "unreachable": "Aquí no alcanzará esa temperatura.",
   "incomplete": "Introduce las tres temperaturas.",
@@ -21,7 +19,7 @@
   "consent": "¿Quieres usar tu ubicación aproximada para consultar la temperatura exterior en Open-Meteo?",
   "allow": "Usar mi ubicación",
   "failed": "Temperatura exterior no disponible. Puedes introducirla arriba.",
-  "source": "Temperatura exterior según {source}.",
+  "source": "Temperatura exterior según <provider>Open-Meteo</provider>.",
   "note": "Es una estimación, no un temporizador. Una tapa o una taza térmica puede cambiar el tiempo de enfriamiento.",
   "how": "¿Cómo se calcula el tiempo de enfriamiento?",
   "model": "Cuanto mayor sea la diferencia entre la temperatura del café y la del aire, más rápido se enfriará. Usamos la ley de enfriamiento de Newton con un coeficiente de 0,1 por minuto. En una habitación a 21 °C, un café a 80 °C tarda unos 11 minutos en llegar a 40 °C y unos 30 en llegar a 24 °C.",
@@ -38,5 +36,7 @@
   "hostHeading": "Visitar el sitio",
   "hostPrivacy": "Vercel aloja el sitio y recibe datos de la solicitud, como tu dirección IP y la ruta solicitada, para entregar las páginas.",
   "hostPolicy": "Política de privacidad de Vercel",
-  "questionsPrivacy": "Si tienes preguntas, usa el registro público sin compartir coordenadas ni otros datos personales:"
+  "questionsPrivacy": "Si tienes preguntas, usa el registro público sin compartir coordenadas ni otros datos personales:",
+  "duration": "{n, plural, one {<value>#</value> minuto} other {<value>#</value> minutos}}",
+  "shortDuration": "<value>{n, number}</value> minuto"
 }

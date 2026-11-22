@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { copy, languages } from '../../lib/languages';
+import { translator, languages } from '../../lib/languages';
 import { origin, localeUrls, privacyUrls } from '../../lib/site';
 import { getLocale, type Params } from '../route-locale';
 import '../style.css';
@@ -12,9 +12,9 @@ export const dynamicParams = false;
 export async function generateMetadata({ params }: { params: Params }) {
   const locale = await getLocale(params);
   const privacy = (await params).path?.at(-1) === 'privacy';
-  const t = copy[locale];
-  const title = privacy ? `${t.privacy} | ${t.title}` : t.title;
-  const description = privacy ? t.privacyDescription : t.estimate;
+  const t = translator(locale);
+  const title = privacy ? `${t('privacy')} | ${t('title')}` : t('title');
+  const description = privacy ? t('privacyDescription') : t('estimate');
   const urls = privacy ? privacyUrls : localeUrls;
   const canonical = urls[locale];
   return {

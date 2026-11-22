@@ -10,9 +10,7 @@
   "decrease": "Decrease: {field}",
   "about": "About",
   "less": "Less than",
-  "one": "{n} minute",
-  "other": "{n} minutes",
-  "until": "To cool from {start} to {cutoff}.",
+  "until": "To cool from {start, number} °{unit} to {cutoff, number} °{unit}.",
   "cold": "Already too cold.",
   "unreachable": "Won’t reach that temperature here.",
   "incomplete": "Enter all three temperatures.",
@@ -21,7 +19,7 @@
   "consent": "Use your approximate location to get the outdoor temperature from Open-Meteo?",
   "allow": "Use my location",
   "failed": "Outdoor temperature unavailable. You can enter it above.",
-  "source": "Outdoor reading from {source}.",
+  "source": "Outdoor reading from <provider>Open-Meteo</provider>.",
   "note": "An estimate, not a timer. A lid or insulated mug can change the cooling time.",
   "how": "How does the coffee cooling calculator work?",
   "model": "Coffee loses heat fastest when it is much hotter than the surrounding air. This calculator uses Newton’s law of cooling with a fixed rate of 0.1 per minute. For coffee starting at 80 °C in a 21 °C room, a 40 °C cutoff gives about 11 minutes, while a 24 °C cutoff gives about 30. If the room is as warm as your cutoff, the coffee won’t cool to it.",
@@ -38,5 +36,7 @@
   "hostHeading": "Visiting the site",
   "hostPrivacy": "Vercel hosts the site and receives ordinary request information such as your IP address and the requested path to deliver the pages.",
   "hostPolicy": "Vercel’s privacy policy",
-  "questionsPrivacy": "Questions? Use the public issue tracker without including coordinates or other personal details:"
+  "questionsPrivacy": "Questions? Use the public issue tracker without including coordinates or other personal details:",
+  "duration": "{n, plural, one {<value>#</value> minute} other {<value>#</value> minutes}}",
+  "shortDuration": "<value>{n, number}</value> minute"
 }
