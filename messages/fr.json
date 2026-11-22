@@ -22,5 +22,7 @@
   "allow": "Utiliser ma position",
   "failed": "Température extérieure indisponible. Vous pouvez la saisir ci-dessus.",
   "source": "Température extérieure fournie par {source}.",
-  "note": "C’est une estimation, pas un minuteur. Un couvercle ou une tasse isotherme peut modifier le temps de refroidissement."
+  "note": "C’est une estimation, pas un minuteur. Un couvercle ou une tasse isotherme peut modifier le temps de refroidissement.",
+  "how": "Comment le temps de refroidissement est-il calculé ?",
+  "model": "Plus le café est chaud par rapport à l’air, plus il refroidit vite. Le calcul utilise la loi de Newton avec un coefficient de 0,1 par minute. Dans une pièce à 21 °C, un café à 80 °C atteint 40 °C en 11 minutes environ, mais il lui faut près de 30 minutes pour atteindre 24 °C."
 }
