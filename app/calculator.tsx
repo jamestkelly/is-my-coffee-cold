@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@ui-sdk/react/select';
+import { Select, SelectContent, SelectItem, SelectItemIndicator, SelectLabel, SelectTrigger, SelectValue } from '@ui-sdk/react/select';
 import { NumberInput, NumberInputControl, NumberInputDecrement, NumberInputGroup, NumberInputIncrement } from '@ui-sdk/react/number-input';
 import { coolingMinutes } from '../lib/cooling';
 import { copy, languages, isLocale, type Locale } from '../lib/languages';
@@ -13,7 +13,7 @@ function Temperature({ id, label, value, change, children, locale }: {
 }) {
   return <div className="field">
     <div className="label-row"><label htmlFor={id}>{label}<span className="sr"> (°C)</span></label>{children}</div>
-    <NumberInput value={value} onValueChange={change} locale={locale}>
+    <NumberInput value={value} onValueChange={change} locale={locale} step={0.1} largeStep={1}>
       <NumberInputGroup className="control">
         <div className="reading"><NumberInputControl id={id} /><span aria-hidden="true">°C</span></div>
         <NumberInputDecrement aria-label={copy[locale].decrease.replace('{field}', label)}>−</NumberInputDecrement>
@@ -23,7 +23,8 @@ function Temperature({ id, label, value, change, children, locale }: {
   </div>;
 }
 
-export default function Calculator({ locale }: { locale: Locale }) {
+export default function Calculator({ locale: initialLocale }: { locale: Locale }) {
+  const [locale, setLocale] = useState(initialLocale);
   const t = copy[locale];
   const [cutoff, setCutoff] = useState<number | null>(24);
   const [coffee, setCoffee] = useState<number | null>(80);
@@ -39,19 +40,31 @@ export default function Calculator({ locale }: { locale: Locale }) {
   const [sourceBefore, sourceAfter] = t.source.split('{source}');
 
   useEffect(() => {
+    const onBack = () => {
+      const lang = location.pathname.split('/')[1];
+      setLocale(isLocale(lang) ? lang : 'en');
+    };
+    window.addEventListener('popstate', onBack);
     const values = new URLSearchParams(location.hash.slice(1));
     for (const [key, set] of [['coffee', setCoffee], ['air', setAir], ['cutoff', setCutoff]] as const) {
       const text = values.get(key);
       if (text !== null) set(text.trim() && Number.isFinite(Number(text)) ? Number(text) : null);
     }
+    return () => window.removeEventListener('popstate', onBack);
   }, []);
+  useEffect(() => {
+    document.documentElement.lang = locale;
+    document.title = t.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', t.estimate);
+  }, [locale, t]);
   function switchLanguage(next: unknown) {
     if (!isLocale(next) || next === locale) return;
     const values = new URLSearchParams();
     for (const [key, value, initial] of [['coffee', coffee, 80], ['air', air, 21], ['cutoff', cutoff, 24]] as const) {
       if (value !== initial) values.set(key, value === null ? '' : String(value));
     }
-    location.assign(`/${next}/${values.size ? `#${values}` : ''}`);
+    history.pushState(null, '', `/${next}/${values.size ? `#${values}` : ''}`);
+    setLocale(next);
   }
 
   async function useWeather() {
@@ -80,9 +93,9 @@ export default function Calculator({ locale }: { locale: Locale }) {
   return <main><header><h1>{t.title}</h1>
     <Select value={locale} items={options} onValueChange={switchLanguage}>
       <SelectLabel className="sr">{t.language}</SelectLabel>
-      <SelectTrigger className="language"><SelectValue /> ▾</SelectTrigger>
-      <SelectContent className="languages">{options.map(({ value, label }) =>
-        <SelectItem key={value} value={value} lang={value}>{label}</SelectItem>)}</SelectContent>
+      <SelectTrigger className="language"><SelectValue /><span aria-hidden="true">▾</span></SelectTrigger>
+      <SelectContent className="languages" align="end" sideOffset={8} collisionPadding={12} alignItemWithTrigger={false}>{options.map(({ value, label }) =>
+        <SelectItem key={value} value={value} lang={value}>{label}<SelectItemIndicator aria-hidden="true">✓</SelectItemIndicator></SelectItem>)}</SelectContent>
     </Select>
   </header><div className="calculator">
     <section className="estimate" aria-label={t.estimate} aria-live="polite" aria-atomic="true">
