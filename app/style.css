@@ -1,4 +1,7 @@
 :root { color-scheme: light; font: 100%/1.45 system-ui, sans-serif; color: #101929; background: #f5fafc; --blue: #063cce; }
+.privacy { max-width: 68ch; }
+.privacy h1, .privacy p { margin-block: 1rem; }
+.privacy h2 { font-size: 1.35rem; letter-spacing: normal; margin-top: 2rem; }
 * { box-sizing: border-box; }
 body, p, h1, h2 { margin: 0; }
 main { width: min(calc(100% - 3rem), 1000px); margin: auto; padding-block: clamp(1.5rem, 5vw, 4.5rem); }
