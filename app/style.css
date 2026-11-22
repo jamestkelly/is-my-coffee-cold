@@ -1,49 +1,17 @@
-:root { color-scheme: light; font: 100%/1.45 system-ui, sans-serif; color: #101929; background: #f5fafc; --blue: #063cce; }
-.privacy { max-width: 68ch; }
-.privacy h1, .privacy p { margin-block: 1rem; }
-.privacy h2 { font-size: 1.35rem; letter-spacing: normal; margin-top: 2rem; }
-* { box-sizing: border-box; }
-body, p, h1, h2 { margin: 0; }
-main { width: min(calc(100% - 3rem), 1000px); margin: auto; padding-block: clamp(1.5rem, 5vw, 4.5rem); }
-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1rem; padding-bottom: .7rem; border-bottom: 1px solid #8998aa; }
-h1 { font-size: clamp(1.3125rem, 3vw, 2.3rem); letter-spacing: -.045em; }
-.language { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; padding: .5rem; font-size: .875rem; color: #475569; background: transparent; border: 1px solid transparent; border-radius: .25rem; }
-.language:hover, .language[data-open] { background: white; border-color: #899aaf; }
-.language:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-.languages { background: white; border: 1px solid #899aaf; border-radius: .4rem; padding: 6px; z-index: 2; width: 224px; max-width: calc(100vw - 24px); max-height: min(340px, var(--available-height, calc(100dvh - 24px))); overflow: auto; overscroll-behavior: contain; box-shadow: 0 8px 24px #17243b1f; }
-.languages [role=option] { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: .5rem .75rem; cursor: pointer; }
-.languages [data-selected] { color: var(--blue); font-weight: 650; }
-.languages [data-highlighted] { background: #e7efff; }
-.languages[data-modality=keyboard] [data-highlighted] { outline: 2px solid var(--blue); outline-offset: -2px; }
-.calculator { display: grid; gap: clamp(2.3rem, 6vw, 5rem); padding-top: clamp(2.6rem, 7vw, 6rem); }
-.estimate { min-height: 9.5rem; font-size: clamp(1.15rem, 2.4vw, 1.6rem); letter-spacing: -.03em; }
-h2 { font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -.06em; line-height: 1.1; margin: .12em 0 .28em; overflow-wrap: anywhere; }
-h2 strong { font-size: 1.4em; color: var(--blue); font-variant-numeric: tabular-nums; }
-.message { font-size: clamp(1.7rem, 4vw, 3rem); max-width: 18ch; }
-.fields { min-width: 0; }
-.units { display: flex; gap: 1rem; border: 0; padding: 0; margin: 0 0 .8rem; }
-.units label { display: inline-flex; gap: .3rem; align-items: center; min-height: 44px; cursor: pointer; }
-.units input { margin: 0; accent-color: var(--blue); }
-.site-links { display: flex; flex-wrap: wrap; gap: 0 1.25rem; margin-top: clamp(2rem, 5vw, 4rem); border-top: 1px solid #cbd5df; }
-.site-links a { display: inline-flex; align-items: center; min-height: 44px; color: #475569; font-size: .875rem; text-underline-offset: .2em; }
-.site-links a:hover, .site-links a:focus-visible { color: var(--blue); }
-.field + .field { margin-top: 1.55rem; }
-.label-row { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 0 .6rem; margin-bottom: .45rem; }
-label { font-weight: 670; }
-button, input { font: inherit; color: inherit; }
-button { cursor: pointer; }
-.link, a { color: var(--blue); }
-.link { background: transparent; border: 0; padding: .3em 0; }
-.link:hover, .link:focus-visible { text-decoration: underline; }
-.control { display: flex; border: 1px solid #899aaf; border-radius: .4rem; background: white; }
-.control:focus-within { outline: 2px solid var(--blue); outline-offset: -1px; }
-.reading { display: flex; align-items: center; flex: 1; min-width: 0; gap: .35rem; padding: .4rem .8rem; }
-.reading input { field-sizing: content; width: 3ch; min-width: 1ch; max-width: 75%; font-size: 1.7rem; background: transparent; border: 0; padding: 0; }
-@supports (field-sizing: content) { .reading input { width: auto; } }
-.reading input:focus { outline: none; }
-.control button { min-width: 2.8rem; width: 16%; background: transparent; border: 0; border-left: 1px solid #a7b6c4; font-size: 1.6rem; }
-button:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: -3px; }
-.note, .notice, [role=status]:not(:empty) { margin-top: 1.25rem; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-.label-row .link { font-size: .875rem; }
-@media (min-width: 1000px) { .calculator { grid-template-columns: 1fr 1fr; } }
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #063cce;
+  --color-ink: #101929;
+  --color-paper: #f5fafc;
+  --breakpoint-wide: 62.5rem;
+}
+
+@layer base {
+  body { @apply bg-paper font-sans leading-[1.45] text-ink scheme-light; }
+  main { @apply mx-auto w-[calc(100%-3rem)] max-w-[1000px] py-[clamp(1.5rem,5vw,4.5rem)]; }
+  h1 { @apply text-[clamp(1.3125rem,3vw,2.3rem)] font-bold tracking-[-.045em]; }
+  a { @apply text-accent underline; }
+  button, summary { @apply cursor-pointer; }
+  :is(button, a):focus-visible { @apply outline-2 -outline-offset-2 outline-accent; }
+}

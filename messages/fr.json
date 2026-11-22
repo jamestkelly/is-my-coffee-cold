@@ -25,6 +25,18 @@
   "note": "C’est une estimation, pas un minuteur. Un couvercle ou une tasse isotherme peut modifier le temps de refroidissement.",
   "how": "Comment le temps de refroidissement est-il calculé ?",
   "model": "Plus le café est chaud par rapport à l’air, plus il refroidit vite. Le calcul utilise la loi de Newton avec un coefficient de 0,1 par minute. Dans une pièce à 21 °C, un café à 80 °C atteint 40 °C en 11 minutes environ, mais il lui faut près de 30 minutes pour atteindre 24 °C.",
-  "privacy": "Confidentialité (en anglais)",
-  "unit": "Unité de température"
+  "privacy": "Confidentialité",
+  "unit": "Unité de température",
+  "privacyDescription": "Données conservées dans votre navigateur et transmises pour la météo.",
+  "back": "Retour au calculateur",
+  "readingsHeading": "Saisie des températures",
+  "readingsPrivacy": "Le calcul se fait dans votre navigateur, sans compte. Les valeurs modifiées et l’unité figurent après le # dans l’adresse. Cette partie n’est pas envoyée au serveur, mais toute personne ayant le lien complet peut la lire. Le lien ne contient jamais de coordonnées.",
+  "weatherHeading": "Météo extérieure",
+  "weatherPrivacy": "La saisie manuelle ne demande jamais votre position. Ce n’est qu’après avoir choisi la température extérieure et confirmé que le navigateur vérifie votre autorisation. Il envoie directement à Open-Meteo la latitude et la longitude arrondies à une décimale. Le fournisseur reçoit cette position approximative et votre adresse IP. Le calculateur ne conserve pas les coordonnées.",
+  "permissionPrivacy": "Vous pouvez refuser et saisir la température. Pour modifier votre choix, utilisez les autorisations du site dans le navigateur.",
+  "providerPolicy": "Conditions et confidentialité d’Open-Meteo",
+  "hostHeading": "Visite du site",
+  "hostPrivacy": "Vercel héberge le site et reçoit les informations nécessaires pour servir les pages, notamment votre adresse IP et le chemin demandé.",
+  "hostPolicy": "Politique de confidentialité de Vercel",
+  "questionsPrivacy": "Une question ? Utilisez le suivi public sans y publier de coordonnées ni de données personnelles :"
 }
