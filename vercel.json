@@ -1,19 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "^/$",
       "has": [{ "type": "header", "key": "accept", "value": "text/markdown(?:\\s*,\\s*\\*/\\*)?" }],
-      "destination": "/index.md"
-    }
-  ],
-  "headers": [
-    { "source": "/", "headers": [{ "key": "Vary", "value": "Accept" }] },
-    { "source": "/index.md", "headers": [{ "key": "Content-Type", "value": "text/markdown; charset=utf-8" }] },
-    {
-      "source": "/",
-      "has": [{ "type": "header", "key": "accept", "value": "text/markdown(?:\\s*,\\s*\\*/\\*)?" }],
-      "headers": [{ "key": "Content-Type", "value": "text/markdown; charset=utf-8" }]
-    }
+      "dest": "/index.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
+    },
+    { "src": "^/$", "headers": { "Vary": "Accept" }, "continue": true },
+    { "src": "^/index\\.md$", "headers": { "Content-Type": "text/markdown; charset=utf-8" }, "continue": true }
   ]
 }
