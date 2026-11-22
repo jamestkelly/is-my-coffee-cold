@@ -1,3 +1,4 @@
+import { createTranslator } from 'use-intl/core';
 import en from '../messages/en.json' with { type: 'json' };
 import fr from '../messages/fr.json' with { type: 'json' };
 import es from '../messages/es.json' with { type: 'json' };
@@ -16,3 +17,7 @@ export function isLocale(value: unknown): value is Locale {
 }
 
 export const copy = { en, fr, es, 'zh-Hans': zhHans, ja, ko, vi } satisfies Record<Locale, typeof en>;
+
+export function translator(locale: Locale) {
+  return createTranslator({ locale, messages: copy[locale] });
+}

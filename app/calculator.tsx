@@ -1,25 +1,27 @@
 'use client';
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { Select, SelectContent, SelectItem, SelectItemIndicator, SelectLabel, SelectTrigger, SelectValue } from '@ui-sdk/react/select';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { LanguagePicker } from './language-picker';
+import { privacyPath } from '../lib/site';
 import { NumberInput, NumberInputControl, NumberInputDecrement, NumberInputGroup, NumberInputIncrement } from '@ui-sdk/react/number-input';
 import { coolingMinutes } from '../lib/cooling';
 import { cupHash, defaultCup, displayReading, readCup, toCelsius, type Cup, type Unit } from '../lib/cup';
-import { copy, languages, isLocale, type Locale } from '../lib/languages';
-const options = Object.entries(languages).map(([value, label]) => ({ value, label }));
+import { translator, isLocale, type Locale } from '../lib/languages';
+
 
 function Temperature({ id, label, value, change, children, locale, unit }: {
   unit: Unit;
   locale: Locale;
   id: string; label: string; value: number | null; change: (n: number | null) => void; children?: ReactNode;
 }) {
-  return <div className="field">
-    <div className="label-row"><label htmlFor={id}>{label}<span className="sr"> (°{unit})</span></label>{children}</div>
+  const t = translator(locale);
+  return <div className="mb-6">
+    <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-2.5"><label className="font-semibold" htmlFor={id}>{label}<span className="sr-only"> (°{unit})</span></label>{children}</div>
     <NumberInput value={displayReading(value, unit)} onValueChange={n => change(toCelsius(n, unit))} locale={locale} step={0.1} largeStep={1}>
-      <NumberInputGroup className="control">
-        <div className="reading"><NumberInputControl id={id} /><span aria-hidden="true">°{unit}</span></div>
-        <NumberInputDecrement aria-label={copy[locale].decrease.replace('{field}', label)}>−</NumberInputDecrement>
-        <NumberInputIncrement aria-label={copy[locale].increase.replace('{field}', label)}>+</NumberInputIncrement>
+      <NumberInputGroup className="flex rounded-md border border-slate-400 bg-white focus-within:outline-2 focus-within:-outline-offset-1 focus-within:outline-accent [&_button]:w-[16%] [&_button]:min-w-11 [&_button]:border-l [&_button]:border-slate-300 [&_button]:text-[1.6rem]">
+        <div className="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5"><NumberInputControl className="w-[3ch] min-w-[1ch] max-w-3/4 text-[1.7rem] outline-none supports-[field-sizing:content]:w-auto supports-[field-sizing:content]:field-sizing-content" id={id} /><span aria-hidden="true">°{unit}</span></div>
+        <NumberInputDecrement aria-label={t('decrease', { field: label })}>−</NumberInputDecrement>
+        <NumberInputIncrement aria-label={t('increase', { field: label })}>+</NumberInputIncrement>
       </NumberInputGroup>
     </NumberInput>
   </div>;
@@ -27,7 +29,7 @@ function Temperature({ id, label, value, change, children, locale, unit }: {
 
 export default function Calculator({ locale: initialLocale }: { locale: Locale }) {
   const [locale, setLocale] = useState(initialLocale);
-  const t = copy[locale];
+  const t = useMemo(() => translator(locale), [locale]);
   const [cup, setCup] = useState(defaultCup);
   const { cutoff, coffee, air, unit } = cup;
   const currentCup = useRef(cup);
@@ -43,11 +45,6 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
   const request = useRef(0);
   const minutes = coolingMinutes(coffee, air, cutoff);
   const rounded = typeof minutes === 'number' ? Math.round(minutes) : 0;
-  const format = new Intl.NumberFormat(locale);
-  const duration = !rounded && 'underMinute' in t ? t.underMinute : new Intl.PluralRules(locale).select(rounded || 1) === 'one' ? t.one : t.other;
-  const [before, after] = duration.split('{n}');
-  const [sourceBefore, sourceAfter] = t.source.split('{source}');
-
   useEffect(() => {
     const restore = () => {
       const lang = location.pathname.split('/')[1];
@@ -64,8 +61,8 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
   }, []);
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.title = t.title;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', t.estimate);
+    document.title = t('title');
+    document.querySelector('meta[name="description"]')?.setAttribute('content', t('estimate'));
   }, [locale, t]);
   function switchLanguage(next: unknown) {
     if (!isLocale(next) || next === locale) return;
@@ -96,40 +93,35 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
     }
   }
 
-  return <main><header><h1>{t.title}</h1>
-    <Select value={locale} items={options} onValueChange={switchLanguage}>
-      <SelectLabel className="sr">{t.language}</SelectLabel>
-      <SelectTrigger className="language"><SelectValue /><span aria-hidden="true">▾</span></SelectTrigger>
-      <SelectContent className="languages" align="end" sideOffset={8} collisionPadding={12} alignItemWithTrigger={false}>{options.map(({ value, label }) =>
-        <SelectItem key={value} value={value} lang={value}>{label}<SelectItemIndicator aria-hidden="true">✓</SelectItemIndicator></SelectItem>)}</SelectContent>
-    </Select>
-  </header><div className="calculator">
-    <section className="estimate" aria-label={t.estimate} aria-live="polite" aria-atomic="true">
+  return <main><header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5 border-b border-slate-400 pb-3"><h1>{t('title')}</h1>
+    <LanguagePicker locale={locale} onChange={switchLanguage} />
+  </header><div className="grid gap-[clamp(2.3rem,6vw,5rem)] pt-[clamp(2.6rem,7vw,6rem)] wide:grid-cols-2">
+    <section className="min-h-38 text-[clamp(1.15rem,2.4vw,1.6rem)] tracking-[-.03em]" aria-label={t('estimate')} aria-live="polite" aria-atomic="true">
       {typeof minutes === 'number' ? <>
-        <p>{rounded ? t.about : t.less}</p>
-        <h2>{before}<strong>{format.format(rounded || 1)}</strong>{after}</h2>
-        <p>{t.until.replace('{start}', `${format.format(displayReading(coffee, unit)!)}\u00a0°${unit}`).replace('{cutoff}', `${format.format(displayReading(cutoff, unit)!)}\u00a0°${unit}`)}</p>
-      </> : <h2 className="message">{t[minutes]}</h2>}
+        <p>{rounded ? t('about') : t('less')}</p>
+        <h2 className="my-[.2em] text-[clamp(2rem,6vw,4rem)] leading-[1.1] font-bold tracking-[-.06em] wrap-anywhere">{t.rich(rounded ? 'duration' : 'shortDuration', { n: rounded || 1, value: chunks => <strong className="text-[1.4em] text-accent tabular-nums">{chunks}</strong> })}</h2>
+        <p>{t('until', { start: displayReading(coffee, unit)!, cutoff: displayReading(cutoff, unit)!, unit })}</p>
+      </> : <h2 className="max-w-[18ch] text-[clamp(1.7rem,4vw,3rem)] leading-tight font-bold tracking-tight">{t(minutes)}</h2>}
     </section>
-    <section className="fields" aria-label={t.fields}>
-      <fieldset className="units"><legend className="sr">{t.unit}</legend>
-        {(['C', 'F'] as const).map(u => <label key={u}><input type="radio" name="unit" checked={unit === u} onChange={() => editCup({ unit: u })} /> °{u}</label>)}
+    <section className="min-w-0" aria-label={t('fields')}>
+      <fieldset className="mb-3 flex gap-4"><legend className="sr-only">{t('unit')}</legend>
+        {(['C', 'F'] as const).map(u => <label key={u} className="inline-flex min-h-11 cursor-pointer items-center gap-1 font-semibold"><input className="accent-accent" type="radio" name="unit" checked={unit === u} onChange={() => editCup({ unit: u })} /> °{u}</label>)}
       </fieldset>
-      <Temperature locale={locale} unit={unit} id="cutoff" label={t.cutoff} value={cutoff} change={cutoff => editCup({ cutoff })} />
-      <Temperature locale={locale} unit={unit} id="coffee" label={t.coffee} value={coffee} change={coffee => editCup({ coffee })} />
-      <Temperature locale={locale} unit={unit} id="ambient" label={t.air} value={air} change={air => { request.current++; editCup({ air }); setWeather('idle'); }}>
-        <button className="link" disabled={weather === 'loading'} aria-expanded={explain} onClick={() => setExplain(!explain)}>
-          {weather === 'loading' ? t.loading : t.weather}
+      <Temperature locale={locale} unit={unit} id="cutoff" label={t('cutoff')} value={cutoff} change={cutoff => editCup({ cutoff })} />
+      <Temperature locale={locale} unit={unit} id="coffee" label={t('coffee')} value={coffee} change={coffee => editCup({ coffee })} />
+      <Temperature locale={locale} unit={unit} id="ambient" label={t('air')} value={air} change={air => { request.current++; editCup({ air }); setWeather('idle'); }}>
+        <button className="py-1 text-sm text-accent hover:underline focus-visible:underline" disabled={weather === 'loading'} aria-expanded={explain} onClick={() => setExplain(!explain)}>
+          {weather === 'loading' ? t('loading') : t('weather')}
         </button>
       </Temperature>
-      {explain && <p className="notice">{t.consent} <button className="link" onClick={useWeather}>{t.allow}</button></p>}
-      <div role="status">{weather === 'failed' ? t.failed : weather === 'success' ? <>{sourceBefore}<a href="https://open-meteo.com/">Open-Meteo</a>{sourceAfter}</> : null}</div>
-      <p className="note">{t.note}</p>
-      <details className="note"><summary>{t.how}</summary><p>{t.model}</p></details>
+      {explain && <p className="mt-5">{t('consent')} <button className="py-1 text-accent hover:underline focus-visible:underline" onClick={useWeather}>{t('allow')}</button></p>}
+      <div role="status" className="not-empty:mt-5">{weather === 'failed' ? t('failed') : weather === 'success' ? t.rich('source', { provider: chunks => <a href="https://open-meteo.com/">{chunks}</a> }) : null}</div>
+      <p className="mt-5">{t('note')}</p>
+      <details className="mt-5"><summary>{t('how')}</summary><p>{t('model')}</p></details>
     </section>
   </div>
-    <footer className="site-links">
-      <a href="/privacy/" hrefLang="en">{t.privacy}</a>
+    <footer className="mt-[clamp(2rem,5vw,4rem)] flex flex-wrap gap-x-5 border-t border-slate-300 text-sm [&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center [&_a]:text-slate-600 [&_a]:underline-offset-4 [&_a:hover]:text-accent [&_a:focus-visible]:text-accent">
+      <a href={privacyPath(locale)} hrefLang={locale}>{t('privacy')}</a>
       <a href="https://github.com/jamestkelly/is-my-coffee-cold">GitHub</a>
     </footer>
   </main>;

@@ -52,7 +52,8 @@ Open <http://localhost:3000>. No environment variables or weather key are requir
 ## How the app fits together
 
 - **Interface:** Next.js App Router exports the localized pages ahead of time. React and [Vercel Labs UI SDK](https://ui-sdk.dev/) handle the temperature inputs and language picker in the browser. [The calculator component](app/calculator.tsx) connects the controls to the model and the optional weather lookup.
-- **Translations:** Edit the JSON files in [messages/](messages/), using `en.json` for the required keys. Keep placeholders such as `{n}` and `{field}`, moving them to wherever the language reads naturally. `pnpm test` checks the catalogs.
+- **Translations:** The calculator and privacy pages use the same [JSON catalogs](messages/) and [`use-intl`](https://next-intl.dev/docs/environments/core-library), the core of next-intl, for ICU interpolation, localized numbers, plural rules and rich text. `/privacy/` remains the English privacy URL, and each language has a direct URL such as `/fr/privacy/`. Edit `en.json` and the matching keys in the other catalogs. Keep placeholders such as `{n}` and `{field}` wherever the language reads naturally. `pnpm test` checks the catalogs.
+- **Styles:** Tailwind CSS utilities live alongside the components. [The global stylesheet](app/style.css) defines the shared palette, desktop breakpoint and base styles.
 - **Hosting and releases:** Vercel builds previews for pull requests and deploys `main` to production. Use a Conventional Commit PR title; GitHub’s **Review Gate** checks the branch, title and build. Semantic-release uses commits on `main` to create version tags and GitHub release notes. The public weather endpoint is subject to [Open-Meteo’s non-commercial terms](https://open-meteo.com/en/terms).
 
 ## License
