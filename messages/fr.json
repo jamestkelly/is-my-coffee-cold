@@ -38,5 +38,7 @@
   "hostPolicy": "Politique de confidentialité de Vercel",
   "questionsPrivacy": "Une question ? Utilisez le suivi public sans y publier de coordonnées ni de données personnelles :",
   "duration": "{n, plural, one {<value>#</value> minute} other {<value>#</value> minutes}}",
-  "shortDuration": "<value>{n, number}</value> minute"
+  "shortDuration": "<value>{n, number}</value> minute",
+  "searchTitle": "Calcul du temps de refroidissement du café",
+  "searchDescription": "Combien de temps avant que votre café soit trop froid ? Estimez ce délai en °C ou en °F à partir de sa température actuelle, de la température ambiante et de votre seuil préféré."
 }

@@ -38,5 +38,7 @@
   "hostPolicy": "Vercel 개인정보 처리방침",
   "questionsPrivacy": "문의는 공개 이슈 게시판을 이용해 주세요. 좌표나 기타 개인정보는 올리지 마세요:",
   "duration": "{n, plural, other {<value>#</value>분}}",
-  "shortDuration": "<value>{n, number}</value>분 미만"
+  "shortDuration": "<value>{n, number}</value>분 미만",
+  "searchTitle": "커피가 식는 시간 계산기",
+  "searchDescription": "커피가 식으려면 몇 분이 걸릴까요? 현재 커피 온도와 주변 온도, 너무 식었다고 느끼는 온도를 입력해 남은 시간을 확인하세요. 섭씨와 화씨를 모두 지원합니다."
 }

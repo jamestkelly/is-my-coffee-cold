@@ -38,5 +38,7 @@
   "hostPolicy": "Política de privacidad de Vercel",
   "questionsPrivacy": "Si tienes preguntas, usa el registro público sin compartir coordenadas ni otros datos personales:",
   "duration": "{n, plural, one {<value>#</value> minuto} other {<value>#</value> minutos}}",
-  "shortDuration": "<value>{n, number}</value> minuto"
+  "shortDuration": "<value>{n, number}</value> minuto",
+  "searchTitle": "Calculadora de enfriamiento del café",
+  "searchDescription": "¿Cuánto tardará en enfriarse tu café? Introduce la temperatura actual, la del ambiente y la que consideras demasiado fría. Calcula el tiempo en °C o °F."
 }

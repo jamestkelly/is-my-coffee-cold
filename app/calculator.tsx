@@ -61,8 +61,8 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
   }, []);
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.title = t('title');
-    document.querySelector('meta[name="description"]')?.setAttribute('content', t('estimate'));
+    document.title = t('searchTitle');
+    document.querySelector('meta[name="description"]')?.setAttribute('content', t('searchDescription'));
   }, [locale, t]);
   function switchLanguage(next: unknown) {
     if (!isLocale(next) || next === locale) return;

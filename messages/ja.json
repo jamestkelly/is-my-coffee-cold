@@ -38,5 +38,7 @@
   "hostPolicy": "Vercel のプライバシーポリシー",
   "questionsPrivacy": "お問い合わせは公開の課題管理ページへ。座標などの個人情報は記載しないでください：",
   "duration": "{n, plural, other {<value>#</value>分}}",
-  "shortDuration": "<value>{n, number}</value>分未満"
+  "shortDuration": "<value>{n, number}</value>分未満",
+  "searchTitle": "コーヒーが冷めるまでの時間を計算",
+  "searchDescription": "今のコーヒーの温度と室温、冷めたと感じる温度から、あと何分で冷めるかを見積もります。摂氏・華氏の両方に対応しています。"
 }
