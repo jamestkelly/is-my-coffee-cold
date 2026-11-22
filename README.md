@@ -6,6 +6,8 @@ How long until this cup is too cold **for me**? Open the page, enter the coffee 
 
 ## The first visit
 
+The header language picker switches between English, French, Spanish, Simplified Chinese, Japanese, Korean and Vietnamese without resetting the entered cup. `/` opens in English; `/en/`, `/fr/`, `/es/`, `/zh-Hans/`, `/ja/`, `/ko/` and `/vi/` can be opened directly. The unit is Celsius in every language.
+
 The landing page **is** the calculator. Start with three labeled, editable Celsius fields and an estimate in plain language. For example: “About 30 minutes until your coffee reaches 24 °C.” Explain that this assumes a constant room temperature and a typical cooling rate; a lid or an insulated mug can change the time substantially.
 
 Manual entry is the default. Someone in a kitchen knows more about their room than a weather station does. For someone drinking outside, offer **Use outdoor temperature** next to the ambient field. Ask for location only after they choose it, explain that approximate coordinates go to Open-Meteo, and let them edit the result. Denying permission, losing the connection or hitting a provider limit must leave the manual calculator usable.

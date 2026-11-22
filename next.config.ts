@@ -1,1 +1,1 @@
-export default { output: 'export', devIndicators: false };
+export default { output: 'export', trailingSlash: true, devIndicators: false };

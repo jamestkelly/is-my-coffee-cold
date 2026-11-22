@@ -1,25 +1,30 @@
 'use client';
 
-import { useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@ui-sdk/react/select';
 import { NumberInput, NumberInputControl, NumberInputDecrement, NumberInputGroup, NumberInputIncrement } from '@ui-sdk/react/number-input';
 import { coolingMinutes } from '../lib/cooling';
+import { copy, languages, isLocale, type Locale } from '../lib/languages';
+const options = Object.entries(languages).map(([value, label]) => ({ value, label }));
 
-function Temperature({ id, label, value, change, children }: {
+function Temperature({ id, label, value, change, children, locale }: {
+  locale: Locale;
   id: string; label: string; value: number | null; change: (n: number | null) => void; children?: ReactNode;
 }) {
   return <div className="field">
-    <div className="label-row"><label htmlFor={id}>{label}<span className="sr"> in degrees Celsius</span></label>{children}</div>
-    <NumberInput value={value} onValueChange={change} locale="en">
+    <div className="label-row"><label htmlFor={id}>{label}<span className="sr"> (°C)</span></label>{children}</div>
+    <NumberInput value={value} onValueChange={change} locale={locale}>
       <NumberInputGroup className="control">
         <div className="reading"><NumberInputControl id={id} /><span aria-hidden="true">°C</span></div>
-        <NumberInputDecrement aria-label={`Decrease ${label}`}>−</NumberInputDecrement>
-        <NumberInputIncrement aria-label={`Increase ${label}`}>+</NumberInputIncrement>
+        <NumberInputDecrement aria-label={copy[locale].decrease.replace('{field}', label)}>−</NumberInputDecrement>
+        <NumberInputIncrement aria-label={copy[locale].increase.replace('{field}', label)}>+</NumberInputIncrement>
       </NumberInputGroup>
     </NumberInput>
   </div>;
 }
 
-export default function Calculator() {
+export default function Calculator({ locale }: { locale: Locale }) {
+  const t = copy[locale];
   const [cutoff, setCutoff] = useState<number | null>(24);
   const [coffee, setCoffee] = useState<number | null>(80);
   const [air, setAir] = useState<number | null>(21);
@@ -28,6 +33,26 @@ export default function Calculator() {
   const request = useRef(0);
   const minutes = coolingMinutes(coffee, air, cutoff);
   const rounded = typeof minutes === 'number' ? Math.round(minutes) : 0;
+  const format = new Intl.NumberFormat(locale);
+  const duration = !rounded && 'underMinute' in t ? t.underMinute : new Intl.PluralRules(locale).select(rounded || 1) === 'one' ? t.one : t.other;
+  const [before, after] = duration.split('{n}');
+  const [sourceBefore, sourceAfter] = t.source.split('{source}');
+
+  useEffect(() => {
+    const values = new URLSearchParams(location.hash.slice(1));
+    for (const [key, set] of [['coffee', setCoffee], ['air', setAir], ['cutoff', setCutoff]] as const) {
+      const text = values.get(key);
+      if (text !== null) set(text.trim() && Number.isFinite(Number(text)) ? Number(text) : null);
+    }
+  }, []);
+  function switchLanguage(next: unknown) {
+    if (!isLocale(next) || next === locale) return;
+    const values = new URLSearchParams();
+    for (const [key, value, initial] of [['coffee', coffee, 80], ['air', air, 21], ['cutoff', cutoff, 24]] as const) {
+      if (value !== initial) values.set(key, value === null ? '' : String(value));
+    }
+    location.assign(`/${next}/${values.size ? `#${values}` : ''}`);
+  }
 
   async function useWeather() {
     const current = ++request.current;
@@ -52,25 +77,32 @@ export default function Calculator() {
     }
   }
 
-  return <div className="calculator">
-    <section className="estimate" aria-label="Cooling estimate" aria-live="polite" aria-atomic="true">
+  return <main><header><h1>{t.title}</h1>
+    <Select value={locale} items={options} onValueChange={switchLanguage}>
+      <SelectLabel className="sr">{t.language}</SelectLabel>
+      <SelectTrigger className="language"><SelectValue /> ▾</SelectTrigger>
+      <SelectContent className="languages">{options.map(({ value, label }) =>
+        <SelectItem key={value} value={value} lang={value}>{label}</SelectItem>)}</SelectContent>
+    </Select>
+  </header><div className="calculator">
+    <section className="estimate" aria-label={t.estimate} aria-live="polite" aria-atomic="true">
       {typeof minutes === 'number' ? <>
-        <p>{rounded ? 'About' : 'Less than'}</p>
-        <h2><strong>{rounded || 1}</strong> {rounded <= 1 ? 'minute' : 'minutes'}</h2>
-        <p>Until your coffee reaches {cutoff} °C.</p>
-      </> : <h2 className="message">{minutes === 'cold' ? 'Already too cold.' : minutes === 'unreachable' ? 'Won’t reach that temperature here.' : 'Enter all three temperatures.'}</h2>}
+        <p>{rounded ? t.about : t.less}</p>
+        <h2>{before}<strong>{format.format(rounded || 1)}</strong>{after}</h2>
+        <p>{t.until.replace('{t}', format.format(cutoff!))}</p>
+      </> : <h2 className="message">{t[minutes]}</h2>}
     </section>
-    <section className="fields" aria-label="Temperatures">
-      <Temperature id="cutoff" label="Too cold for me at" value={cutoff} change={setCutoff} />
-      <Temperature id="coffee" label="Coffee temperature" value={coffee} change={setCoffee} />
-      <Temperature id="ambient" label="Room / outdoors" value={air} change={n => { request.current++; setAir(n); setWeather('idle'); }}>
+    <section className="fields" aria-label={t.fields}>
+      <Temperature locale={locale} id="cutoff" label={t.cutoff} value={cutoff} change={setCutoff} />
+      <Temperature locale={locale} id="coffee" label={t.coffee} value={coffee} change={setCoffee} />
+      <Temperature locale={locale} id="ambient" label={t.air} value={air} change={n => { request.current++; setAir(n); setWeather('idle'); }}>
         <button className="link" disabled={weather === 'loading'} aria-expanded={explain} onClick={() => setExplain(!explain)}>
-          {weather === 'loading' ? 'Getting weather…' : 'Use outdoor temperature'}
+          {weather === 'loading' ? t.loading : t.weather}
         </button>
       </Temperature>
-      {explain && <p className="notice">Use your approximate location to get the outdoor temperature from Open-Meteo? <button className="link" onClick={useWeather}>Use my location</button></p>}
-      <div role="status">{weather === 'failed' ? 'Outdoor temperature unavailable. You can enter it above.' : weather === 'success' ? <>Outdoor reading from <a href="https://open-meteo.com/">Open-Meteo</a>.</> : null}</div>
-      <p className="note">An estimate, not a timer. A lid or insulated mug can change the cooling time.</p>
+      {explain && <p className="notice">{t.consent} <button className="link" onClick={useWeather}>{t.allow}</button></p>}
+      <div role="status">{weather === 'failed' ? t.failed : weather === 'success' ? <>{sourceBefore}<a href="https://open-meteo.com/">Open-Meteo</a>{sourceAfter}</> : null}</div>
+      <p className="note">{t.note}</p>
     </section>
-  </div>;
+  </div></main>;
 }

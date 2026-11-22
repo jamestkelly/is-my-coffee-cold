@@ -2,7 +2,13 @@
 * { box-sizing: border-box; }
 body, p, h1, h2 { margin: 0; }
 main { max-width: 73rem; margin: auto; padding: clamp(1.5rem, 5vw, 4.5rem); }
-h1 { font-size: clamp(1.55rem, 3vw, 2.3rem); letter-spacing: -.055em; padding-bottom: .6em; border-bottom: 1px solid #8998aa; }
+header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .4rem 1rem; padding-bottom: .7rem; border-bottom: 1px solid #8998aa; }
+h1 { font-size: clamp(1.55rem, 3vw, 2.3rem); letter-spacing: -.045em; }
+.language { min-height: 44px; color: var(--blue); background: transparent; border: 0; }
+.languages { background: white; border: 1px solid #899aaf; border-radius: .4rem; padding: .25rem; z-index: 2; max-height: 65vh; overflow: auto; }
+.languages [role=option] { padding: .5rem .9rem; cursor: pointer; }
+.languages :is([data-highlighted], [data-active], [role=option]:hover, [role=option]:focus) { background: #e7efff; }
+.languages [aria-selected=true] { font-weight: 700; }
 .calculator { display: grid; gap: clamp(2.3rem, 6vw, 5rem); padding-top: clamp(2.6rem, 7vw, 6rem); }
 .estimate { min-height: 9.5rem; font-size: clamp(1.15rem, 2.4vw, 1.6rem); letter-spacing: -.03em; }
 h2 { font-size: clamp(2rem, 6vw, 4rem); letter-spacing: -.06em; line-height: 1.1; margin: .12em 0 .28em; overflow-wrap: anywhere; }
