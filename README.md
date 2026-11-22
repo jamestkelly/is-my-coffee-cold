@@ -1,55 +1,59 @@
 # Is my coffee cold?
 
-How long until this cup is too cold **for me**? Open the page, enter the coffee temperature, the surrounding air temperature and your preferred cutoff. Get an estimate without creating an account or sharing your location.
+**[Try the calculator →](https://is-my-coffee-cold.vercel.app)** Pour a coffee at 80 °C in a 21 °C room. If you find it too cold at 40 °C, you have about **11 minutes**. Happy to drink it at 24 °C? Make that **30 minutes**. Those last few degrees take surprisingly long.
 
-**Run locally:** With Node 24 and pnpm, run `pnpm install --frozen-lockfile` and `pnpm dev`. `pnpm build` generates the static site in `out/`. The [previous implementation](https://github.com/jamestkelly/is-my-coffee-cold/tree/de903338) is preserved in Git history.
+Enter your coffee temperature, the air temperature and your personal cutoff. The answer updates as you type. No account, location permission or backend is needed. If you’re outside, **Use outdoor temperature** can fill in the air temperature for you. With your permission, the browser sends approximate coordinates to [Open-Meteo](https://open-meteo.com/); the reading remains editable. In a kitchen, use the room temperature instead.
 
-## The first visit
+The calculator speaks English, French, Spanish, Simplified Chinese, Japanese, Korean and Vietnamese. Changing languages preserves your cup. You can also link straight to a language, such as [Français](https://is-my-coffee-cold.vercel.app/fr/) or [日本語](https://is-my-coffee-cold.vercel.app/ja/).
 
-To edit a translation, update its JSON file in `messages/`. Use `messages/en.json` as the list of required keys. Keep placeholders such as `{n}` and `{field}` in each translation; move them wherever the language reads naturally. Run `pnpm test` to check the catalogs.
+## Why do the last few degrees take so long?
 
-The header language picker switches between English, French, Spanish, Simplified Chinese, Japanese, Korean and Vietnamese without resetting the entered cup. `/` opens in English; `/en/`, `/fr/`, `/es/`, `/zh-Hans/`, `/ja/`, `/ko/` and `/vi/` can be opened directly. The unit is Celsius in every language.
+A cup that’s 60 degrees warmer than the room loses heat faster than one that’s only 6 degrees warmer. [Newton’s law of cooling](https://en.wikipedia.org/wiki/Newton%27s_law_of_cooling) models that intuition: the rate of cooling is proportional to the **difference** between the coffee temperature $T$ and the air temperature $T_a$.
 
-The landing page **is** the calculator. Start with three labeled, editable Celsius fields and an estimate in plain language. For example: “About 30 minutes until your coffee reaches 24 °C.” Explain that this assumes a constant room temperature and a typical cooling rate; a lid or an insulated mug can change the time substantially.
+$$
+\frac{dT}{dt} = -k(T - T_a)
+$$
 
-Manual entry is the default. Someone in a kitchen knows more about their room than a weather station does. For someone drinking outside, offer **Use outdoor temperature** next to the ambient field. Ask for location only after they choose it, explain that approximate coordinates go to Open-Meteo, and let them edit the result. Denying permission, losing the connection or hitting a provider limit must leave the manual calculator usable.
+If the room temperature and cooling rate $k$ stay constant, a cup starting at $T_0$ follows an exponential curve:
 
-## Build decisions
+$$
+T(t) = T_a + (T_0 - T_a)e^{-kt}
+$$
 
-| Decision | Reason |
-| --- | --- |
-| One [Next.js App Router static export](https://nextjs.org/docs/app/guides/static-exports) at the repository root, using TypeScript and React | Start with Next.js 16.4.6 and matching React/React DOM 19.3.1. Build the landing page ahead of time; a Client Component handles the calculator and optional weather lookup in the browser. No API route or running application server is needed. |
-| [Vercel Labs UI SDK](https://ui-sdk.dev/) for the temperature inputs | Use its React Number Input for keyboard and pointer interaction. Keep labels, units, validation and result announcements accessible. Keep the formula independent of React. |
-| [Open-Meteo current weather](https://open-meteo.com/en/docs) | Its open-access endpoint needs no key. On request, round the coordinates and fetch `current=temperature_2m` from `/v1/forecast` in Celsius. Show attribution next to the value and do not persist coordinates. The [free terms](https://open-meteo.com/en/terms) are for non-commercial use, with rate limits including 10,000 calls/day. Fetch once per request, never on each calculation. |
-| [Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs) hosting | Use the Next.js preset at the repo root. Set `output: 'export'` in `next.config.ts`; `pnpm build` runs `next build` and produces `out/`. Review PR previews before deploying `main` to production. [Hobby](https://vercel.com/docs/plans/hobby) fits a personal, non-commercial launch. Revisit both hosting and weather terms before adding ads or charging users. |
-| Defer Firebase Authentication | An estimate does not belong to an account. Even a remembered cutoff can stay on the device. Revisit Firebase if users need something private **across devices**, such as saved mug profiles. Don’t silently create anonymous Firebase users for public visitors. |
+The calculator asks the inverse question: **when does the curve cross my cutoff?** Set $T(t)$ to $T_c$ and solve for time:
 
-**What about Firebase’s MAU tier?** The often-quoted 50,000 monthly active users is the no-cost tier for most providers on **Blaze with Identity Platform**. On **Spark with Identity Platform**, most providers are limited to 3,000 **daily** active users. Base Firebase Auth has different terms, and phone/SMS and enterprise providers have separate pricing or limits. Choose a provider and verify the [Firebase Auth limits](https://firebase.google.com/docs/auth#identity-platform) when there is a feature worth signing in for. Hosting on Vercel does not require choosing an auth provider now.
+$$
+t = \frac{1}{k}\ln\left(\frac{T_0 - T_a}{T_c - T_a}\right)
+$$
 
-## Calculation contract
+We use $k = 0.1$ per minute, the assumption from the original project. In the 80 °C example, the initial gap is 59 degrees; at the 24 °C cutoff it’s just 3. The result is $10\ln(59/3)$ minutes, or about **29 minutes 47 seconds**. Only the displayed estimate is rounded.
 
-Use Newton’s law of cooling with the legacy assumption `k = 0.1 per minute`. For a cup starting above the cutoff in air colder than the cutoff:
+Two cases don’t need a logarithm. If the cup is already at or below your cutoff, it’s already too cold. If it’s warmer than your cutoff but the air is at or above that cutoff, it won’t get there in finite time under this model. Zero degrees Celsius is a valid input, not a missing reading.
 
-```text
-minutes = ln((start − ambient) / (cutoff − ambient)) / k
+**How accurate is it?** The math describes the model exactly; the rate isn’t calibrated to your mug. A lid, insulation, the volume of coffee and a breeze can all change how quickly heat escapes. Treat the result as an estimate, not a timer. A useful experiment is to record your starting temperatures, predict a cutoff time, and check it with a thermometer.
+
+### How the original calculator solved it
+
+The [old Go implementation](https://github.com/jamestkelly/is-my-coffee-cold/blob/de903338/api/pkg/services/calculation_service.go) used [Heun’s method](https://en.wikipedia.org/wiki/Heun%27s_method), also called the improved Euler method. It took the current cooling rate, predicted the temperature one short step ahead, then averaged the slopes at the start and predicted end to get a better estimate for that step. It built a table of times and temperatures and searched it for the cutoff.
+
+That’s useful when you know how temperature changes but can’t solve the equation directly. With constant air temperature and a fixed $k$, we *can* solve it. Today [one TypeScript function](lib/cooling.ts) returns the crossing time without choosing a step size or sending the cup readings to a server. The [reference tests](test/cooling.test.ts) keep the original 1,787-second example as a check.
+
+## Run it locally
+
+From the repository root, with Node.js 24 and pnpm (the version is pinned in `package.json`):
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-Reject missing or non-finite inputs; 0 °C is valid. If `start ≤ cutoff`, report “already too cold.” Otherwise, if `ambient ≥ cutoff`, report “won’t reach the cutoff here.” These checks come before the logarithm. The reference cup (80 °C coffee, 21 °C air, 24 °C cutoff) reaches the cutoff in about 1,787 seconds. Round for display only.
+Open <http://localhost:3000>. No environment variables or weather key are required. Run `pnpm typecheck`, `pnpm test` and `pnpm build` to check a change. The production build writes a static site to `out/`.
 
-## Review and releases
+## How the app fits together
 
-Use a Conventional Commit PR title (for example, `feat: Add the manual calculator`). The **Review Gate** combines the branch-name, PR-title and release-tooling checks. In GitHub, require **Review Gate** on `main` and configure squash merges to use the PR title as the commit message.
-
-After checks pass on `main`, semantic-release reads commits since the last release tag and publishes a GitHub tag and release notes when warranted. `fix:` and `chore:` produce a patch, `feat:` a minor, and a breaking change a major. Only the release job gets write access; it uses the built-in GitHub token. There is no npm publication or deployment in this workflow.
-
-## Delivery order
-
-1. **Manual calculator.** Scaffold the root app, add the pure function and test the reference cup, already-cold and unreachable cases, empty inputs and zero ambient. A visitor should get an answer using only a keyboard and without any third-party requests.
-2. **Contributor setup.** Add a root `AGENTS.md` with verified dev, test and build commands, unit conventions, and directions to the [UI SDK agent skill](https://ui-sdk.dev/docs/agents) and package-local React docs. Extend the shared checks workflow with type checks, tests and the production build.
-3. **Outdoor shortcut.** Add geolocation and the attributed weather lookup. Test success, denied permission, timeout and a rate-limited response. A failed lookup must not overwrite the user's input.
-4. **Launch.** Connect the repository to Vercel. On a preview URL verify the first visit on a phone, keyboard entry, manual use without location, and the outdoor shortcut over HTTPS. Promote after those checks pass.
-
-Before switching an existing domain or retiring any cloud resources, confirm whether the legacy API or Firebase project still serves people outside this repository.
+- **Interface:** Next.js App Router exports the localized pages ahead of time. React and [Vercel Labs UI SDK](https://ui-sdk.dev/) handle the temperature inputs and language picker in the browser. [The calculator component](app/calculator.tsx) connects the controls to the model and the optional weather lookup.
+- **Translations:** Edit the JSON files in [messages/](messages/), using `en.json` for the required keys. Keep placeholders such as `{n}` and `{field}`, moving them to wherever the language reads naturally. `pnpm test` checks the catalogs.
+- **Hosting and releases:** Vercel builds previews for pull requests and deploys `main` to production. Use a Conventional Commit PR title; GitHub’s **Review Gate** checks the branch, title and build. Semantic-release uses commits on `main` to create version tags and GitHub release notes. The public weather endpoint is subject to [Open-Meteo’s non-commercial terms](https://open-meteo.com/en/terms).
 
 ## License
 
