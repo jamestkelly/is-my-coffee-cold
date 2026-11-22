@@ -108,7 +108,7 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
       {typeof minutes === 'number' ? <>
         <p>{rounded ? t.about : t.less}</p>
         <h2>{before}<strong>{format.format(rounded || 1)}</strong>{after}</h2>
-        <p>{t.until.replace('{start}', `${format.format(displayReading(coffee, unit)!)} °${unit}`).replace('{cutoff}', `${format.format(displayReading(cutoff, unit)!)} °${unit}`)}</p>
+        <p>{t.until.replace('{start}', `${format.format(displayReading(coffee, unit)!)}\u00a0°${unit}`).replace('{cutoff}', `${format.format(displayReading(cutoff, unit)!)}\u00a0°${unit}`)}</p>
       </> : <h2 className="message">{t[minutes]}</h2>}
     </section>
     <section className="fields" aria-label={t.fields}>

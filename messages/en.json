@@ -12,7 +12,7 @@
   "less": "Less than",
   "one": "{n} minute",
   "other": "{n} minutes",
-  "until": "For your coffee to cool from {start} to {cutoff}.",
+  "until": "To cool from {start} to {cutoff}.",
   "cold": "Already too cold.",
   "unreachable": "Won’t reach that temperature here.",
   "incomplete": "Enter all three temperatures.",
