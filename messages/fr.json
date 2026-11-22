@@ -12,7 +12,7 @@
   "less": "Moins de",
   "one": "{n} minute",
   "other": "{n} minutes",
-  "until": "Pour que votre café passe de {start} à {cutoff}.",
+  "until": "Pour passer de {start} à {cutoff}.",
   "cold": "Déjà trop froid.",
   "unreachable": "Votre café n’atteindra pas cette température ici.",
   "incomplete": "Saisissez les trois températures.",

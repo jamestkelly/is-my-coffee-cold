@@ -13,7 +13,7 @@
   "one": "{n}분",
   "other": "{n}분",
   "underMinute": "{n}분 미만",
-  "until": "커피가 현재 온도인 {start}에서 {cutoff}까지 식는 데 걸리는 시간입니다.",
+  "until": "{start}에서 {cutoff}까지 식는 시간",
   "cold": "이미 너무 식었어요.",
   "unreachable": "이 환경에서는 그 온도까지 식지 않아요.",
   "incomplete": "온도 세 가지를 모두 입력해 주세요.",

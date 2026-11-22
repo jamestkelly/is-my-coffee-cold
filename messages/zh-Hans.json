@@ -12,7 +12,7 @@
   "less": "不到",
   "one": "{n} 分钟",
   "other": "{n} 分钟",
-  "until": "咖啡从 {start} 降至 {cutoff} 所需的时间。",
+  "until": "从 {start} 降至 {cutoff}。",
   "cold": "已经太凉了。",
   "unreachable": "在当前环境下不会降到这个温度。",
   "incomplete": "请输入三个温度。",

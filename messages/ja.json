@@ -13,7 +13,7 @@
   "one": "{n}分",
   "other": "{n}分",
   "underMinute": "{n}分未満",
-  "until": "コーヒーが現在の {start} から {cutoff} まで冷めるのにかかる時間です。",
+  "until": "{start}から{cutoff}まで冷める目安。",
   "cold": "もう冷めています。",
   "unreachable": "この環境ではその温度まで冷めません。",
   "incomplete": "3つの温度を入力してください。",

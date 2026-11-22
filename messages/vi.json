@@ -12,7 +12,7 @@
   "less": "Còn chưa đến",
   "one": "{n} phút",
   "other": "{n} phút",
-  "until": "Để cà phê nguội từ {start} xuống {cutoff}.",
+  "until": "Để nguội từ {start} xuống {cutoff}.",
   "cold": "Cà phê đã quá nguội.",
   "unreachable": "Cà phê sẽ không nguội đến mức đó ở đây.",
   "incomplete": "Hãy nhập đủ ba mức nhiệt độ.",

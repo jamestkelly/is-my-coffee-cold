@@ -12,7 +12,7 @@
   "less": "Menos de",
   "one": "{n} minuto",
   "other": "{n} minutos",
-  "until": "Para que el café se enfríe de {start} a {cutoff}.",
+  "until": "Para bajar de {start} a {cutoff}.",
   "cold": "Ya está demasiado frío.",
   "unreachable": "Aquí no alcanzará esa temperatura.",
   "incomplete": "Introduce las tres temperaturas.",
