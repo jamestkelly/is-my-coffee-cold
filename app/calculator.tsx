@@ -116,10 +116,12 @@ export default function Calculator({ locale: initialLocale }: { locale: Locale }
       {explain && <p className="notice">{t.consent} <button className="link" onClick={useWeather}>{t.allow}</button></p>}
       <div role="status">{weather === 'failed' ? t.failed : weather === 'success' ? <>{sourceBefore}<a href="https://open-meteo.com/">Open-Meteo</a>{sourceAfter}</> : null}</div>
       <p className="note">{t.note}</p>
-      <a href="/privacy/" hrefLang="en">{t.privacy}</a>
-      <details className="note"><summary>{t.how}</summary><p>{t.model}</p>
-        <a href="https://github.com/jamestkelly/is-my-coffee-cold">GitHub</a>
-      </details>
+      <details className="note"><summary>{t.how}</summary><p>{t.model}</p></details>
     </section>
-  </div></main>;
+  </div>
+    <footer className="site-links">
+      <a href="/privacy/" hrefLang="en">{t.privacy}</a>
+      <a href="https://github.com/jamestkelly/is-my-coffee-cold">GitHub</a>
+    </footer>
+  </main>;
 }
