@@ -4,7 +4,7 @@ A free [coffee cooling calculator](https://is-my-coffee-cold.vercel.app/). Estim
 
 ## Calculate an estimate
 
-Use three finite temperatures, all in degrees Celsius: starting coffee temperature, ambient air temperature, and the drinker's cutoff. Zero is a valid reading.
+Enter the current coffee temperature, ambient air temperature, and the drinker's cutoff. Choose °C or °F in any language. For the formula below use Celsius; zero is a valid reading. The estimate starts at the entered current reading, not the time of pouring. Copy the page URL to share these readings and the selected unit.
 
 1. If any reading is missing, ask for it.
 2. If the coffee is already at or below the cutoff, the wait is zero.
